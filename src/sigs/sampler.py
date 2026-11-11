@@ -46,8 +46,8 @@ class FlexibleVectorSampler:
         self.rejected_count = 0
         self.stored_subclusters = {}
         self.optimization_history = []
-        self.decoder_model = None
-        self.model_device = 'cuda'
+        self.decoder_model = model
+        self.model_device = device if device is not None else 'cuda'
 
     def create_subclusters(self, category: str, n_clusters: int = 5) -> Dict:
         """Create subclusters for a category using k-means clustering."""
@@ -407,6 +407,62 @@ class FlexibleVectorSampler:
             'noise_scale': noise_scale
         }
         self.stored_subclusters[new_id] = {category: {subcluster_idx: data}}
+        self.current_sample_id += 1
+        return new_id
+
+    def sample_from_prior(
+        self,
+        n_samples: int = 1024,
+        scale: float = 1.0,
+        sample: bool = True,
+        seed: Optional[int] = None,
+    ) -> int:
+        """Sample standard-normal latent vectors and decode them with the GVAE."""
+        if self.decoder_model is None:
+            raise ValueError("FlexibleVectorSampler was constructed without a decoder model")
+
+        native = getattr(self.decoder_model, "model", self.decoder_model)
+        latent_dim = int(native.decoder.linear_in.in_features)
+        generator = torch.Generator().manual_seed(seed) if seed is not None else None
+        z = torch.randn(n_samples, latent_dim, generator=generator).numpy() * scale
+
+        expressions = []
+        if sample:
+            import re
+
+            for i, row in enumerate(z):
+                try:
+                    rules = native.generate(
+                        torch.from_numpy(row),
+                        sample=True,
+                        seed=(seed + i if seed is not None else None),
+                    )
+                    expr = "S"
+                    for rule in rules:
+                        expr = expr.replace(
+                            rule.lhs().symbol(), " ".join(str(r) for r in rule.rhs()), 1
+                        )
+                    expressions.append(re.sub(r"\s+", "", expr))
+                except Exception:
+                    expressions.append("")
+        else:
+            expressions = ModelUtils.decode_latent_vectors(
+                z,
+                self.decoder_model,
+                self.model_device,
+                batch_size=min(n_samples, 256),
+                seed=seed,
+            )
+
+        new_id = self.current_sample_id
+        self.sampling_results[new_id] = {
+            "expressions": expressions,
+            "vectors": z,
+            "subcluster_indices": [(None,)] * len(expressions),
+            "expression_indices": list(range(len(expressions))),
+            "sampling_type": "gvae_prior",
+            "scale": scale,
+        }
         self.current_sample_id += 1
         return new_id
 
