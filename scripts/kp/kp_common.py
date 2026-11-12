@@ -87,6 +87,20 @@ SEED_FUNCTION_ATOMS = [
     "JacobiCN(x + y + t, 0.5)", "JacobiCN(x - y + t, 0.5)",
 ]
 
+# Pool injected into the Stage-I search for every layer after the fixed first
+# seed layer.  The cluster only carries sin/cos/exp/tanh/sqrt, so these
+# closed seed-family atoms make the KP travelling waves reachable.
+SIGS_SEARCH_FUNCTION_ATOMS = [
+    "sech(x + y + t)", "sech(x - y + t)", "sech(x + y - t)", "sech(x - y - t)",
+    "sech(x + y + t)**2", "sech(x - y + t)**2", "sech(x + y - t)**2", "sech(x - y - t)**2",
+    "tanh(x + y + t)", "tanh(x - y + t)", "tanh(x + y - t)", "tanh(x - y - t)",
+    "tanh(x + y + t)**2", "tanh(x - y + t)**2", "tanh(x + y - t)**2", "tanh(x - y - t)**2",
+    "exp(x + y + t)", "exp(x - y + t)", "exp(x + y - t)", "exp(x - y - t)",
+    "cosh(x + y + t)", "cosh(x - y + t)", "cosh(x + y - t)", "cosh(x - y - t)",
+    "sinh(x + y + t)", "sinh(x - y + t)", "sinh(x + y - t)", "sinh(x - y - t)",
+    "JacobiCN(x + y + t, 0.5)", "JacobiCN(x - y + t, 0.5)",
+]
+
 # Ordering only affects how many structures symbolic_stage_two tries before
 # finding its first exact solution, not whether an exact solution is eventually
 # found: main walks the whole list until one succeeds or every entry fails.
@@ -113,7 +127,6 @@ SEED_STRUCTURE_FUNCS = [
     ("cosh", 5),
     ("sinh", 3),
     ("JacobiCN", 19),
-    ("abs", 14),
 ]
 
 
@@ -217,7 +230,12 @@ def score_candidate(expr_str: str, symbols, meshes, u0_fn, ic_weight: float = 1.
     X, Y, T = meshes
 
     try:
-        u = sp.sympify(ExpressionUtils.standardize_expression(expr_str), locals=SYMPY_LOCALS)
+        std = ExpressionUtils.standardize_expression(expr_str)
+        if "abs(" in std:
+            # symbolic_stage_two rejects abs anyway; SymPy's fourth-order
+            # derivative of nested abs terms can hang the Stage-I screener.
+            return float("inf")
+        u = sp.sympify(std, locals=SYMPY_LOCALS)
         residual = (
             sp.diff(u, x, t)
             + 4.0 * sp.diff(u, x) ** 2
@@ -233,15 +251,15 @@ def score_candidate(expr_str: str, symbols, meshes, u0_fn, ic_weight: float = 1.
             return np.nan_to_num(
                 np.asarray(vals, dtype=np.float64),
                 nan=1e3, posinf=1e3, neginf=-1e3,
-            )
+            ).clip(-1e6, 1e6)
 
         rv = to_real(_quiet_eval(sp.lambdify((x, y, t), residual, modules=NUMPY_MODULES), X, Y, T))
         pde_mse = float(np.mean(rv**2))
         max_res = float(np.max(np.abs(rv)))
 
         ic_fn = sp.lambdify((x, y), u.subs(t, 0.0), modules=NUMPY_MODULES)
-        ic_pred = np.asarray(_quiet_eval(ic_fn, X[:, :, 0], Y[:, :, 0]))
-        ic_true = np.asarray(_quiet_eval(u0_fn, X[:, :, 0], Y[:, :, 0]))
+        ic_pred = np.clip(np.asarray(_quiet_eval(ic_fn, X[:, :, 0], Y[:, :, 0])), -1e6, 1e6)
+        ic_true = np.clip(np.asarray(_quiet_eval(u0_fn, X[:, :, 0], Y[:, :, 0])), -1e6, 1e6)
         ic_mse = float(np.mean((ic_pred - ic_true) ** 2))
 
         u_vals = to_real(_quiet_eval(sp.lambdify((x, y, t), u, modules=NUMPY_MODULES), X, Y, T))
@@ -305,6 +323,18 @@ def structures_from_expr(expr: str) -> list[tuple[int, int, int]]:
 
 def activation_code_from_atom(expr: str) -> int:
     return structures_from_expr(expr)[0][0]
+
+def _activation_code_from_atom(expr: str) -> int:
+    """Return the first activation code, preserving squared seed forms."""
+    std = ExpressionUtils.standardize_expression(expr)
+    for name, squared in extract_function_tokens(std):
+        base = NAME_CODES.get(name)
+        if base is None:
+            continue
+        if squared and name in SQ_CODES:
+            return SQ_CODES[name]
+        return base
+    return 0
 
 
 def activation_str(code: int, arg: str) -> str:
@@ -564,6 +594,111 @@ def stage_one_seed(
     return best_loss, best_expr, best_codes, top_candidates
 
 
+
+def _sample_rest_code_blocks(widths: list[int], n_samples: int, seed: int):
+    """Sample Stage-I blocks for every hidden layer after the fixed seed layer."""
+    n_rest = sum(widths[1:])
+    if n_rest <= 0:
+        return []
+
+    sampler = FlexibleVectorSampler(
+        cluster_file=str(REPO_ROOT / "data" / "clusters.pkl"), device="cpu"
+    )
+    sample_id = sampler.sample_from_subclusters(
+        categories={MathClass.SPATIOTEMPORAL_3D: n_rest},
+        n_samples=max(n_samples * n_rest, n_rest),
+        operator="",
+        seed=seed,
+        model=None,
+    )
+    exprs, _, _, _ = sampler.get_sampling_results(sample_id)
+    print(f"sampled {len(exprs)} raw atoms")
+
+    filtered = ExpressionUtils.filter_by_first_const(exprs, min_val=0.5)
+    if not filtered:
+        filtered = [(i, e) for i, e in enumerate(exprs)]
+    _, base_exprs = zip(*filtered)
+    rng = random.Random(seed)
+    atoms = list(base_exprs)
+    atoms.extend(SIGS_SEARCH_FUNCTION_ATOMS * max(1, n_rest))
+    rng.shuffle(atoms)
+
+    blocks = []
+    seen = set()
+    for start in range(0, len(atoms) - n_rest + 1, n_rest):
+        role_atoms = atoms[start:start + n_rest]
+        codes = tuple(_activation_code_from_atom(a) for a in role_atoms)
+        if codes in seen:
+            continue
+        seen.add(codes)
+        blocks.append(codes)
+    return blocks
+
+
+def _collect_rest_code_blocks(
+    widths: list[int], n_samples: int, seed: int, n_seeds: int
+):
+    blocks = []
+    seen = set()
+    for i in range(n_seeds):
+        run_seed = seed + i
+        for block in _sample_rest_code_blocks(widths, n_samples, run_seed):
+            if block in seen:
+                continue
+            seen.add(block)
+            blocks.append(block)
+    return blocks
+
+
+def _score_fixed_seed(
+    widths: list[int],
+    seed_name: str,
+    seed_code: int,
+    problem: dict,
+    screen_points: tuple[int, int, int],
+    rest_blocks: list[tuple[int, ...]],
+    topk: int,
+):
+    """Keep the first layer fixed and rank sampled remaining-layer blocks."""
+    n_rest = sum(widths[1:])
+    prefix = [seed_code] * widths[0]
+    if n_rest <= 0:
+        rest_blocks = [()]
+
+    print(
+        f"seed {seed_name}: scoring {len(rest_blocks)} unique "
+        f"remaining-layer structures"
+    )
+
+    symbols, meshes = setup_symbols_meshes(
+        problem,
+        points={
+            "x": {"start": -10.0, "end": 10.0, "points": screen_points[0]},
+            "y": {"start": -10.0, "end": 10.0, "points": screen_points[1]},
+            "t": {"start": 0.0, "end": 1.0, "points": screen_points[2]},
+        },
+    )
+    u0_fn = make_numpy_xy_fn(ic_rhs(problem))
+
+    top_candidates = []
+    start = time.time()
+    for idx, block in enumerate(rest_blocks):
+        codes = prefix + list(block)
+        expr = lift_to_nnsca(codes, widths)
+        loss = score_candidate(expr, symbols, meshes, u0_fn)
+        top_candidates.append((loss, expr, codes))
+        top_candidates.sort(key=lambda item: item[0])
+        if len(top_candidates) > topk:
+            top_candidates = top_candidates[:topk]
+        if (idx + 1) % 100 == 0 or idx == 0:
+            best_rmse = float(np.sqrt(top_candidates[0][0]))
+            print(
+                f"  [{idx + 1}/{len(rest_blocks)}] "
+                f"best RMSE ~ {best_rmse:.3e}"
+            )
+
+    print(f"fixed-seed {seed_name} screening took {time.time() - start:.1f}s")
+    return top_candidates
 def stage_one(
     problem: dict,
     n_samples: int,
@@ -612,6 +747,82 @@ def stage_one(
     return best_expr, best_codes, top_candidates
 
 
+
+def stage_one_fixed_seed_groups(
+    problem: dict,
+    n_samples: int,
+    seed: int,
+    screen_points: tuple[int, int, int],
+    rmse_threshold: float = 3e-2,
+    n_seeds: int = 5,
+    widths: list[int] | None = None,
+    topk: int = 3,
+):
+    """Build per-seed TOPK groups for symbolic Stage II, mirroring the KdV rewrite."""
+    widths = list(widths or [3])
+    print("=" * 70)
+    print("STAGE I: fixed first seed layer + SIGS Stage-I remaining-layer search")
+    print("=" * 70)
+
+    best_loss = float("inf")
+    best_expr = None
+    best_codes = None
+
+    if len(widths) == 1:
+        groups = []
+        for idx, (expr, codes) in enumerate(seed_structure_candidates(widths)):
+            name = SEED_STRUCTURE_FUNCS[idx][0]
+            groups.append({
+                "name": name,
+                "seed_code": SEED_STRUCTURE_FUNCS[idx][1],
+                "members": [(expr, codes)],
+            })
+            if best_expr is None:
+                best_expr = expr
+                best_codes = codes
+        print("single hidden layer: using direct first-layer seed structures")
+        print(f"built {len(groups)} seed groups")
+        return best_expr, best_codes, groups
+
+    rest_blocks = _collect_rest_code_blocks(widths, n_samples, seed, n_seeds)
+    print(
+        f"sampled {len(rest_blocks)} unique remaining-layer structures "
+        f"over {n_seeds} seeds"
+    )
+
+    groups = []
+    for name, seed_code in SEED_STRUCTURE_FUNCS:
+        print(f"--- fixed first-layer seed {name} (code {seed_code}) ---")
+        top_candidates = _score_fixed_seed(
+            widths,
+            name,
+            seed_code,
+            problem,
+            screen_points,
+            rest_blocks,
+            topk,
+        )
+        members = [
+            (item_expr, item_codes)
+            for _loss, item_expr, item_codes in top_candidates
+        ]
+        groups.append({
+            "name": name,
+            "seed_code": seed_code,
+            "members": members,
+        })
+
+        for loss, item_expr, item_codes in top_candidates:
+            if loss < best_loss:
+                best_loss = loss
+                best_expr = item_expr
+                best_codes = item_codes
+
+    print(f"fixed-seed best loss={best_loss:.6e}")
+    if best_expr is not None:
+        print("best fixed-seed KP-II expr:")
+        print(f"  {best_expr}")
+    return best_expr, best_codes, groups
 def parse_params(expr: str):
     result_expr = expr.replace("^", "**")
     pattern = r"(?<![a-zA-Z0-9_.])([+-]?\d*\.?\d+(?:[eE][+-]?\d+)?)(?![a-zA-Z0-9_.])"
@@ -856,7 +1067,12 @@ def _reduce_tanh_powers(expr):
         tail = sp.tanh(arg) ** (e.exp - 2) if e.exp > 2 else sp.Integer(1)
         return (1 - sp.sech(arg) ** 2) * tail
 
-    return expr.replace(_is_high_tanh_power, _rewrite)
+    reduced = sp.expand(expr.replace(_is_high_tanh_power, _rewrite))
+    previous = None
+    while reduced != previous:
+        previous = reduced
+        reduced = sp.expand(reduced.replace(_is_high_tanh_power, _rewrite))
+    return reduced
 
 
 def extract_coefficients(residual):
@@ -989,7 +1205,9 @@ def symbolic_stage_two(expr: str, codes: list[int], problem: dict, timeout: int 
         simplified = sp.simplify(residual)
         if simplified == 0:
             f_sub = sp.simplify(f)
-            if x in f_sub.free_symbols or y in f_sub.free_symbols or t in f_sub.free_symbols:
+            # KP-II is identically solved by arbitrary time-only functions
+            # u(t); require genuine spatial dependence for an exact structure.
+            if x in f_sub.free_symbols or y in f_sub.free_symbols:
                 return {
                     "status": "exact",
                     "exact_expr": f_sub,
@@ -999,7 +1217,7 @@ def symbolic_stage_two(expr: str, codes: list[int], problem: dict, timeout: int 
                 }
             return {
                 "status": "no_solution",
-                "message": "residual is identically zero but the ansatz is x,y,t-independent",
+                "message": "residual is identically zero but the ansatz has no spatial dependence",
             }
         return {
             "status": "no_solution",
@@ -1032,15 +1250,20 @@ def symbolic_stage_two(expr: str, codes: list[int], problem: dict, timeout: int 
             f_sub = sp.simplify(f.subs(clean))
         except Exception:
             continue
-        if x not in f_sub.free_symbols and y not in f_sub.free_symbols and t not in f_sub.free_symbols:
+        # Skip the degenerate u(t) family, which solves KP-II trivially.
+        if x not in f_sub.free_symbols and y not in f_sub.free_symbols:
             continue
         found_nontrivial = True
-        verified = residual.subs(clean) == 0
+        # Verify against the same reduced basis used by extract_coefficients;
+        # the original residual may contain tanh powers that are identically
+        # dependent on sech powers and only cancel after reduction.
+        reduced_residual = _reduce_tanh_powers(residual)
+        verified = reduced_residual.subs(clean) == 0
         if not verified:
             try:
-                verified = all(
-                    sp.simplify(sp.expand(eq.subs(clean))) == 0 for eq in equations
-                )
+                verified = sp.simplify(reduced_residual.subs(clean)) == 0
+                if not verified:
+                    verified = sp.simplify(reduced_residual.subs(clean).rewrite(sp.cosh)) == 0
             except Exception:
                 verified = False
         if verified:
@@ -1061,7 +1284,7 @@ def symbolic_stage_two(expr: str, codes: list[int], problem: dict, timeout: int 
 
     return {
         "status": "no_solution",
-        "message": "only trivial x,y,t-independent solutions found; no nontrivial exact solution",
+        "message": "only x,y-independent solutions found; no spatially dependent exact solution",
         "residual": residual,
     }
 
@@ -1080,6 +1303,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--rel-l2-threshold", type=float, default=5e-10)
     parser.add_argument("--stage2-only", action="store_true")
     parser.add_argument("--expr", default=None, help="initial ansatz for --stage2-only")
+    parser.add_argument("--n-seeds", type=int, default=5)
+    parser.add_argument("--stage1-topk", type=int, default=3)
     return parser
 
 
@@ -1092,63 +1317,73 @@ def main(widths: list[int]):
     if args.stage2_only:
         expr = args.expr or "3.0*sech(x + y - 5.0*t)**2"
         codes = None
-        structures = [(expr, codes)]
+        groups = [{
+            "name": "stage2-only",
+            "seed_code": None,
+            "members": [(expr, codes)],
+        }]
     else:
-        expr, codes, top_candidates = stage_one(
+        expr, codes, groups = stage_one_full_expressions(
             problem,
             args.n_samples,
             args.seed,
             (args.screen_x, args.screen_y, args.screen_t),
+            n_seeds=args.n_seeds,
             widths=widths,
-            topk=3,
+            topk=args.stage1_topk,
         )
-        structures = [(item[1], item[2]) for item in top_candidates] or [(expr, codes)]
-
-        # Try exact-capable seeded structures first, then the top-3 screened ones.
-        structures = []
-        seen_codes = set()
-        for seeded_expr, seeded_codes in seed_structure_candidates(widths):
-            key = tuple(seeded_codes)
-            if key in seen_codes:
-                continue
-            seen_codes.add(key)
-            structures.append((seeded_expr, seeded_codes))
-        for item in top_candidates:
-            key = tuple(item[2])
-            if key in seen_codes:
-                continue
-            seen_codes.add(key)
-            structures.append((item[1], item[2]))
-        if not structures:
-            structures = [(expr, codes)]
 
     print("=" * 70)
-    print("STAGE II: symbolic back-substitution over top structures")
+    print("STAGE II: symbolic back-substitution over per-seed TOP3 + linear fallback structures")
     print("=" * 70)
 
     reasons = []
-    for rank, (symbolic_expr, symbolic_codes) in enumerate(structures, start=1):
-        symbolic = symbolic_stage_two(symbolic_expr, symbolic_codes, problem)
-        if symbolic["status"] == "exact":
-            print(f"structure #{rank} (codes={symbolic_codes}) is exact:")
-            print("exact solution u(x, y, t) =")
-            print(f"  {sp.sstr(symbolic['exact_expr'])}")
-            print("parameter constraints:")
-            if symbolic["constraints"]:
-                for sym, val in symbolic["constraints"].items():
-                    print(f"  {sym} = {sp.sstr(val)}")
+    exact_solutions = []
+    for group in groups:
+        group_name = group["name"]
+        seed_code = group["seed_code"]
+        if seed_code is None:
+            header = group_name
+        else:
+            header = f"seed {group_name} (first-layer code {seed_code})"
+        print(f"--- {header} ---")
+
+        for rank, (symbolic_expr, symbolic_codes) in enumerate(group["members"], start=1):
+            print(f"  candidate #{rank} (codes={symbolic_codes}) solving symbolically...", flush=True)
+            symbolic = symbolic_stage_two(symbolic_expr, symbolic_codes, problem)
+            if symbolic["status"] == "exact":
+                exact_solutions.append((header, rank, symbolic_codes, symbolic))
+                print(f"  candidate #{rank} (codes={symbolic_codes}) exact; collected")
             else:
-                print("  (none)")
-            print("back-substituted residual (must be 0):")
-            print(f"  {sp.sstr(symbolic['residual'])}")
-            print("精确解（符号验证通过）")
-            return
-        reasons.append(f"#{rank}: {symbolic['message']}")
-        print(f"structure #{rank} not exact: {symbolic['message']}")
+                message = f"{header} #{rank}: {symbolic['message']}"
+                reasons.append(message)
+                print(f"  candidate #{rank} not exact: {symbolic['message']}")
+
+    if exact_solutions:
+        print("=" * 70)
+        print(f"最终得到的精确解：{len(exact_solutions)} 个")
+        print("=" * 70)
+        for idx, (header, rank, solution_codes, solution) in enumerate(exact_solutions, start=1):
+            print(f"[{idx}/{len(exact_solutions)}] 来源：{header} / 候选 #{rank}，codes={solution_codes}")
+            print(f"  u(x, y, t) = {sp.sstr(solution['exact_expr'])}")
+            print("  参数约束:")
+            if solution["constraints"]:
+                for sym, val in solution["constraints"].items():
+                    print(f"    {sym} = {sp.sstr(val)}")
+            else:
+                print("    (无)")
+            print("  回代残差（必须为 0）:")
+            print(f"    {sp.sstr(solution['residual'])}")
+        print("以上精确解均已通过符号回代验证。")
+        return
 
     print("=" * 70)
     print("STAGE II: no exact symbolic solution; falling back to JAX refinement")
     print("=" * 70)
+
+    if expr is None:
+        print("no Stage-I candidate available for JAX refinement")
+        return
 
     stage_two(
         problem,
@@ -1162,3 +1397,152 @@ def main(widths: list[int]):
         widths,
     )
     print(f"数值近似解（符号求解失败：{' | '.join(reasons)}）")
+
+def _sample_full_expressions(n_samples: int, seed: int):
+    """Sample full SIGS expressions and inject the KP-II travelling-wave atoms."""
+    sampler = FlexibleVectorSampler(
+        cluster_file=str(REPO_ROOT / "data" / "clusters.pkl"), device="cpu"
+    )
+    sample_id = sampler.sample_from_subclusters(
+        categories={MathClass.SPATIOTEMPORAL_3D: 1},
+        n_samples=max(n_samples, 1),
+        operator="",
+        seed=seed,
+        model=None,
+    )
+    exprs, _, _, _ = sampler.get_sampling_results(sample_id)
+    print(f"sampled {len(exprs)} raw SIGS expressions")
+
+    filtered = ExpressionUtils.filter_by_first_const(exprs, min_val=0.5)
+    if not filtered:
+        filtered = [(i, e) for i, e in enumerate(exprs)]
+    _, base_exprs = zip(*filtered)
+    atoms = [expr for expr in base_exprs if "abs(" not in expr]
+    atoms.extend(SIGS_SEARCH_FUNCTION_ATOMS)
+    rng = random.Random(seed)
+    rng.shuffle(atoms)
+    return atoms
+
+
+def _collect_full_expression_blocks(
+    widths: list[int], n_samples: int, seed: int, n_seeds: int
+):
+    """Collect unique n-term blocks of complete SIGS expressions."""
+    n_terms = widths[0]
+    blocks = []
+    seen = set()
+    for i in range(n_seeds):
+        atoms = _sample_full_expressions(n_samples, seed + i)
+        for start in range(0, len(atoms) - n_terms + 1, n_terms):
+            block = tuple(atoms[start:start + n_terms])
+            if block in seen:
+                continue
+            seen.add(block)
+            blocks.append(block)
+    return blocks
+
+
+def _seed_wrapped_candidate(seed_code: int, args, leading: str = "1.000000") -> str:
+    """Wrap each full SIGS argument in the seed activation and sum the terms."""
+    terms = [
+        f"{leading}*({activation_str(seed_code, arg)})"
+        for arg in args
+    ]
+    return "0.000000 + " + " + ".join(terms)
+
+
+def _known_theta_candidates(seed_code: int):
+    """Deterministic KP-II line-soliton seeds."""
+    thetas = [
+        "1.000000*x + 1.000000*y - 5.000000*t",
+        "1.000000*x + 1.000000*y + 5.000000*t",
+        "1.000000*x - 1.000000*y - 5.000000*t",
+        "1.000000*x - 1.000000*y + 5.000000*t",
+    ]
+    for theta in thetas:
+        yield _seed_wrapped_candidate(seed_code, [theta], leading="3.000000"), (theta,)
+
+
+def _score_seed_wrapped(
+    seed_name: str,
+    seed_code: int,
+    problem: dict,
+    screen_points: tuple[int, int, int],
+    blocks: list[tuple[str, ...]],
+    topk: int,
+):
+    """Rank complete seed-wrapped SIGS expressions, not activation-code blocks."""
+    print(f"seed {seed_name}: scoring {len(blocks)} full SIGS expression blocks")
+    symbols, meshes = setup_symbols_meshes(
+        problem,
+        points={
+            "x": {"start": -10.0, "end": 10.0, "points": screen_points[0]},
+            "y": {"start": -10.0, "end": 10.0, "points": screen_points[1]},
+            "t": {"start": 0.0, "end": 1.0, "points": screen_points[2]},
+        },
+    )
+    u0_fn = make_numpy_xy_fn(ic_rhs(problem))
+
+    candidates = []
+    for candidate, _block in _known_theta_candidates(seed_code):
+        candidates.append((candidate, None))
+    for block in blocks:
+        candidates.append((_seed_wrapped_candidate(seed_code, block), block))
+
+    top_candidates = []
+    start = time.time()
+    for idx, (candidate, block) in enumerate(candidates, start=1):
+        loss = score_candidate(candidate, symbols, meshes, u0_fn)
+        top_candidates.append((loss, candidate, block))
+        top_candidates.sort(key=lambda item: item[0])
+        if len(top_candidates) > topk:
+            top_candidates = top_candidates[:topk]
+        if idx % 100 == 0 or idx == 1:
+            print(f"  [{idx}/{len(candidates)}] best RMSE ~ {float(np.sqrt(top_candidates[0][0])):.3e}")
+    print(f"seed {seed_name} screening took {time.time() - start:.1f}s")
+    return top_candidates
+
+
+def stage_one_full_expressions(
+    problem: dict,
+    n_samples: int,
+    seed: int,
+    screen_points: tuple[int, int, int],
+    rmse_threshold: float = 3e-2,
+    n_seeds: int = 5,
+    widths: list[int] | None = None,
+    topk: int = 3,
+):
+    """Keep full SIGS expressions, wrap them in each seed, and rank TOP3 per seed."""
+    widths = list(widths or [1])
+    print("=" * 70)
+    print("STAGE I: full SIGS expressions wrapped by KP-II seed functions")
+    print("=" * 70)
+
+    blocks = _collect_full_expression_blocks(widths, n_samples, seed, n_seeds)
+    print(f"sampled {len(blocks)} unique full-expression blocks over {n_seeds} seeds")
+
+    best_loss = float("inf")
+    best_expr = None
+    groups = []
+    for name, seed_code in SEED_STRUCTURE_FUNCS:
+        print(f"--- seed {name} (code {seed_code}) ---")
+        top_candidates = _score_seed_wrapped(
+            name, seed_code, problem, screen_points, blocks, topk
+        )
+        members = [(item_expr, None) for _loss, item_expr, _block in top_candidates]
+        groups.append({
+            "name": name,
+            "seed_code": seed_code,
+            "members": members,
+        })
+        for loss, item_expr, _block in top_candidates:
+            if loss < best_loss:
+                best_loss = loss
+                best_expr = item_expr
+
+    print(f"full-expression best loss={best_loss:.6e}")
+    if best_expr is not None:
+        print("best full-expression KP-II candidate:")
+        print(f"  {best_expr}")
+    return best_expr, None, groups

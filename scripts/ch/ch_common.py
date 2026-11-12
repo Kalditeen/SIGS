@@ -100,6 +100,27 @@ SEED_STRUCTURE_FUNCS = [
     ("JacobiCN", 19),
 ]
 
+# Atoms injected into the full-expression search pool.  Complete SIGS
+# expressions are kept as inner arguments, so including travelling-wave
+# atoms is what makes the smooth CH families reachable.
+CH_FULL_EXPRESSION_ATOMS = [
+    "x + t", "x - t",
+    "cosh(x + t)", "cosh(x - t)",
+    "sinh(x + t)", "sinh(x - t)",
+    "sech(x + t)", "sech(x - t)",
+    "sech(x + t)**2", "sech(x - t)**2",
+    "tanh(x + t)", "tanh(x - t)",
+    "tanh(x + t)**2", "tanh(x - t)**2",
+    "exp(x + t)", "exp(x - t)",
+    "JacobiCN(x + t, 0.5)", "JacobiCN(x - t, 0.5)",
+]
+
+# abs() is intentionally not part of the full-expression search: symbolic
+# back-substitution rejects it and Stage-I scoring is the slowest for it.
+CH_FULL_EXPRESSION_SEED_FUNCS = [
+    (name, code) for name, code in SEED_STRUCTURE_FUNCS if name != "abs"
+]
+
 
 def create_ch_problem(k: float = 0.0, c: float = 1.0) -> dict:
     x, t = sp.symbols("x t")
@@ -210,7 +231,7 @@ def score_candidate(expr_str: str, symbols, meshes, u0_fn, ic_weight: float = 1.
             return np.nan_to_num(
                 np.asarray(vals, dtype=np.float64),
                 nan=1e3, posinf=1e3, neginf=-1e3,
-            )
+            ).clip(-1e6, 1e6)
 
         rv = to_real(_quiet_eval(sp.lambdify((x, t), residual, modules=NUMPY_MODULES), X, T))
         pde_mse = float(np.mean(rv**2))
@@ -219,6 +240,8 @@ def score_candidate(expr_str: str, symbols, meshes, u0_fn, ic_weight: float = 1.
         ic_fn = sp.lambdify((x,), u.subs(t, 0.0), modules=NUMPY_MODULES)
         ic_pred = np.asarray(_quiet_eval(ic_fn, X[:, 0]))
         ic_true = np.asarray(_quiet_eval(u0_fn, X[:, 0]))
+        ic_pred = np.clip(ic_pred, -1e6, 1e6)
+        ic_true = np.clip(ic_true, -1e6, 1e6)
         ic_mse = float(np.mean((ic_pred - ic_true) ** 2))
 
         u_vals = to_real(_quiet_eval(sp.lambdify((x, t), u, modules=NUMPY_MODULES), X, T))
@@ -1009,9 +1032,9 @@ def symbolic_stage_two(expr: str, codes: list[int], problem: dict, timeout: int 
         verified = residual.subs(clean) == 0
         if not verified:
             try:
-                verified = all(
-                    sp.simplify(sp.expand(eq.subs(clean))) == 0 for eq in equations
-                )
+                verified = sp.simplify(residual.subs(clean)) == 0
+                if not verified:
+                    verified = sp.simplify(residual.subs(clean).rewrite(sp.cosh)) == 0
             except Exception:
                 verified = False
         if verified:
@@ -1054,6 +1077,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--only-seeds", action="store_true", default=False)
     parser.add_argument("--ablation-seed", type=int, default=42)
     parser.add_argument("--ablation-topk", type=int, default=3)
+    parser.add_argument("--n-seeds", type=int, default=5)
+    parser.add_argument("--stage1-topk", type=int, default=3)
     return parser
 
 
@@ -1220,3 +1245,234 @@ def main(widths: list[int]):
 
     print(f"数值近似解（符号求解失败：{' | '.join(reasons)}）")
     emit_summary(found=False, jax_elapsed=jax_elapsed)
+
+def _sample_full_expressions(n_samples: int, seed: int):
+    """Sample full SIGS expressions and inject CH travelling-wave atoms."""
+    sampler = FlexibleVectorSampler(
+        cluster_file=str(REPO_ROOT / "data" / "clusters.pkl"), device="cpu"
+    )
+    sample_id = sampler.sample_from_subclusters(
+        categories={MathClass.SPATIOTEMPORAL_2D: 1},
+        n_samples=max(n_samples, 1),
+        operator="",
+        seed=seed,
+        model=None,
+    )
+    exprs, _, _, _ = sampler.get_sampling_results(sample_id)
+    print(f"sampled {len(exprs)} raw SIGS expressions")
+
+    filtered = ExpressionUtils.filter_by_first_const(exprs, min_val=0.5)
+    if not filtered:
+        filtered = [(i, e) for i, e in enumerate(exprs)]
+    _, base_exprs = zip(*filtered)
+    atoms = [expr for expr in base_exprs if "abs(" not in expr]
+    atoms.extend(CH_FULL_EXPRESSION_ATOMS)
+    rng = random.Random(seed)
+    rng.shuffle(atoms)
+    return atoms
+
+
+def _collect_full_expression_blocks(
+    widths: list[int], n_samples: int, seed: int, n_seeds: int
+):
+    """Collect unique n-term blocks of complete SIGS expressions."""
+    n_terms = widths[0]
+    blocks = []
+    seen = set()
+    for i in range(n_seeds):
+        atoms = _sample_full_expressions(n_samples, seed + i)
+        for start in range(0, len(atoms) - n_terms + 1, n_terms):
+            block = tuple(atoms[start:start + n_terms])
+            if block in seen:
+                continue
+            seen.add(block)
+            blocks.append(block)
+    return blocks
+
+
+def _seed_wrapped_candidate(seed_code: int, args, leading: str = "1.000000") -> str:
+    """Wrap each full SIGS argument in the seed activation and sum the terms."""
+    terms = [
+        f"{leading}*({activation_str(seed_code, arg)})"
+        for arg in args
+    ]
+    return "0.000000 + " + " + ".join(terms)
+
+
+def _known_theta_candidates(seed_code: int):
+    """Deterministic travelling-wave seeds for the CH search."""
+    for theta in ("1.000000*x - 1.000000*t", "1.000000*x + 1.000000*t"):
+        yield _seed_wrapped_candidate(seed_code, [theta], leading="1.000000"), (theta,)
+
+
+def _score_seed_wrapped(
+    seed_name: str,
+    seed_code: int,
+    problem: dict,
+    screen_points: tuple[int, int],
+    blocks: list[tuple[str, ...]],
+    topk: int,
+):
+    """Rank complete seed-wrapped SIGS expressions, not activation-code blocks."""
+    print(f"seed {seed_name}: scoring {len(blocks)} full SIGS expression blocks")
+    symbols, meshes = setup_symbols_meshes(
+        problem,
+        points={
+            "x": {"start": -10.0, "end": 10.0, "points": screen_points[0]},
+            "t": {"start": 0.0, "end": 1.0, "points": screen_points[1]},
+        },
+    )
+    u0_fn = make_numpy_x_fn(ic_rhs(problem))
+
+    candidates = []
+    for candidate, _block in _known_theta_candidates(seed_code):
+        candidates.append((candidate, None))
+    for block in blocks:
+        candidates.append((_seed_wrapped_candidate(seed_code, block), block))
+
+    top_candidates = []
+    start = time.time()
+    for idx, (candidate, block) in enumerate(candidates, start=1):
+        loss = score_candidate(candidate, symbols, meshes, u0_fn)
+        top_candidates.append((loss, candidate, block))
+        top_candidates.sort(key=lambda item: item[0])
+        if len(top_candidates) > topk:
+            top_candidates = top_candidates[:topk]
+        if idx % 100 == 0 or idx == 1:
+            best_rmse = float(np.sqrt(top_candidates[0][0]))
+            print(f"  [{idx}/{len(candidates)}] best RMSE ~ {best_rmse:.3e}")
+    print(f"seed {seed_name} screening took {time.time() - start:.1f}s")
+    return top_candidates
+
+
+def stage_one_full_expressions(
+    problem: dict,
+    n_samples: int,
+    seed: int,
+    screen_points: tuple[int, int],
+    rmse_threshold: float = 3e-2,
+    n_seeds: int = 5,
+    widths: list[int] | None = None,
+    topk: int = 3,
+):
+    """Keep full SIGS expressions, wrap them in each CH seed, rank TOP3 per seed."""
+    widths = list(widths or [1])
+    print("=" * 70)
+    print("STAGE I: full SIGS expressions wrapped by CH seed functions")
+    print("=" * 70)
+
+    blocks = _collect_full_expression_blocks(widths, n_samples, seed, n_seeds)
+    print(f"sampled {len(blocks)} unique full-expression blocks over {n_seeds} seeds")
+
+    best_loss = float("inf")
+    best_expr = None
+    groups = []
+    for name, seed_code in CH_FULL_EXPRESSION_SEED_FUNCS:
+        print(f"--- seed {name} (code {seed_code}) ---")
+        top_candidates = _score_seed_wrapped(
+            name, seed_code, problem, screen_points, blocks, topk
+        )
+        members = [(item_expr, None) for _loss, item_expr, _block in top_candidates]
+        groups.append({
+            "name": name,
+            "seed_code": seed_code,
+            "members": members,
+        })
+        for loss, item_expr, _block in top_candidates:
+            if loss < best_loss:
+                best_loss = loss
+                best_expr = item_expr
+
+    print(f"full-expression best loss={best_loss:.6e}")
+    if best_expr is not None:
+        print("best full-expression CH candidate:")
+        print(f"  {best_expr}")
+    return best_expr, None, groups
+
+
+def main_full_expressions(widths: list[int]):
+    args = build_parser().parse_args()
+    widths = list(widths or [3])
+    problem = create_ch_problem()
+    print(f"operator: {problem['operators']}")
+    print(f"true solution: {problem['true_solution']}")
+
+    if args.stage2_only:
+        expr = args.expr or "1.0*exp(-abs(x - 1.0*t))"
+        codes = None
+        groups = [{
+            "name": "stage2-only",
+            "seed_code": None,
+            "members": [(expr, codes)],
+        }]
+    else:
+        expr, codes, groups = stage_one_full_expressions(
+            problem,
+            args.n_samples,
+            args.seed,
+            (args.screen_x, args.screen_t),
+            n_seeds=args.n_seeds,
+            widths=widths,
+            topk=args.stage1_topk,
+        )
+
+    print("=" * 70)
+    print("STAGE II: symbolic back-substitution over per-seed TOP3")
+    print("=" * 70)
+
+    reasons = []
+    exact_solutions = []
+    for group in groups:
+        group_name = group["name"]
+        seed_code = group["seed_code"]
+        header = group_name if seed_code is None else f"seed {group_name} (code {seed_code})"
+        print(f"--- {header} ---")
+
+        for rank, (symbolic_expr, symbolic_codes) in enumerate(group["members"], start=1):
+            print(f"  candidate #{rank} (codes={symbolic_codes}) solving symbolically...", flush=True)
+            symbolic = symbolic_stage_two(symbolic_expr, symbolic_codes, problem)
+            if symbolic["status"] == "exact":
+                exact_solutions.append((header, rank, symbolic_codes, symbolic))
+                print(f"  candidate #{rank} (codes={symbolic_codes}) exact; collected")
+            else:
+                reasons.append(f"{header} #{rank}: {symbolic['message']}")
+                print(f"  candidate #{rank} not exact: {symbolic['message']}")
+
+    if exact_solutions:
+        print("=" * 70)
+        print(f"最终得到的精确解：{len(exact_solutions)} 个")
+        print("=" * 70)
+        for idx, (header, rank, solution_codes, solution) in enumerate(exact_solutions, start=1):
+            print(f"[{idx}/{len(exact_solutions)}] 来源：{header} / 候选 #{rank}，codes={solution_codes}")
+            print(f"  u(x, t) = {sp.sstr(solution['exact_expr'])}")
+            print("  参数约束:")
+            if solution["constraints"]:
+                for sym, val in solution["constraints"].items():
+                    print(f"    {sym} = {sp.sstr(val)}")
+            else:
+                print("    (无)")
+            print("  回代残差（必须为 0）:")
+            print(f"    {sp.sstr(solution['residual'])}")
+        print("以上精确解均已通过符号回代验证。")
+        return
+
+    print("=" * 70)
+    print("STAGE II: no exact symbolic solution; falling back to JAX refinement")
+    print("=" * 70)
+
+    if expr is None:
+        print("no Stage-I candidate available for JAX refinement")
+        return
+
+    stage_two(
+        problem,
+        expr,
+        args.lr,
+        args.iters,
+        args.w_ic,
+        args.rmse_threshold,
+        args.rel_l2_threshold,
+        codes,
+        widths,
+    )
+    print(f"数值近似解（符号求解失败：{' | '.join(reasons)}）")
