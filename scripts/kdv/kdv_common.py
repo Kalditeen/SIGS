@@ -21,6 +21,7 @@ from __future__ import annotations
 import argparse
 import random
 import re
+import signal
 import sys
 import time
 from pathlib import Path
@@ -28,9 +29,8 @@ from pathlib import Path
 import jax
 import jax.numpy as jnp
 import numpy as np
-import optax
 import sympy as sp
-from jax import grad, jit, vmap
+from scipy.optimize import minimize
 
 from sigs.sampler import FlexibleVectorSampler
 from sigs.utils import ExpressionUtils, MathClass
@@ -72,6 +72,10 @@ SIGS_SEARCH_FUNCTION_ATOMS = [
     "cosh(x + t)", "cosh(x - t)",
     "sinh(x + t)", "sinh(x - t)",
     "JacobiCN(x + t, 0.5)", "JacobiCN(x - t, 0.5)",
+    "1/(x - t)", "1/(x + t)",
+    "(x - t)/(x + t)", "(x + t)/(x - t)",
+    "1/(1 + (x - t)**2)", "1/(1 + (x + t)**2)",
+    "(x - t)/(1 + (x - t)**2)", "(x + t)/(1 + (x + t)**2)",
 ]
 
 
@@ -408,10 +412,56 @@ def _sample_full_expressions(n_samples: int, seed: int):
         filtered = [(i, e) for i, e in enumerate(exprs)]
     _, base_exprs = zip(*filtered)
     rng = random.Random(seed)
-    atoms = list(base_exprs)
-    atoms.extend(SIGS_SEARCH_FUNCTION_ATOMS)
+    atoms = [expr for expr in list(base_exprs) + SIGS_SEARCH_FUNCTION_ATOMS if _is_allowed_inner_expr(expr)]
+    if not atoms:
+        atoms = [expr for expr in SIGS_SEARCH_FUNCTION_ATOMS if _is_allowed_inner_expr(expr)]
     rng.shuffle(atoms)
     return atoms
+
+
+def _is_allowed_inner_expr(expr: str) -> bool:
+    """Reject Stage-I atoms with deeply nested tanh/sech or abs."""
+    std = ExpressionUtils.standardize_expression(expr)
+    if "abs(" in std:
+        return False
+    try:
+        u = sp.sympify(std, locals=_ch.SYMPY_LOCALS)
+    except Exception:
+        return False
+    for atom in u.atoms(sp.Function):
+        if atom.func in (sp.tanh, sp.sech):
+            if any(arg.has(sp.tanh, sp.sech) for arg in atom.args):
+                return False
+    return True
+
+
+def _expression_complexity(expr: str) -> float:
+    """Count SymPy operations as a cheap structural-complexity measure."""
+    try:
+        u = sp.sympify(ExpressionUtils.standardize_expression(expr), locals=_ch.SYMPY_LOCALS)
+        return float(sp.count_ops(u))
+    except Exception:
+        return float("inf")
+
+
+def _max_tanh_sech_depth(expr: str) -> int:
+    """Return the deepest nesting level of tanh/sech in an expression."""
+    try:
+        u = sp.sympify(ExpressionUtils.standardize_expression(expr), locals=_ch.SYMPY_LOCALS)
+    except Exception:
+        return 999
+    best = 0
+
+    def walk(node, depth):
+        nonlocal best
+        if node.func in (sp.tanh, sp.sech):
+            depth += 1
+            best = max(best, depth)
+        for arg in node.args:
+            walk(arg, depth)
+
+    walk(u, 0)
+    return best
 
 
 def _collect_full_expression_blocks(
@@ -426,6 +476,8 @@ def _collect_full_expression_blocks(
         for start in range(0, len(atoms) - n_terms + 1, n_terms):
             block = tuple(atoms[start:start + n_terms])
             if block in seen:
+                continue
+            if not all(_is_allowed_inner_expr(atom) for atom in block):
                 continue
             seen.add(block)
             blocks.append(block)
@@ -447,6 +499,221 @@ def _known_theta_candidates(seed_code: int):
         yield _seed_wrapped_candidate(seed_code, [theta], leading="2.000000"), (theta,)
 
 
+def _score_kdv_candidate_unbiased(
+    expr_str: str,
+    symbols: dict,
+    meshes: list[np.ndarray],
+    act_floor: float = 1e-3,
+    w_act: float = 1.0,
+    u_max: float = 10.0,
+):
+    """Rank one KdV ansatz without any reference-solution term.
+
+    The original score contains ``ic_weight * ic_mse``, where ``ic_mse`` is the
+    t=0 mismatch against the known soliton.  That single term forces Stage I to
+    rediscover the reference branch.  This score keeps only equation residual
+    and domain safety, plus an anti-triviality barrier that pushes the search
+    away from constant (exact but useless) solutions.
+    """
+    x, t = symbols["x"], symbols["t"]
+    X, T = meshes
+    try:
+        u = sp.sympify(
+            ExpressionUtils.standardize_expression(expr_str), locals=_ch.SYMPY_LOCALS
+        )
+        residual = sp.diff(u, t) + 6.0 * u * sp.diff(u, x) + sp.diff(u, x, 3)
+
+        def to_real(vals):
+            vals = np.asarray(vals)
+            if np.iscomplexobj(vals):
+                vals = np.real(vals)
+            return np.nan_to_num(
+                np.asarray(vals, dtype=np.float64),
+                nan=1e3,
+                posinf=1e3,
+                neginf=-1e3,
+            ).clip(-1e6, 1e6)
+
+        rv = to_real(
+            _ch._quiet_eval(
+                sp.lambdify((x, t), residual, modules=_ch.NUMPY_MODULES), X, T
+            )
+        )
+        pde_mse = float(np.mean(rv**2))
+        max_res = float(np.max(np.abs(rv)))
+
+        ux_vals = to_real(
+            _ch._quiet_eval(
+                sp.lambdify((x, t), sp.diff(u, x), modules=_ch.NUMPY_MODULES), X, T
+            )
+        )
+        ut_vals = to_real(
+            _ch._quiet_eval(
+                sp.lambdify((x, t), sp.diff(u, t), modules=_ch.NUMPY_MODULES), X, T
+            )
+        )
+        activity = float(np.mean(np.sqrt(ux_vals**2 + ut_vals**2)))
+
+        u_vals = to_real(
+            _ch._quiet_eval(
+                sp.lambdify((x, t), u, modules=_ch.NUMPY_MODULES), X, T
+            )
+        )
+        u_range = float(np.max(np.abs(u_vals)))
+        bounded = float(max(0.0, u_range - u_max) ** 2)
+        trivial = float(max(0.0, act_floor - activity) ** 2)
+        return pde_mse + 0.01 * max_res + w_act * trivial + bounded
+    except Exception:
+        return float("inf")
+
+
+def _refine_kdv_candidate_params(
+    expr_str: str,
+    symbols: dict,
+    meshes: list[np.ndarray],
+    opt_points: tuple[int, int] = (48, 24),
+    maxiter: int = 50,
+    act_floor: float = 1e-3,
+    w_act: float = 1.0,
+    u_max: float = 10.0,
+):
+    """Optimize the numeric parameters of one seed-wrapped SIGS expression.
+
+    The candidate is the agreed Stage-I form: a seed activation on the outside
+    and complete SIGS-generated expressions inside.  The inner and outer numeric
+    literals are promoted to free parameters and refined against the KdV
+    residual only, with an anti-triviality barrier.  Ranking uses the optimized
+    residual rather than the unit-weight residual used by the cheap prefilter.
+    """
+    try:
+        param_expr, init_params, names = _ch.parse_params(expr_str)
+    except Exception:
+        return float("inf"), expr_str
+    if not names:
+        return float("inf"), expr_str
+
+    try:
+        x, t = symbols["x"], symbols["t"]
+        u = sp.sympify(param_expr, locals=_ch.SYMPY_LOCALS)
+        residual = sp.diff(u, t) + 6.0 * u * sp.diff(u, x) + sp.diff(u, x, 3)
+        param_syms = [sp.Symbol(name) for name in names]
+        args = [x, t] + param_syms
+        res_fn = sp.lambdify(args, residual, modules=_ch.NUMPY_MODULES)
+        ux_fn = sp.lambdify(args, sp.diff(u, x), modules=_ch.NUMPY_MODULES)
+        ut_fn = sp.lambdify(args, sp.diff(u, t), modules=_ch.NUMPY_MODULES)
+        u_fn = sp.lambdify(args, u, modules=_ch.NUMPY_MODULES)
+    except Exception:
+        return float("inf"), expr_str
+
+    X, T = meshes
+    xs = np.linspace(float(X[:, 0].min()), float(X[:, 0].max()), opt_points[0])
+    ts = np.linspace(float(T[0, :].min()), float(T[0, :].max()), opt_points[1])
+    XX, TT = np.meshgrid(xs, ts, indexing="ij")
+    xflat = XX.ravel()
+    tflat = TT.ravel()
+
+    def _safe(vals):
+        vals = np.asarray(vals)
+        if np.iscomplexobj(vals):
+            vals = np.real(vals)
+        return np.nan_to_num(
+            np.asarray(vals, dtype=np.float64),
+            nan=1e3, posinf=1e3, neginf=-1e3,
+        ).clip(-1e6, 1e6)
+
+    def loss(params):
+        rv = _safe(res_fn(xflat, tflat, *params))
+        pde_mse = float(np.mean(rv**2))
+        uxv = _safe(ux_fn(xflat, tflat, *params))
+        utv = _safe(ut_fn(xflat, tflat, *params))
+        activity = float(np.mean(np.sqrt(uxv**2 + utv**2)))
+        uv = _safe(u_fn(xflat, tflat, *params))
+        bounded = float(max(0.0, np.max(np.abs(uv)) - u_max) ** 2)
+        trivial = float(max(0.0, act_floor - activity) ** 2)
+        return pde_mse + w_act * trivial + bounded
+
+    try:
+        result = minimize(
+            loss,
+            init_params,
+            method="L-BFGS-B",
+            options={"maxiter": maxiter, "ftol": 1e-12, "gtol": 1e-8},
+        )
+    except Exception:
+        return float("inf"), expr_str
+
+    if not np.isfinite(result.fun) or not np.all(np.isfinite(result.x)):
+        return float("inf"), expr_str
+
+    refined = param_expr
+    for name, value in zip(names, result.x):
+        refined = re.sub(rf"\b{name}\b", f"{float(value):.15g}", refined)
+    return float(result.fun), refined
+
+
+def _score_multi_point_generalization(
+    refined_expr: str,
+    symbols: dict,
+    meshes: list[np.ndarray],
+    n_perturbations: int = 5,
+    perturb_scale: float = 0.3,
+):
+    """Penalize parameter-space overfitting for a refined candidate.
+
+    A single optimized parameter vector can exploit the mesh.  This score
+    evaluates the PDE residual at the optimized point and at nearby perturbed
+    points, returning a weighted combination that rewards flat residual basins.
+    """
+    try:
+        param_expr, init_params, names = _ch.parse_params(refined_expr)
+        base = np.asarray(init_params, dtype=np.float64)
+    except Exception:
+        return float("inf")
+    if base.size == 0:
+        return float("inf")
+
+    try:
+        x, t = symbols["x"], symbols["t"]
+        u = sp.sympify(param_expr, locals=_ch.SYMPY_LOCALS)
+        residual = sp.diff(u, t) + 6.0 * u * sp.diff(u, x) + sp.diff(u, x, 3)
+        res_fn = sp.lambdify(
+            [x, t] + [sp.Symbol(name) for name in names],
+            residual,
+            modules=_ch.NUMPY_MODULES,
+        )
+    except Exception:
+        return float("inf")
+
+    X, T = meshes
+    xflat = np.asarray(X, dtype=np.float64).ravel()
+    tflat = np.asarray(T, dtype=np.float64).ravel()
+
+    def _mse(params):
+        params = np.asarray(params, dtype=np.float64)
+        if not np.all(np.isfinite(params)):
+            return float("inf")
+        try:
+            rv = np.asarray(res_fn(xflat, tflat, *params), dtype=np.float64)
+        except Exception:
+            return float("inf")
+        if np.iscomplexobj(rv):
+            rv = np.real(rv)
+        rv = np.nan_to_num(
+            rv, nan=1e3, posinf=1e3, neginf=-1e3
+        )
+        return float(np.mean(rv**2))
+
+    base_mse = _mse(base)
+    perturbed_mses = []
+    rng = np.random.default_rng()
+    for _ in range(n_perturbations):
+        scales = np.maximum(np.abs(base), 0.1)
+        noise = rng.normal(0.0, perturb_scale, size=base.shape)
+        perturbed_mses.append(_mse(base + noise * scales))
+
+    return base_mse + 0.5 * float(np.mean(perturbed_mses)) + 0.5 * float(np.max(perturbed_mses))
+
+
 def _score_seed_wrapped(
     seed_name: str,
     seed_code: int,
@@ -454,8 +721,11 @@ def _score_seed_wrapped(
     screen_points: tuple[int, int],
     blocks: list[tuple[str, ...]],
     topk: int,
+    act_floor: float = 1e-3,
+    refine_maxiter: int = 50,
+    w_complexity: float = 1e-4,
 ):
-    """Rank complete seed-wrapped SIGS expressions, not activation-code blocks."""
+    """Screen seed-wrapped SIGS expressions, then refine the shortlist."""
     print(f"seed {seed_name}: scoring {len(blocks)} full SIGS expression blocks")
     symbols, meshes = _ch.setup_symbols_meshes(
         problem,
@@ -464,26 +734,58 @@ def _score_seed_wrapped(
             "t": {"start": 0.0, "end": 1.0, "points": screen_points[1]},
         },
     )
-    u0_fn = _ch.make_numpy_x_fn(_ch.ic_rhs(problem))
 
     candidates = []
-    for candidate, _block in _known_theta_candidates(seed_code):
-        candidates.append((candidate, None))
     for block in blocks:
-        candidates.append((_seed_wrapped_candidate(seed_code, block), block))
+        candidate = _seed_wrapped_candidate(seed_code, block)
+        if _max_tanh_sech_depth(candidate) > 1:
+            continue
+        candidates.append((candidate, block))
 
-    top_candidates = []
+    raw_scores = []
     start = time.time()
     for idx, (candidate, block) in enumerate(candidates, start=1):
-        loss = _score_kdv_candidate(candidate, symbols, meshes, u0_fn)
-        top_candidates.append((loss, candidate, block))
-        top_candidates.sort(key=lambda item: item[0])
-        if len(top_candidates) > topk:
-            top_candidates = top_candidates[:topk]
+        loss = _score_kdv_candidate_unbiased(
+            candidate, symbols, meshes, act_floor=act_floor
+        )
+        loss += w_complexity * _expression_complexity(candidate)
+        raw_scores.append((loss, candidate, block))
         if idx % 100 == 0 or idx == 1:
-            print(f"  [{idx}/{len(candidates)}] best RMSE ~ {float(np.sqrt(top_candidates[0][0])):.3e}")
-    print(f"seed {seed_name} screening took {time.time() - start:.1f}s")
-    return top_candidates
+            raw_scores.sort(key=lambda item: item[0])
+            print(f"  [{idx}/{len(candidates)}] cheap best RMSE ~ {float(np.sqrt(raw_scores[0][0])):.3e}")
+    print(f"seed {seed_name} cheap screening took {time.time() - start:.1f}s")
+
+    raw_scores.sort(key=lambda item: item[0])
+    prefilter_topk = max(3 * topk, 5)
+    shortlist = raw_scores[:prefilter_topk]
+    print(f"seed {seed_name}: refining top {len(shortlist)} structures")
+
+    refined = []
+    start = time.time()
+    for rank, (_cheap, candidate, block) in enumerate(shortlist, start=1):
+        loss, refined_expr = _refine_kdv_candidate_params(
+            candidate,
+            symbols,
+            meshes,
+            maxiter=refine_maxiter,
+            act_floor=act_floor,
+        )
+        gen_loss = _score_multi_point_generalization(refined_expr, symbols, meshes)
+
+        # 惩罚项：参数越少、嵌套括号越浅，惩罚越小。
+        # candidate 是数值表达式，不含参数名 p，因此用 _expression_complexity 统计算子数。
+        complexity = _expression_complexity(candidate)
+        depth = candidate.count("(")
+        penalty = w_complexity * complexity + 1e-2 * max(0, depth - 4)
+
+        final_loss = gen_loss + penalty
+        refined.append((final_loss, candidate, block, refined_expr))
+        min_rmse = float(np.sqrt(max(loss, 0.0)))
+        gen_rmse = float(np.sqrt(max(gen_loss, 0.0)))
+        print(f"  refined [{rank}/{len(shortlist)}] min-RMSE ~ {min_rmse:.3e} gen-RMSE ~ {gen_rmse:.3e} (penalty: {penalty:.3e})")
+    refined.sort(key=lambda item: item[0])
+    print(f"seed {seed_name} parameter refinement & penalty took {time.time() - start:.1f}s")
+    return refined[:topk]
 def stage_one(
     problem: dict,
     n_samples: int,
@@ -493,11 +795,14 @@ def stage_one(
     n_seeds: int = 5,
     widths: list[int] | None = None,
     topk: int = 3,
+    act_floor: float = 1e-3,
+    refine_maxiter: int = 50,
+    w_complexity: float = 1e-4,
 ):
-    """Keep full SIGS expressions, wrap them in each seed, and rank TOP3 per seed."""
+    """Wrap full SIGS expressions in each seed and rank TOP3 by PDE feasibility."""
     widths = list(widths or [1])
     print("=" * 70)
-    print("STAGE I: full SIGS expressions wrapped by KdV seed functions")
+    print("STAGE I: full SIGS expressions wrapped by KdV seed functions (reference-free)")
     print("=" * 70)
 
     blocks = _collect_full_expression_blocks(widths, n_samples, seed, n_seeds)
@@ -509,15 +814,25 @@ def stage_one(
     for name, seed_code in SEED_STRUCTURE_FUNCS:
         print(f"--- seed {name} (code {seed_code}) ---")
         top_candidates = _score_seed_wrapped(
-            name, seed_code, problem, screen_points, blocks, topk
+            name,
+            seed_code,
+            problem,
+            screen_points,
+            blocks,
+            topk,
+            act_floor=act_floor,
+            refine_maxiter=refine_maxiter,
+            w_complexity=w_complexity,
         )
-        members = [(item_expr, None) for _loss, item_expr, _block in top_candidates]
+        members = [(item_expr, None) for _loss, item_expr, _block, _refined in top_candidates]
+        refined_exprs = [refined for _loss, _item_expr, _block, refined in top_candidates]
         groups.append({
             "name": name,
             "seed_code": seed_code,
             "members": members,
+            "refined": refined_exprs,
         })
-        for loss, item_expr, _block in top_candidates:
+        for loss, item_expr, _block, _refined in top_candidates:
             if loss < best_loss:
                 best_loss = loss
                 best_expr = item_expr
@@ -531,8 +846,137 @@ def stage_one(
 
 
 
+def _call_with_timeout(func, timeout):
+    if hasattr(signal, "SIGALRM"):
+        try:
+            old_handler = signal.signal(
+                signal.SIGALRM,
+                lambda *_args: (_ for _ in ()).throw(TimeoutError()),
+            )
+        except (ValueError, OSError):
+            old_handler = None
+        if old_handler is not None:
+            signal.alarm(int(timeout) if timeout > 0 else 1)
+            try:
+                return func(), None
+            except TimeoutError:
+                return None, "timeout"
+            except Exception as exc:
+                return None, f"{type(exc).__name__}: {exc}"
+            finally:
+                signal.alarm(0)
+                signal.signal(signal.SIGALRM, old_handler)
+    try:
+        return func(), None
+    except Exception as exc:
+        return None, f"{type(exc).__name__}: {exc}"
+
+
+def _maple_coeff_equations(residual):
+    """Return coefficient equations from a KdV residual in Maple's style.
+
+    Maple uses ``coeffs(collect(KdV_equation, {t, x}, 'distributed'),
+    {t, x})``.  SymPy's direct analogue is ``sp.Poly`` over ``(x, t)``.  When
+    the residual is transcendental (the usual sech/tanh/Jacobi Stage-I case),
+    ``sp.Poly`` cannot represent it; we then fall back to the existing
+    bottom-up independent-function basis extraction and post-process the
+    resulting coefficients by factoring and de-duplicating them.
+    """
+    x, t = sp.symbols("x t")
+    try:
+        poly = sp.Poly(sp.expand(residual), x, t)
+        coeffs = poly.coeffs()
+        basis = []
+    except sp.PolynomialError:
+        # Fall back to independent-function basis extraction.  Unlike
+        # ``ch_common.extract_coefficients``, do not ``sp.together`` the whole
+        # expression first: a global denominator can couple unrelated
+        # monomials and introduce spurious zero factors.
+        residual = sp.expand(residual)
+        residual = _ch._reduce_tanh_powers(residual)
+        residual = _ch.reduce_jacobi_powers(residual)
+        residual = sp.expand(residual)
+        mapping = {}
+        while True:
+            candidates = []
+            for atom in residual.atoms(sp.Function):
+                if any(arg.has(sp.Function) for arg in atom.args):
+                    continue
+                relevant = any(
+                    x in arg.free_symbols
+                    or t in arg.free_symbols
+                    or any(sym in arg.free_symbols for sym in mapping.values())
+                    for arg in atom.args
+                )
+                if relevant:
+                    candidates.append(atom)
+            if not candidates:
+                break
+            target = min(
+                candidates,
+                key=lambda a: (str(a.func), sp.count_ops(a), sp.srepr(a)),
+            )
+            if target not in mapping:
+                mapping[target] = sp.Symbol(f"__B{len(mapping)}")
+            residual = sp.expand(residual.subs(target, mapping[target]))
+
+        if residual.has(x) or residual.has(t):
+            raise ValueError("unable to separate x,t-dependent part")
+
+        basis = list(mapping.values())
+        if not basis:
+            coeffs = [] if sp.expand(residual) == 0 else [residual]
+        else:
+            poly = sp.Poly(sp.expand(residual), *basis)
+            coeffs = []
+            for coeff in poly.coeffs():
+                num, _den = sp.fraction(sp.together(coeff))
+                coeffs.append(sp.expand(num))
+
+    equations = []
+    seen = set()
+    for coeff in coeffs:
+        coeff = sp.expand(sp.together(coeff))
+        if coeff == 0:
+            continue
+        try:
+            coeff = sp.factor_terms(coeff)
+        except Exception:
+            pass
+        key = sp.srepr(coeff)
+        if key in seen:
+            continue
+        seen.add(key)
+        equations.append(coeff)
+
+    equations.sort(key=lambda eq: (sp.count_ops(eq), sp.srepr(eq)))
+    return equations, basis
+
+
+
+
+def _probe_nonconstant_solution(expr, x, t, tol: float = 1e-6) -> bool:
+    """Numerically probe whether an exact candidate actually depends on x,t."""
+    free = [sym for sym in expr.free_symbols if sym not in (x, t)]
+    rng = random.Random(20261116)
+    points = [(0.3, 0.1), (-0.8, 1.2), (1.1, -0.4)]
+    for _ in range(4):
+        param_sub = {sym: rng.uniform(-1.0, 1.0) for sym in free}
+        values = []
+        for xv, tv in points:
+            try:
+                val = complex(expr.subs({x: xv, t: tv, **param_sub}).evalf())
+                if np.isfinite(val.real) and np.isfinite(val.imag):
+                    values.append(val)
+            except Exception:
+                continue
+        if len(values) >= 2 and any(abs(v - values[0]) > tol for v in values[1:]):
+            return True
+    return False
+
+
 def symbolic_stage_two(expr: str, codes: list[int], problem: dict, timeout: int = 120) -> dict:
-    """Try exact KdV back-substitution, mirroring the CH symbolic stage."""
+    """Try exact KdV back-substitution with a hard per-candidate timeout."""
     if "abs(" in expr.lower():
         return {
             "status": "unsupported",
@@ -546,85 +990,73 @@ def symbolic_stage_two(expr: str, codes: list[int], problem: dict, timeout: int 
         return {"status": "unsupported", "message": f"sympify failed: {exc}"}
 
     x, t = sp.symbols("x t")
-    residual = (
-        sp.diff(f, t)
-        + 6 * f * sp.diff(f, x)
-        + sp.diff(f, x, 3)
-    )
+    residual = sp.diff(f, t) + 6 * f * sp.diff(f, x) + sp.diff(f, x, 3)
 
-    try:
-        equations, basis, error = _ch.extract_coefficients(residual)
-    except Exception as exc:
-        return {
-            "status": "unsupported",
-            "message": f"coefficient extraction raised {type(exc).__name__}: {exc}",
-        }
-    if error:
-        return {
-            "status": "unsupported",
-            "message": f"coefficient extraction failed ({error})",
-        }
+    def _solve_candidate():
+        try:
+            equations, basis = _maple_coeff_equations(residual)
+        except Exception as exc:
+            return {
+                "status": "unsupported",
+                "message": f"coefficient extraction failed ({type(exc).__name__}: {exc})",
+            }
 
-    unknowns = list(params)
-    if not equations:
-        if sp.expand(residual) == 0:
-            f_sub = f
-            if x in f_sub.free_symbols or t in f_sub.free_symbols:
+        unknowns = list(params)
+        if not equations:
+            if sp.expand(residual) == 0:
+                if x in f.free_symbols or t in f.free_symbols:
+                    return {
+                        "status": "exact",
+                        "exact_expr": f,
+                        "constraints": {},
+                        "residual": sp.Integer(0),
+                        "message": "residual is identically zero for all parameters",
+                    }
                 return {
-                    "status": "exact",
-                    "exact_expr": f_sub,
-                    "constraints": {},
-                    "residual": sp.Integer(0),
-                    "message": "residual is identically zero for all parameters",
+                    "status": "no_solution",
+                    "message": "residual is identically zero but the ansatz is x,t-independent",
                 }
             return {
                 "status": "no_solution",
-                "message": "residual is identically zero but the ansatz is x,t-independent",
+                "message": "empty coefficient system with nonzero residual",
             }
-        return {
-            "status": "no_solution",
-            "message": "empty coefficient system with nonzero residual",
-        }
 
-    solutions, error = _ch._solve_with_timeout(equations, unknowns, timeout)
-    if error == "timeout":
-        return {
-            "status": "timeout",
-            "message": f"sp.solve exceeded the {timeout}s timeout",
-            "residual": residual,
-        }
-    if error:
-        return {
-            "status": "unsupported",
-            "message": f"sp.solve error: {error}",
-        }
-    if not solutions:
-        return {
-            "status": "no_solution",
-            "message": "sp.solve returned no solutions",
-            "residual": residual,
-        }
+        try:
+            solutions = sp.solve(equations, unknowns, dict=True, simplify=False)
+        except Exception as exc:
+            return {
+                "status": "unsupported",
+                "message": f"sp.solve error: {type(exc).__name__}: {exc}",
+            }
 
-    found_nontrivial = False
-    for solution in solutions:
-        clean = {
-            sym: val
-            for sym, val in solution.items()
-            if isinstance(sym, sp.Symbol)
-        }
-        f_sub = f.subs(clean)
-        if x not in f_sub.free_symbols and t not in f_sub.free_symbols:
-            continue
-        found_nontrivial = True
-        verified = residual.subs(clean) == 0
-        if not verified:
+        if not solutions:
+            return {
+                "status": "no_solution",
+                "message": "sp.solve returned no solutions",
+                "residual": residual,
+            }
+
+        found_nontrivial = False
+        for solution in solutions:
+            clean = {sym: val for sym, val in solution.items() if isinstance(sym, sp.Symbol)}
+            f_sub = f.subs(clean)
             try:
-                verified = sp.simplify(residual.subs(clean)) == 0
-                if not verified:
-                    verified = sp.simplify(residual.subs(clean).rewrite(sp.cosh)) == 0
+                f_sub = sp.simplify(f_sub)
             except Exception:
-                verified = False
-        if verified:
+                pass
+            if x not in f_sub.free_symbols and t not in f_sub.free_symbols:
+                continue
+            if not _probe_nonconstant_solution(f_sub, x, t):
+                continue
+            found_nontrivial = True
+            try:
+                satisfied = all(
+                    sp.expand(sp.together(eq.subs(clean))) == 0 for eq in equations
+                )
+            except Exception:
+                satisfied = False
+            if not satisfied:
+                continue
             return {
                 "status": "exact",
                 "exact_expr": f_sub,
@@ -633,167 +1065,73 @@ def symbolic_stage_two(expr: str, codes: list[int], problem: dict, timeout: int 
                 "message": "exact solution verified by back-substitution",
             }
 
-    if found_nontrivial:
+        if found_nontrivial:
+            return {
+                "status": "verification_failed",
+                "message": "solutions found but residual is not identically zero",
+                "residual": residual,
+            }
         return {
-            "status": "verification_failed",
-            "message": "solutions found but residual is not identically zero",
+            "status": "no_solution",
+            "message": "only trivial x,t-independent solutions found; no nontrivial exact solution",
             "residual": residual,
         }
 
-    return {
-        "status": "no_solution",
-        "message": "only trivial x,t-independent solutions found; no nontrivial exact solution",
-        "residual": residual,
-    }
+    result, timeout_error = _call_with_timeout(_solve_candidate, timeout)
+    if timeout_error == "timeout":
+        return {
+            "status": "timeout",
+            "message": f"symbolic solve exceeded the {timeout}s timeout",
+            "parameterized_expr": sym_expr,
+            "residual": residual,
+        }
+    if timeout_error:
+        return {
+            "status": "unsupported",
+            "message": f"symbolic solve raised {timeout_error}",
+            "residual": residual,
+        }
+    return result
 
 
-def stage_two(
-    problem: dict,
-    expr: str,
-    lr: float,
-    iters: int,
-    w_ic: float,
-    rmse_threshold: float,
-    rel_l2_threshold: float,
-    codes: list[int] | None = None,
-    widths: list[int] | None = None,
-):
+
+
+def _print_candidate_structures(groups):
+    """Print Stage I candidate structures for manual verification."""
     print("=" * 70)
-    print("STAGE II: JAX autodiff parameter refinement")
+    print("STAGE II SKIPPED: candidate structures for manual verification")
     print("=" * 70)
-
-    if codes is not None:
-        widths = list(widths or [3])
-        param_expr, init_params, names = nnsca_parametrized(codes, widths)
-    else:
-        param_expr, init_params, names = _ch.parse_params(expr)
-    print(f"learnable parameters: {names}")
-    if len(names) == 0:
-        print("no numeric literals found; skipping parameter optimization")
-        return expr
-
-    u = _ch.make_param_u(param_expr, names)
-    u_t = grad(u, argnums=1)
-    u_x = grad(u, argnums=0)
-    u_xx = grad(u_x, argnums=0)
-    u_xxx = grad(u_xx, argnums=0)
-
-    def res(x, t, params):
-        return (
-            u_t(x, t, params)
-            + 6.0 * u(x, t, params) * u_x(x, t, params)
-            + u_xxx(x, t, params)
-        )
-
-    _, meshes = _ch.setup_symbols_meshes(problem)
-    X, T = meshes
-    xflat = X.ravel()
-    tflat = T.ravel()
-    u0_fn = _ch.make_x_fn(_ch.ic_rhs(problem))
-    true_fn = _ch.make_u_fn(problem["true_solution"])
-
-    @jit
-    def loss_and_rel_l2(params):
-        rv = vmap(lambda x, t: res(x, t, params), (0, 0))(xflat, tflat)
-        pde_mse = jnp.mean(rv**2)
-
-        ic_pred = u(xflat, jnp.zeros_like(xflat), params)
-        ic_true = u0_fn(xflat)
-        ic_mse = jnp.mean((ic_pred - ic_true) ** 2)
-        total = pde_mse + w_ic * ic_mse
-
-        u_pred = vmap(lambda x, t: u(x, t, params), (0, 0))(xflat, tflat)
-        u_tru = true_fn(xflat, tflat)
-        rel_l2 = jnp.sqrt(jnp.mean((u_pred - u_tru) ** 2)) / (
-            jnp.sqrt(jnp.mean(u_tru**2)) + 1e-30
-        )
-        return total, rel_l2
-
-    grad_fn = jit(grad(lambda p: loss_and_rel_l2(p)[0]))
-    optimizer = optax.adabelief(lr)
-    opt_state = optimizer.init(init_params)
-    params = init_params
-
-    best_params = params
-    best_loss = float(loss_and_rel_l2(params)[0])
-    initial_rel_l2 = float(loss_and_rel_l2(params)[1])
-    print(f"initial loss={best_loss:.3e}, relL2={initial_rel_l2:.3e}")
-
-    start = time.time()
-    for step in range(iters):
-        grads = grad_fn(params)
-        updates, opt_state = optimizer.update(grads, opt_state)
-        params = optax.apply_updates(params, updates)
-
-        loss, rel_l2 = loss_and_rel_l2(params)
-        loss = float(loss)
-        rel_l2 = float(rel_l2)
-        rmse = float(jnp.sqrt(loss))
-
-        if loss < best_loss:
-            best_loss = loss
-            best_params = params
-
-        stop = False
-        if rmse < rmse_threshold:
-            stop = True
-            print(f"  iter {step:5d}  RMSE threshold reached: rmse={rmse:.3e}")
-        if rel_l2 < rel_l2_threshold:
-            stop = True
-            print(f"  iter {step:5d}  relL2 threshold reached: relL2={rel_l2:.3e}")
-
-        if step % 100 == 0 or stop:
-            print(
-                f"  iter {step:5d}  loss={loss:.3e} "
-                f"rmse={rmse:.3e}  relL2={rel_l2:.3e}"
-            )
-
-        if stop:
-            break
-
-    print(f"optimization took {time.time() - start:.1f}s")
-    print(f"best loss={best_loss:.3e}")
-
-    final_expr = param_expr
-    for i, name in enumerate(reversed(names)):
-        idx = len(names) - 1 - i
-        final_expr = re.sub(rf"\b{name}\b", f"{best_params[idx]:.15f}", final_expr)
-    final_expr = final_expr.replace("**", "^")
-    print("final optimized KdV expression:")
-    print(f"  {final_expr}")
-
-    u_opt = _ch.make_param_u(param_expr, names)
-    U_true = true_fn(xflat, tflat)
-    U_opt = u_opt(xflat, tflat, best_params)
-    rel_l2 = float(
-        jnp.sqrt(jnp.mean((U_opt - U_true) ** 2))
-        / (jnp.sqrt(jnp.mean(U_true**2)) + 1e-30)
-    )
-    residual_mse = float(
-        jnp.mean(
-            vmap(lambda x, t: res(x, t, best_params), (0, 0))(xflat, tflat) ** 2
-        )
-    )
-    print(f"relative L2 error (optimized vs true soliton): {rel_l2:.6e}")
-    print(f"final KdV residual MSE: {residual_mse:.3e}")
-    return final_expr
-
-
+    for group in groups:
+        name = group["name"]
+        seed_code = group["seed_code"]
+        header = name if seed_code is None else f"seed {name} (first-layer code {seed_code})"
+        print(f"--- {header} ---")
+        refined_exprs = group.get("refined", [None] * len(group["members"]))
+        for rank, (member, refined_expr) in enumerate(zip(group["members"], refined_exprs), start=1):
+            expr, codes = member
+            try:
+                parameterized, _params = _ch.numerics_to_symbols(expr)
+            except Exception as exc:
+                parameterized = f"<numerics_to_symbols failed: {exc}>"
+            print(f"candidate #{rank} codes={codes}")
+            print(f"  numeric: {expr}")
+            print(f"  parameterized: {parameterized}")
+            if refined_expr:
+                print(f"  refined-numeric: {refined_expr}")
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser()
     parser.add_argument("--n-samples", type=int, default=5000)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--screen-x", type=int, default=256)
     parser.add_argument("--screen-t", type=int, default=128)
-    parser.add_argument("--lr", type=float, default=1e-1)
-    parser.add_argument("--iters", type=int, default=10000)
-    parser.add_argument("--w-ic", type=float, default=5.0)
-    parser.add_argument("--rmse-threshold", type=float, default=1e-5)
-    parser.add_argument("--rel-l2-threshold", type=float, default=5e-10)
     parser.add_argument("--stage2-only", action="store_true")
+    parser.add_argument("--stage2", action=argparse.BooleanOptionalAction, default=True, help="run symbolic back-substitution (default on; use --no-stage2 to print candidate structures only)")
     parser.add_argument("--expr", default=None, help="initial ansatz for --stage2-only")
     parser.add_argument("--n-seeds", type=int, default=5)
     parser.add_argument("--stage1-topk", type=int, default=3)
+    parser.add_argument("--stage1-act-floor", type=float, default=1e-3)
+    parser.add_argument("--stage1-refine-maxiter", type=int, default=50)
+    parser.add_argument("--stage1-complexity-weight", type=float, default=1e-4)
     return parser
 
 
@@ -821,7 +1159,14 @@ def main(widths: list[int]):
             n_seeds=args.n_seeds,
             widths=widths,
             topk=args.stage1_topk,
+            act_floor=args.stage1_act_floor,
+            refine_maxiter=args.stage1_refine_maxiter,
+            w_complexity=args.stage1_complexity_weight,
         )
+
+    if not args.stage2:
+        _print_candidate_structures(groups)
+        return
 
     print("=" * 70)
     print("STAGE II: symbolic back-substitution over per-seed TOP3 + linear fallback structures")
@@ -848,6 +1193,9 @@ def main(widths: list[int]):
                 message = f"{header} #{rank}: {symbolic['message']}"
                 reasons.append(message)
                 print(f"  candidate #{rank} not exact: {symbolic['message']}")
+                if symbolic["status"] == "timeout":
+                    print("    参数化候选结构:")
+                    print(f"    {symbolic.get('parameterized_expr', symbolic_expr)}")
 
     if exact_solutions:
         print("=" * 70)
@@ -868,22 +1216,7 @@ def main(widths: list[int]):
         return
 
     print("=" * 70)
-    print("STAGE II: no exact symbolic solution; falling back to JAX refinement")
+    print("STAGE II: no exact symbolic solution found")
     print("=" * 70)
-
-    if expr is None:
-        print("no Stage-I candidate available for JAX refinement")
-        return
-
-    stage_two(
-        problem,
-        expr,
-        args.lr,
-        args.iters,
-        args.w_ic,
-        args.rmse_threshold,
-        args.rel_l2_threshold,
-        codes,
-        widths,
-    )
-    print(f"数值近似解（符号求解失败：{' | '.join(reasons)}）")
+    for message in reasons:
+        print(f"  - {message}")
