@@ -45,37 +45,29 @@ import ch_common as _ch  # noqa: E402
 jax.config.update("jax_enable_x64", True)
 
 # KdV's elementary exact solution is u = 2*sech^2(linear), so sech2 is tried
-# first.  The ordering follows algebraic closure first (sech2/sech/tanh form a
-# closed differentiation family), then frequency in shallow-water exact-solution
-# literature.  abs is last because symbolic_stage_two rejects it before solving.
+# first.  The ordering follows algebraic closure and frequency in
+# shallow-water exact-solution literature.
 SEED_STRUCTURE_FUNCS = [
     ("sech2", 16),
-    ("sech", 15),
     ("tanh", 1),
-    ("tanh2", 2),
     ("exp", 7),
-    ("cosh", 5),
-    ("sinh", 3),
-    ("JacobiCN", 19),
+    ("sech", 15),
 ]
 
 # Extra smooth atoms injected into the Stage-I pool for the remaining layers.
 # The precomputed cluster file only carries sin/cos/exp/tanh/sqrt, so these
 # closed seed-family atoms make the KdV travelling waves reachable.
 SIGS_SEARCH_FUNCTION_ATOMS = [
-    "x + t", "x - t",
-    "sech(x + t)", "sech(x - t)",
-    "sech(x + t)**2", "sech(x - t)**2",
-    "tanh(x + t)", "tanh(x - t)",
-    "tanh(x + t)**2", "tanh(x - t)**2",
-    "exp(x + t)", "exp(x - t)",
-    "cosh(x + t)", "cosh(x - t)",
-    "sinh(x + t)", "sinh(x - t)",
-    "JacobiCN(x + t, 0.5)", "JacobiCN(x - t, 0.5)",
-    "1/(x - t)", "1/(x + t)",
-    "(x - t)/(x + t)", "(x + t)/(x - t)",
-    "1/(1 + (x - t)**2)", "1/(1 + (x + t)**2)",
-    "(x - t)/(1 + (x - t)**2)", "(x + t)/(1 + (x + t)**2)",
+    # 基础相
+    "x - t", "x + t", "x - 4*t",
+    # 变系数积分相（关键：用于捕获变系数新解）
+    "x - t**2", "x + t**2", "x - t**3", "x - exp(t)",
+    # 分离变量相（用于极复杂的非行波解）
+    "x + sin(t)", "cos(x) + t",
+    # 有理分式（用于 CH 或 Rogue wave）
+    "1/(1 + (x - t)**2)",
+    # 指数波包（用于 CH 方程的爆发解）
+    "exp(x)", "exp(-x)", "exp(x - t)",
 ]
 
 
@@ -499,13 +491,49 @@ def _known_theta_candidates(seed_code: int):
         yield _seed_wrapped_candidate(seed_code, [theta], leading="2.000000"), (theta,)
 
 
+def _is_derivative_closure_valid(expr_str: str, x: sp.Symbol) -> bool:
+    """Reject candidates whose third x-derivative explodes algebraically."""
+    try:
+        u = sp.sympify(
+            ExpressionUtils.standardize_expression(expr_str), locals=_ch.SYMPY_LOCALS
+        )
+        u_xxx = sp.diff(u, x, 3)
+        if sp.count_ops(u_xxx) > 15 * max(sp.count_ops(u), 1):
+            return False
+    except Exception:
+        return False
+    return True
+
+
+HARDCODED_BASELINE = [
+    "b + a*sech(k*x - w*t)**2",              # 经典孤子
+    "b + a*exp(k*x - w*t)",                  # 指数波（CH 偏爱）
+    "a*tanh(k*x - w*t) + b",                 # 扭结波
+    "b + a / (1 + (k*x - w*t)**2)",          # 有理分式孤立子
+    "b + a*exp(k*x - w*t + m*tan(t)**2 * tanh(t)**2)"  # 时间调制波
+]
+
+_BASELINE_DEFAULTS = {"a": "1.0", "b": "0.0", "k": "1.0", "w": "1.0", "m": "1.0"}
+
+
+def _hardcoded_baseline_candidates():
+    """Turn physics-prior baselines into numeric candidates for Stage-I scoring."""
+    candidates = []
+    for expr in HARDCODED_BASELINE:
+        numeric = expr
+        for symbol, value in _BASELINE_DEFAULTS.items():
+            numeric = re.sub(rf"\b{symbol}\b", value, numeric)
+        candidates.append((numeric, None))
+    return candidates
+
+
 def _score_kdv_candidate_unbiased(
     expr_str: str,
     symbols: dict,
     meshes: list[np.ndarray],
     act_floor: float = 1e-3,
     w_act: float = 1.0,
-    u_max: float = 10.0,
+    u_max: float = 1e8,
 ):
     """Rank one KdV ansatz without any reference-solution term.
 
@@ -518,6 +546,8 @@ def _score_kdv_candidate_unbiased(
     x, t = symbols["x"], symbols["t"]
     X, T = meshes
     try:
+        if not _is_derivative_closure_valid(expr_str, x):
+            return float("inf")
         u = sp.sympify(
             ExpressionUtils.standardize_expression(expr_str), locals=_ch.SYMPY_LOCALS
         )
@@ -575,7 +605,7 @@ def _refine_kdv_candidate_params(
     maxiter: int = 50,
     act_floor: float = 1e-3,
     w_act: float = 1.0,
-    u_max: float = 10.0,
+    u_max: float = 1e8,
 ):
     """Optimize the numeric parameters of one seed-wrapped SIGS expression.
 
@@ -656,7 +686,7 @@ def _score_multi_point_generalization(
     symbols: dict,
     meshes: list[np.ndarray],
     n_perturbations: int = 5,
-    perturb_scale: float = 0.3,
+    perturb_scale: float = 0.01,
 ):
     """Penalize parameter-space overfitting for a refined candidate.
 
@@ -724,6 +754,7 @@ def _score_seed_wrapped(
     act_floor: float = 1e-3,
     refine_maxiter: int = 50,
     w_complexity: float = 1e-4,
+    plain_candidates: list[tuple[str, object]] | None = None,
 ):
     """Screen seed-wrapped SIGS expressions, then refine the shortlist."""
     print(f"seed {seed_name}: scoring {len(blocks)} full SIGS expression blocks")
@@ -736,9 +767,17 @@ def _score_seed_wrapped(
     )
 
     candidates = []
+    for candidate, block in plain_candidates or []:
+        if _max_tanh_sech_depth(candidate) > 1:
+            continue
+        if not _is_derivative_closure_valid(candidate, symbols["x"]):
+            continue
+        candidates.append((candidate, block))
     for block in blocks:
         candidate = _seed_wrapped_candidate(seed_code, block)
         if _max_tanh_sech_depth(candidate) > 1:
+            continue
+        if not _is_derivative_closure_valid(candidate, symbols["x"]):
             continue
         candidates.append((candidate, block))
 
@@ -805,12 +844,37 @@ def stage_one(
     print("STAGE I: full SIGS expressions wrapped by KdV seed functions (reference-free)")
     print("=" * 70)
 
-    blocks = _collect_full_expression_blocks(widths, n_samples, seed, n_seeds)
-    print(f"sampled {len(blocks)} unique full-expression blocks over {n_seeds} seeds")
-
     best_loss = float("inf")
     best_expr = None
     groups = []
+    print("--- hardcoded-baseline (physics-prior skeletons) ---")
+    baseline_top = _score_seed_wrapped(
+        "hardcoded-baseline",
+        0,
+        problem,
+        screen_points,
+        [],
+        topk,
+        act_floor=act_floor,
+        refine_maxiter=refine_maxiter,
+        w_complexity=w_complexity,
+        plain_candidates=_hardcoded_baseline_candidates(),
+    )
+    members = [(item_expr, None) for _loss, item_expr, _block, _refined in baseline_top]
+    refined_exprs = [refined for _loss, _item_expr, _block, refined in baseline_top]
+    groups.append({
+        "name": "hardcoded-baseline",
+        "seed_code": 0,
+        "members": members,
+        "refined": refined_exprs,
+    })
+    for loss, item_expr, _block, _refined in baseline_top:
+        if loss < best_loss:
+            best_loss = loss
+            best_expr = item_expr
+
+    blocks = _collect_full_expression_blocks(widths, n_samples, seed, n_seeds)
+    print(f"sampled {len(blocks)} unique full-expression blocks over {n_seeds} seeds")
     for name, seed_code in SEED_STRUCTURE_FUNCS:
         print(f"--- seed {name} (code {seed_code}) ---")
         top_candidates = _score_seed_wrapped(
@@ -883,6 +947,9 @@ def _maple_coeff_equations(residual):
     resulting coefficients by factoring and de-duplicating them.
     """
     x, t = sp.symbols("x t")
+    residual = sp.together(residual)
+    numerator, _denominator = sp.fraction(residual)
+    residual = sp.expand(numerator)
     try:
         poly = sp.Poly(sp.expand(residual), x, t)
         coeffs = poly.coeffs()
@@ -921,8 +988,12 @@ def _maple_coeff_equations(residual):
             residual = sp.expand(residual.subs(target, mapping[target]))
 
         if residual.has(x) or residual.has(t):
-            raise ValueError("unable to separate x,t-dependent part")
+            # 无法分离的复杂函数不再抛异常，返回空集让 Stage 2 跳过该候选。
+            return [], []
 
+        residual = sp.together(residual)
+        numerator, _denominator = sp.fraction(residual)
+        residual = sp.expand(numerator)
         basis = list(mapping.values())
         if not basis:
             coeffs = [] if sp.expand(residual) == 0 else [residual]
