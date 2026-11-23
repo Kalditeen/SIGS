@@ -1,0 +1,1788 @@
+[
+  {
+    "candidate_id": "candidate_0001",
+    "structure": {
+      "structure_id": "single_tanh_0",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "tanh",
+            "family": "hyperbolic",
+            "expression": "tanh(z)",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "expression": "c0 + w_out_0*tanh(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "unknown_parameters": [
+      "b1_0",
+      "c0",
+      "w1_0_0",
+      "w1_0_1",
+      "w_out_0"
+    ],
+    "activation_functions": {
+      "h1_0": {
+        "name": "tanh",
+        "family": "hyperbolic",
+        "expression": "tanh(z)",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    },
+    "parameter_roles": {
+      "node_bias": [
+        "b1_0"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "node_weight": [
+        "w1_0_0",
+        "w1_0_1"
+      ],
+      "output_weight": [
+        "w_out_0"
+      ]
+    },
+    "metadata": {
+      "source_type": "generated",
+      "generation_rule": "single_node_baseline",
+      "category": "hyperbolic"
+    }
+  },
+  {
+    "candidate_id": "candidate_0002",
+    "structure": {
+      "structure_id": "single_sech_1",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "sech",
+            "family": "hyperbolic",
+            "expression": "sech(z)",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "expression": "c0 + w_out_0*sech(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "unknown_parameters": [
+      "b1_0",
+      "c0",
+      "w1_0_0",
+      "w1_0_1",
+      "w_out_0"
+    ],
+    "activation_functions": {
+      "h1_0": {
+        "name": "sech",
+        "family": "hyperbolic",
+        "expression": "sech(z)",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    },
+    "parameter_roles": {
+      "node_bias": [
+        "b1_0"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "node_weight": [
+        "w1_0_0",
+        "w1_0_1"
+      ],
+      "output_weight": [
+        "w_out_0"
+      ]
+    },
+    "metadata": {
+      "source_type": "generated",
+      "generation_rule": "single_node_baseline",
+      "category": "hyperbolic"
+    }
+  },
+  {
+    "candidate_id": "candidate_0003",
+    "structure": {
+      "structure_id": "single_sech_pow2_2",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "sech_pow2",
+            "family": "hyperbolic",
+            "expression": "sech(z)**2",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "expression": "c0 + w_out_0*sech(b1_0 + t*w1_0_1 + w1_0_0*x)**2",
+    "unknown_parameters": [
+      "b1_0",
+      "c0",
+      "w1_0_0",
+      "w1_0_1",
+      "w_out_0"
+    ],
+    "activation_functions": {
+      "h1_0": {
+        "name": "sech_pow2",
+        "family": "hyperbolic",
+        "expression": "sech(z)**2",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    },
+    "parameter_roles": {
+      "node_bias": [
+        "b1_0"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "node_weight": [
+        "w1_0_0",
+        "w1_0_1"
+      ],
+      "output_weight": [
+        "w_out_0"
+      ]
+    },
+    "metadata": {
+      "source_type": "generated",
+      "generation_rule": "single_node_baseline",
+      "category": "hyperbolic"
+    }
+  },
+  {
+    "candidate_id": "candidate_0004",
+    "structure": {
+      "structure_id": "single_sinh_3",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "sinh",
+            "family": "hyperbolic",
+            "expression": "sinh(z)",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "expression": "c0 + w_out_0*sinh(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "unknown_parameters": [
+      "b1_0",
+      "c0",
+      "w1_0_0",
+      "w1_0_1",
+      "w_out_0"
+    ],
+    "activation_functions": {
+      "h1_0": {
+        "name": "sinh",
+        "family": "hyperbolic",
+        "expression": "sinh(z)",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    },
+    "parameter_roles": {
+      "node_bias": [
+        "b1_0"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "node_weight": [
+        "w1_0_0",
+        "w1_0_1"
+      ],
+      "output_weight": [
+        "w_out_0"
+      ]
+    },
+    "metadata": {
+      "source_type": "generated",
+      "generation_rule": "single_node_baseline",
+      "category": "hyperbolic"
+    }
+  },
+  {
+    "candidate_id": "candidate_0005",
+    "structure": {
+      "structure_id": "single_cosh_4",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "cosh",
+            "family": "hyperbolic",
+            "expression": "cosh(z)",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "expression": "c0 + w_out_0*cosh(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "unknown_parameters": [
+      "b1_0",
+      "c0",
+      "w1_0_0",
+      "w1_0_1",
+      "w_out_0"
+    ],
+    "activation_functions": {
+      "h1_0": {
+        "name": "cosh",
+        "family": "hyperbolic",
+        "expression": "cosh(z)",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    },
+    "parameter_roles": {
+      "node_bias": [
+        "b1_0"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "node_weight": [
+        "w1_0_0",
+        "w1_0_1"
+      ],
+      "output_weight": [
+        "w_out_0"
+      ]
+    },
+    "metadata": {
+      "source_type": "generated",
+      "generation_rule": "single_node_baseline",
+      "category": "hyperbolic"
+    }
+  },
+  {
+    "candidate_id": "candidate_0006",
+    "structure": {
+      "structure_id": "single_tan_5",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "tan",
+            "family": "trigonometric",
+            "expression": "tan(z)",
+            "parameters": [],
+            "domain": "partial_domain",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "expression": "c0 + w_out_0*tan(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "unknown_parameters": [
+      "b1_0",
+      "c0",
+      "w1_0_0",
+      "w1_0_1",
+      "w_out_0"
+    ],
+    "activation_functions": {
+      "h1_0": {
+        "name": "tan",
+        "family": "trigonometric",
+        "expression": "tan(z)",
+        "parameters": [],
+        "domain": "partial_domain",
+        "nargs": 1
+      }
+    },
+    "parameter_roles": {
+      "node_bias": [
+        "b1_0"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "node_weight": [
+        "w1_0_0",
+        "w1_0_1"
+      ],
+      "output_weight": [
+        "w_out_0"
+      ]
+    },
+    "metadata": {
+      "source_type": "generated",
+      "generation_rule": "single_node_baseline",
+      "category": "trigonometric"
+    }
+  },
+  {
+    "candidate_id": "candidate_0007",
+    "structure": {
+      "structure_id": "single_tan_pow2_6",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "tan_pow2",
+            "family": "trigonometric",
+            "expression": "tan(z)**2",
+            "parameters": [],
+            "domain": "partial_domain",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "expression": "c0 + w_out_0*tan(b1_0 + t*w1_0_1 + w1_0_0*x)**2",
+    "unknown_parameters": [
+      "b1_0",
+      "c0",
+      "w1_0_0",
+      "w1_0_1",
+      "w_out_0"
+    ],
+    "activation_functions": {
+      "h1_0": {
+        "name": "tan_pow2",
+        "family": "trigonometric",
+        "expression": "tan(z)**2",
+        "parameters": [],
+        "domain": "partial_domain",
+        "nargs": 1
+      }
+    },
+    "parameter_roles": {
+      "node_bias": [
+        "b1_0"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "node_weight": [
+        "w1_0_0",
+        "w1_0_1"
+      ],
+      "output_weight": [
+        "w_out_0"
+      ]
+    },
+    "metadata": {
+      "source_type": "generated",
+      "generation_rule": "single_node_baseline",
+      "category": "trigonometric"
+    }
+  },
+  {
+    "candidate_id": "candidate_0008",
+    "structure": {
+      "structure_id": "single_sin_7",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "sin",
+            "family": "trigonometric",
+            "expression": "sin(z)",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "expression": "c0 + w_out_0*sin(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "unknown_parameters": [
+      "b1_0",
+      "c0",
+      "w1_0_0",
+      "w1_0_1",
+      "w_out_0"
+    ],
+    "activation_functions": {
+      "h1_0": {
+        "name": "sin",
+        "family": "trigonometric",
+        "expression": "sin(z)",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    },
+    "parameter_roles": {
+      "node_bias": [
+        "b1_0"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "node_weight": [
+        "w1_0_0",
+        "w1_0_1"
+      ],
+      "output_weight": [
+        "w_out_0"
+      ]
+    },
+    "metadata": {
+      "source_type": "generated",
+      "generation_rule": "single_node_baseline",
+      "category": "trigonometric"
+    }
+  },
+  {
+    "candidate_id": "candidate_0009",
+    "structure": {
+      "structure_id": "single_cos_8",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "cos",
+            "family": "trigonometric",
+            "expression": "cos(z)",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "expression": "c0 + w_out_0*cos(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "unknown_parameters": [
+      "b1_0",
+      "c0",
+      "w1_0_0",
+      "w1_0_1",
+      "w_out_0"
+    ],
+    "activation_functions": {
+      "h1_0": {
+        "name": "cos",
+        "family": "trigonometric",
+        "expression": "cos(z)",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    },
+    "parameter_roles": {
+      "node_bias": [
+        "b1_0"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "node_weight": [
+        "w1_0_0",
+        "w1_0_1"
+      ],
+      "output_weight": [
+        "w_out_0"
+      ]
+    },
+    "metadata": {
+      "source_type": "generated",
+      "generation_rule": "single_node_baseline",
+      "category": "trigonometric"
+    }
+  },
+  {
+    "candidate_id": "candidate_0010",
+    "structure": {
+      "structure_id": "single_exp_9",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "exp",
+            "family": "elementary",
+            "expression": "exp(z)",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "expression": "c0 + w_out_0*exp(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "unknown_parameters": [
+      "b1_0",
+      "c0",
+      "w1_0_0",
+      "w1_0_1",
+      "w_out_0"
+    ],
+    "activation_functions": {
+      "h1_0": {
+        "name": "exp",
+        "family": "elementary",
+        "expression": "exp(z)",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    },
+    "parameter_roles": {
+      "node_bias": [
+        "b1_0"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "node_weight": [
+        "w1_0_0",
+        "w1_0_1"
+      ],
+      "output_weight": [
+        "w_out_0"
+      ]
+    },
+    "metadata": {
+      "source_type": "generated",
+      "generation_rule": "single_node_baseline",
+      "category": "elementary"
+    }
+  },
+  {
+    "candidate_id": "candidate_0011",
+    "structure": {
+      "structure_id": "single_log_10",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "log",
+            "family": "elementary",
+            "expression": "log(z)",
+            "parameters": [],
+            "domain": "partial_domain",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "expression": "c0 + w_out_0*log(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "unknown_parameters": [
+      "b1_0",
+      "c0",
+      "w1_0_0",
+      "w1_0_1",
+      "w_out_0"
+    ],
+    "activation_functions": {
+      "h1_0": {
+        "name": "log",
+        "family": "elementary",
+        "expression": "log(z)",
+        "parameters": [],
+        "domain": "partial_domain",
+        "nargs": 1
+      }
+    },
+    "parameter_roles": {
+      "node_bias": [
+        "b1_0"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "node_weight": [
+        "w1_0_0",
+        "w1_0_1"
+      ],
+      "output_weight": [
+        "w_out_0"
+      ]
+    },
+    "metadata": {
+      "source_type": "generated",
+      "generation_rule": "single_node_baseline",
+      "category": "elementary"
+    }
+  },
+  {
+    "candidate_id": "candidate_0012",
+    "structure": {
+      "structure_id": "single_JacobiSN_11",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "JacobiSN",
+            "family": "jacobi",
+            "expression": "JacobiSN(z, m)",
+            "parameters": [
+              "m"
+            ],
+            "domain": "real_axis",
+            "nargs": 2
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "m_h1_0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "special_function_parameter": [
+          "m_h1_0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "expression": "c0 + w_out_0*JacobiSN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)",
+    "unknown_parameters": [
+      "b1_0",
+      "c0",
+      "m_h1_0",
+      "w1_0_0",
+      "w1_0_1",
+      "w_out_0"
+    ],
+    "activation_functions": {
+      "h1_0": {
+        "name": "JacobiSN",
+        "family": "jacobi",
+        "expression": "JacobiSN(z, m)",
+        "parameters": [
+          "m"
+        ],
+        "domain": "real_axis",
+        "nargs": 2
+      }
+    },
+    "parameter_roles": {
+      "node_bias": [
+        "b1_0"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "special_function_parameter": [
+        "m_h1_0"
+      ],
+      "node_weight": [
+        "w1_0_0",
+        "w1_0_1"
+      ],
+      "output_weight": [
+        "w_out_0"
+      ]
+    },
+    "metadata": {
+      "source_type": "generated",
+      "generation_rule": "single_node_baseline",
+      "category": "jacobi"
+    }
+  },
+  {
+    "candidate_id": "candidate_0013",
+    "structure": {
+      "structure_id": "single_JacobiCN_12",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "JacobiCN",
+            "family": "jacobi",
+            "expression": "JacobiCN(z, m)",
+            "parameters": [
+              "m"
+            ],
+            "domain": "real_axis",
+            "nargs": 2
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "m_h1_0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "special_function_parameter": [
+          "m_h1_0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "expression": "c0 + w_out_0*JacobiCN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)",
+    "unknown_parameters": [
+      "b1_0",
+      "c0",
+      "m_h1_0",
+      "w1_0_0",
+      "w1_0_1",
+      "w_out_0"
+    ],
+    "activation_functions": {
+      "h1_0": {
+        "name": "JacobiCN",
+        "family": "jacobi",
+        "expression": "JacobiCN(z, m)",
+        "parameters": [
+          "m"
+        ],
+        "domain": "real_axis",
+        "nargs": 2
+      }
+    },
+    "parameter_roles": {
+      "node_bias": [
+        "b1_0"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "special_function_parameter": [
+        "m_h1_0"
+      ],
+      "node_weight": [
+        "w1_0_0",
+        "w1_0_1"
+      ],
+      "output_weight": [
+        "w_out_0"
+      ]
+    },
+    "metadata": {
+      "source_type": "generated",
+      "generation_rule": "single_node_baseline",
+      "category": "jacobi"
+    }
+  },
+  {
+    "candidate_id": "candidate_0014",
+    "structure": {
+      "structure_id": "single_JacobiDN_13",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "JacobiDN",
+            "family": "jacobi",
+            "expression": "JacobiDN(z, m)",
+            "parameters": [
+              "m"
+            ],
+            "domain": "real_axis",
+            "nargs": 2
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "m_h1_0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "special_function_parameter": [
+          "m_h1_0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "expression": "c0 + w_out_0*JacobiDN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)",
+    "unknown_parameters": [
+      "b1_0",
+      "c0",
+      "m_h1_0",
+      "w1_0_0",
+      "w1_0_1",
+      "w_out_0"
+    ],
+    "activation_functions": {
+      "h1_0": {
+        "name": "JacobiDN",
+        "family": "jacobi",
+        "expression": "JacobiDN(z, m)",
+        "parameters": [
+          "m"
+        ],
+        "domain": "real_axis",
+        "nargs": 2
+      }
+    },
+    "parameter_roles": {
+      "node_bias": [
+        "b1_0"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "special_function_parameter": [
+        "m_h1_0"
+      ],
+      "node_weight": [
+        "w1_0_0",
+        "w1_0_1"
+      ],
+      "output_weight": [
+        "w_out_0"
+      ]
+    },
+    "metadata": {
+      "source_type": "generated",
+      "generation_rule": "single_node_baseline",
+      "category": "jacobi"
+    }
+  }
+]

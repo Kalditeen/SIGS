@@ -712,6 +712,86 @@ def _solution_set_to_dicts(sol_set, unknowns: list[sp.Symbol]) -> list[dict]:
     return result
 
 
+def _solve_factorable_system(equations: list[sp.Expr], unknowns: list[sp.Symbol], max_solutions: int = 300):
+    """Solve polynomial systems by splitting zero-product alternatives."""
+    solutions: list[dict] = []
+    seen = set()
+
+    def _record(assigned: dict) -> None:
+        if len(solutions) >= max_solutions:
+            return
+        key = sp.srepr(sp.Tuple(*[assigned.get(u, sp.Symbol(str(u))) for u in unknowns]))
+        if key in seen:
+            return
+        seen.add(key)
+        solutions.append(dict(assigned))
+
+    def _branch(remaining: list[sp.Expr], assigned: dict, depth: int) -> None:
+        if len(solutions) >= max_solutions or depth > 20:
+            return
+        reduced = []
+        for eq in remaining:
+            try:
+                value = sp.expand(eq.subs(assigned))
+            except Exception:
+                value = eq
+            if value != 0:
+                reduced.append(value)
+        if not reduced:
+            _record(assigned)
+            return
+
+        eq = min(reduced, key=lambda e: (sp.count_ops(e), sp.srepr(e)))
+        try:
+            factored = sp.factor_terms(sp.factor(eq))
+        except Exception:
+            factored = eq
+        try:
+            factors = list(sp.Mul.make_args(factored))
+        except Exception:
+            factors = [factored]
+
+        for factor in factors:
+            try:
+                factor = sp.expand(factor.subs(assigned))
+            except Exception:
+                pass
+            if factor.is_number and factor != 0:
+                continue
+            factor_unknowns = [u for u in unknowns if factor.has(u)]
+            if not factor_unknowns:
+                continue
+            solved_this_factor = False
+            def _solve_degree(unknown):
+                try:
+                    return sp.Poly(sp.expand(factor), unknown).degree()
+                except Exception:
+                    return 10**6
+            ordered_unknowns = sorted(factor_unknowns, key=lambda u: (_solve_degree(u), str(u)))
+            for unknown in ordered_unknowns:
+                try:
+                    one_solutions = sp.solve(factor, unknown, dict=True, simplify=False)
+                except Exception:
+                    continue
+                if one_solutions is None or isinstance(one_solutions, dict):
+                    one_solutions = [] if one_solutions is None else [one_solutions]
+                if not isinstance(one_solutions, list):
+                    continue
+                for one in one_solutions:
+                    if not isinstance(one, dict):
+                        continue
+                    next_assigned = dict(assigned)
+                    next_assigned.update(one)
+                    _branch(reduced, next_assigned, depth + 1)
+                solved_this_factor = True
+                break
+            if not solved_this_factor:
+                continue
+
+    _branch(list(equations), {}, 0)
+    return solutions
+
+
 def _solve_equations(equations: list[sp.Expr], unknowns: list[sp.Symbol], timeout: float):
     if not unknowns:
         return [], None
@@ -771,7 +851,12 @@ def _solve_equations(equations: list[sp.Expr], unknowns: list[sp.Symbol], timeou
             return [result]
         return list(result)
 
-    return _call_with_timeout(solve_once, timeout)
+    direct_timeout = min(timeout, 5.0)
+    result, error = _call_with_timeout(solve_once, direct_timeout)
+    if error != "timeout":
+        return result, error
+    fallback_timeout = max(timeout - direct_timeout, 0.5)
+    return _call_with_timeout(lambda: _solve_factorable_system(equations, unknowns), fallback_timeout)
 
 
 def _sympy_solution_dicts(result):
@@ -884,6 +969,7 @@ class Candidate:
     duplicate_status: str = "unique"
     source_type: str = "generated"
     generation_rule: str = "random"
+    family: str = "general"
 
 
 def _candidate_from_expr(
@@ -891,6 +977,7 @@ def _candidate_from_expr(
     expr: sp.Expr,
     source_type: str = "generated",
     generation_rule: str = "random",
+    family: str = "general",
 ) -> Candidate:
     try:
         first = sp.diff(expr, Z)
@@ -924,6 +1011,7 @@ def _candidate_from_expr(
         duplicate_status="unique",
         source_type=source_type,
         generation_rule=generation_rule,
+        family=family,
     )
 
 
@@ -1078,6 +1166,7 @@ def _asdict(candidate: Candidate) -> dict:
         "duplicate_status": candidate.duplicate_status,
         "source_type": candidate.source_type,
         "generation_rule": candidate.generation_rule,
+        "family": candidate.family,
     }
 
 
@@ -1115,10 +1204,13 @@ def _process_candidate(
     f_exprs: list[sp.Expr] | tuple[sp.Expr, ...] | None = None,
     residual_fn=_bbm_residual,
     pde_equation: str = "bbm_equation=ut + ux + u*ux - uxxt = 0",
+    reduce_fn=None,
 ):
     record = _asdict(candidate)
     record["nnsca_trial"] = None
     record["residual"] = None
+    record["reduction_status"] = "skipped"
+    record["reduction_meta"] = {}
     record["constraint_status"] = "skipped"
     record["extraction_status"] = "skipped"
     record["coefficient_equations"] = []
@@ -1192,6 +1284,22 @@ def _process_candidate(
     record["nnsca_trial"] = sp.sstr(trial)
     record["residual"] = sp.sstr(residual)
 
+    extraction_residual = residual
+    if reduce_fn is not None:
+        reduce_start = time.perf_counter()
+        try:
+            reduced, reduction_meta = reduce_fn(residual)
+        except Exception as exc:
+            reduced, reduction_meta = residual, {
+                "status": "failed",
+                "failure_reason": f"{type(exc).__name__}: {exc}",
+            }
+        record["timing"]["reduction"] = time.perf_counter() - reduce_start
+        record["reduction_meta"] = reduction_meta
+        record["reduction_status"] = reduction_meta.get("status", "unknown")
+        if reduced is not None:
+            extraction_residual = reduced
+
     if residual == 0:
         record["constraint_status"] = "success"
         record["extraction_status"] = "success"
@@ -1211,7 +1319,7 @@ def _process_candidate(
     extraction_seconds = float(config["solver"]["extract_timeout"])
     extraction_start = time.perf_counter()
     extraction, extract_error = _call_with_timeout(
-        lambda: _extract_coefficient_equations(residual, X, T),
+        lambda: _extract_coefficient_equations(extraction_residual, X, T),
         extraction_seconds,
     )
     equations, _basis, inner_extract_error = ([] , [], None) if extraction is None else extraction

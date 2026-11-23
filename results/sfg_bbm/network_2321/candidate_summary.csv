@@ -1,4 +1,0 @@
-function_id,expression,category,parameters,tree_depth,node_count,complexity,domain_status,differentiability_status,symbolic_status,duplicate_status,extraction_status,source_type,generation_rule,constraint_status,solve_status,nontrivial_status,substitution_status,identity_verification_status,verification_status
-func_0001,"JacobiDN(z, m) + sech(z)**2",special,['m'],1,8,4,candidate_real_axis,differentiable,success,unique,unsupported,generated,random_add,unsupported,skipped,skipped,skipped,skipped,SYMBOLIC_UNRESOLVED
-func_0002,tanh(csch(z)),hyperbolic,[],2,3,2,partial_domain,differentiable,success,unique,timeout,generated,random_compose,timeout,skipped,skipped,skipped,skipped,SYMBOLIC_UNRESOLVED
-func_0003,z**2 + tanh(alpha*z),hyperbolic,['alpha'],1,8,4,candidate_real_axis,differentiable,success,unique,unsupported,generated,random_add,unsupported,skipped,skipped,skipped,skipped,SYMBOLIC_UNRESOLVED

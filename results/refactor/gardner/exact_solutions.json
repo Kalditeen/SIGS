@@ -1,0 +1,53 @@
+[
+  {
+    "candidate_id": "candidate_0012",
+    "solutions": [
+      {
+        "expression": "w_out_0*JacobiSN(b1_0 + t*w1_0_0**3 - t*w1_0_0*w_out_0**2/6 + t*w1_0_0/4 + w1_0_0*x, -w_out_0**2/(6*w1_0_0**2)) - 1/2",
+        "constraints": {
+          "c0": "-1/2",
+          "m_h1_0": "-w_out_0**2/(6*w1_0_0**2)",
+          "w1_0_1": "w1_0_0**3 - w1_0_0*w_out_0**2/6 + w1_0_0/4"
+        },
+        "residual": "0"
+      }
+    ]
+  },
+  {
+    "candidate_id": "candidate_0013",
+    "solutions": [
+      {
+        "expression": "w_out_0*JacobiCN(b1_0 + t*w1_0_0**3 - t*w1_0_0*w_out_0**2/3 + t*w1_0_0/4 + w1_0_0*x, w_out_0**2/(6*w1_0_0**2)) - 1/2",
+        "constraints": {
+          "m_h1_0": "w_out_0**2/(6*w1_0_0**2)",
+          "c0": "-1/2",
+          "w1_0_1": "w1_0_0**3 - w1_0_0*w_out_0**2/3 + w1_0_0/4"
+        },
+        "residual": "0"
+      }
+    ]
+  },
+  {
+    "candidate_id": "candidate_0014",
+    "solutions": [
+      {
+        "expression": "w_out_0*JacobiDN(b1_0 + t*w1_0_1 - sqrt(6)*w_out_0*x/6, -6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)) - 1/2",
+        "constraints": {
+          "c0": "-1/2",
+          "w1_0_0": "-sqrt(6)*w_out_0/6",
+          "m_h1_0": "-6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)"
+        },
+        "residual": "0"
+      },
+      {
+        "expression": "w_out_0*JacobiDN(b1_0 + t*w1_0_1 + sqrt(6)*w_out_0*x/6, 6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)) - 1/2",
+        "constraints": {
+          "c0": "-1/2",
+          "w1_0_0": "sqrt(6)*w_out_0/6",
+          "m_h1_0": "6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)"
+        },
+        "residual": "0"
+      }
+    ]
+  }
+]

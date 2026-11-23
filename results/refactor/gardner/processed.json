@@ -1,0 +1,2853 @@
+[
+  {
+    "symbolic_status": "success",
+    "constraint_status": "success",
+    "extraction_status": "success",
+    "solve_status": "success",
+    "verification_status": "FAILED",
+    "exact_solutions": [],
+    "solutions": [],
+    "branch_attempts": [
+      {
+        "solution": {
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "-sqrt(6)*I*w_out_0/6",
+          "w1_0_1": "sqrt(6)*I*w_out_0**3/18 - sqrt(6)*I*w_out_0/24"
+        },
+        "substitution_status": "skipped",
+        "nontrivial_status": "DOMAIN_INVALID",
+        "identity_verification_status": "skipped"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "sqrt(6)*I*w_out_0/6",
+          "w1_0_1": "-sqrt(6)*I*w_out_0**3/18 + sqrt(6)*I*w_out_0/24"
+        },
+        "substitution_status": "skipped",
+        "nontrivial_status": "DOMAIN_INVALID",
+        "identity_verification_status": "skipped"
+      }
+    ],
+    "nontrivial_status": "NONE",
+    "substitution_status": "success",
+    "identity_verification_status": "not_verified",
+    "failure_reason": "solver produced branches but none passed independent back-substitution verification",
+    "timing": {
+      "residual": 0.011673458000586834,
+      "extraction": 0.03202604100079043,
+      "solve": 0.11984245899657253
+    },
+    "residual": "-2*w1_0_0**3*w_out_0*(tanh(b1_0 + t*w1_0_1 + w1_0_0*x)**2 - 1)*(3*tanh(b1_0 + t*w1_0_1 + w1_0_0*x)**2 - 1) + w1_0_0*w_out_0*(1 - tanh(b1_0 + t*w1_0_1 + w1_0_0*x)**2)*(c0 + w_out_0*tanh(b1_0 + t*w1_0_1 + w1_0_0*x))**2 + w1_0_0*w_out_0*(1 - tanh(b1_0 + t*w1_0_1 + w1_0_0*x)**2)*(c0 + w_out_0*tanh(b1_0 + t*w1_0_1 + w1_0_0*x)) + w1_0_1*w_out_0*(1 - tanh(b1_0 + t*w1_0_1 + w1_0_0*x)**2)",
+    "reduction_status": "skipped",
+    "coefficient_equations": [
+      "w1_0_0*w_out_0**2*(2*c0 + 1)",
+      "-w1_0_0*w_out_0**2*(2*c0 + 1)",
+      "-w1_0_0*w_out_0*(6*w1_0_0**2 + w_out_0**2)",
+      "w_out_0*(c0**2*w1_0_0 + c0*w1_0_0 - 2*w1_0_0**3 + w1_0_1)",
+      "w_out_0*(-c0**2*w1_0_0 - c0*w1_0_0 + 8*w1_0_0**3 + w1_0_0*w_out_0**2 - w1_0_1)"
+    ],
+    "sympy_solutions": [
+      {
+        "w_out_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "-sqrt(6)*I*w_out_0/6",
+        "w1_0_1": "sqrt(6)*I*w_out_0**3/18 - sqrt(6)*I*w_out_0/24"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "sqrt(6)*I*w_out_0/6",
+        "w1_0_1": "-sqrt(6)*I*w_out_0**3/18 + sqrt(6)*I*w_out_0/24"
+      }
+    ],
+    "candidate_id": "candidate_0001",
+    "structure": {
+      "structure_id": "single_tanh_0",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "tanh",
+            "family": "hyperbolic",
+            "expression": "tanh(z)",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "activation_functions": {
+      "h1_0": {
+        "name": "tanh",
+        "family": "hyperbolic",
+        "expression": "tanh(z)",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    }
+  },
+  {
+    "symbolic_status": "success",
+    "constraint_status": "success",
+    "extraction_status": "success",
+    "solve_status": "success",
+    "verification_status": "FAILED",
+    "exact_solutions": [],
+    "solutions": [],
+    "branch_attempts": [
+      {
+        "solution": {
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      }
+    ],
+    "nontrivial_status": "NONE",
+    "substitution_status": "success",
+    "identity_verification_status": "not_verified",
+    "failure_reason": "solver produced branches but none passed independent back-substitution verification",
+    "timing": {
+      "residual": 0.01353637500142213,
+      "extraction": 0.02663958299672231,
+      "solve": 0.010077042003103998
+    },
+    "residual": "-w1_0_0**3*w_out_0*(6*tanh(b1_0 + t*w1_0_1 + w1_0_0*x)**2 - 5)*tanh(b1_0 + t*w1_0_1 + w1_0_0*x)*sech(b1_0 + t*w1_0_1 + w1_0_0*x) - w1_0_0*w_out_0*(c0 + w_out_0*sech(b1_0 + t*w1_0_1 + w1_0_0*x))**2*tanh(b1_0 + t*w1_0_1 + w1_0_0*x)*sech(b1_0 + t*w1_0_1 + w1_0_0*x) - w1_0_0*w_out_0*(c0 + w_out_0*sech(b1_0 + t*w1_0_1 + w1_0_0*x))*tanh(b1_0 + t*w1_0_1 + w1_0_0*x)*sech(b1_0 + t*w1_0_1 + w1_0_0*x) - w1_0_1*w_out_0*tanh(b1_0 + t*w1_0_1 + w1_0_0*x)*sech(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "reduction_status": "skipped",
+    "coefficient_equations": [
+      "-w1_0_0*w_out_0**3",
+      "-6*w1_0_0**3*w_out_0",
+      "w1_0_0*w_out_0**2*(2*c0 + 1)",
+      "-w1_0_0*w_out_0**2*(2*c0 + 1)",
+      "w_out_0*(-c0**2*w1_0_0 - c0*w1_0_0 + 5*w1_0_0**3 - w1_0_1)"
+    ],
+    "sympy_solutions": [
+      {
+        "w_out_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      }
+    ],
+    "candidate_id": "candidate_0002",
+    "structure": {
+      "structure_id": "single_sech_1",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "sech",
+            "family": "hyperbolic",
+            "expression": "sech(z)",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "activation_functions": {
+      "h1_0": {
+        "name": "sech",
+        "family": "hyperbolic",
+        "expression": "sech(z)",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    }
+  },
+  {
+    "symbolic_status": "success",
+    "constraint_status": "success",
+    "extraction_status": "success",
+    "solve_status": "success",
+    "verification_status": "FAILED",
+    "exact_solutions": [],
+    "solutions": [],
+    "branch_attempts": [
+      {
+        "solution": {
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      }
+    ],
+    "nontrivial_status": "NONE",
+    "substitution_status": "success",
+    "identity_verification_status": "not_verified",
+    "failure_reason": "solver produced branches but none passed independent back-substitution verification",
+    "timing": {
+      "residual": 0.0061377499951049685,
+      "extraction": 0.03325191600015387,
+      "solve": 0.015111750006326474
+    },
+    "residual": "-8*w1_0_0**3*w_out_0*(3*tanh(b1_0 + t*w1_0_1 + w1_0_0*x)**2 - 2)*tanh(b1_0 + t*w1_0_1 + w1_0_0*x)*sech(b1_0 + t*w1_0_1 + w1_0_0*x)**2 - 2*w1_0_0*w_out_0*(c0 + w_out_0*sech(b1_0 + t*w1_0_1 + w1_0_0*x)**2)**2*tanh(b1_0 + t*w1_0_1 + w1_0_0*x)*sech(b1_0 + t*w1_0_1 + w1_0_0*x)**2 - 2*w1_0_0*w_out_0*(c0 + w_out_0*sech(b1_0 + t*w1_0_1 + w1_0_0*x)**2)*tanh(b1_0 + t*w1_0_1 + w1_0_0*x)*sech(b1_0 + t*w1_0_1 + w1_0_0*x)**2 - 2*w1_0_1*w_out_0*tanh(b1_0 + t*w1_0_1 + w1_0_0*x)*sech(b1_0 + t*w1_0_1 + w1_0_0*x)**2",
+    "reduction_status": "skipped",
+    "coefficient_equations": [
+      "2*w1_0_0*w_out_0**3",
+      "2*w1_0_0*w_out_0*(-2*c0*w_out_0 + 12*w1_0_0**2 - 3*w_out_0**2 - w_out_0)",
+      "2*w_out_0*(-c0**2*w1_0_0 - 2*c0*w1_0_0*w_out_0 - c0*w1_0_0 + 8*w1_0_0**3 - w1_0_0*w_out_0**2 - w1_0_0*w_out_0 - w1_0_1)",
+      "2*w_out_0*(c0**2*w1_0_0 + 4*c0*w1_0_0*w_out_0 + c0*w1_0_0 - 20*w1_0_0**3 + 3*w1_0_0*w_out_0**2 + 2*w1_0_0*w_out_0 + w1_0_1)"
+    ],
+    "sympy_solutions": [
+      {
+        "w_out_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      }
+    ],
+    "candidate_id": "candidate_0003",
+    "structure": {
+      "structure_id": "single_sech_pow2_2",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "sech_pow2",
+            "family": "hyperbolic",
+            "expression": "sech(z)**2",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "activation_functions": {
+      "h1_0": {
+        "name": "sech_pow2",
+        "family": "hyperbolic",
+        "expression": "sech(z)**2",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    }
+  },
+  {
+    "symbolic_status": "success",
+    "constraint_status": "success",
+    "extraction_status": "success",
+    "solve_status": "success",
+    "verification_status": "FAILED",
+    "exact_solutions": [],
+    "solutions": [],
+    "branch_attempts": [
+      {
+        "solution": {
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      }
+    ],
+    "nontrivial_status": "NONE",
+    "substitution_status": "success",
+    "identity_verification_status": "not_verified",
+    "failure_reason": "solver produced branches but none passed independent back-substitution verification",
+    "timing": {
+      "residual": 0.0014493749986286275,
+      "extraction": 0.01531687500391854,
+      "solve": 0.010496999995666556
+    },
+    "residual": "w1_0_0**3*w_out_0*cosh(b1_0 + t*w1_0_1 + w1_0_0*x) + w1_0_0*w_out_0*(c0 + w_out_0*sinh(b1_0 + t*w1_0_1 + w1_0_0*x))**2*cosh(b1_0 + t*w1_0_1 + w1_0_0*x) + w1_0_0*w_out_0*(c0 + w_out_0*sinh(b1_0 + t*w1_0_1 + w1_0_0*x))*cosh(b1_0 + t*w1_0_1 + w1_0_0*x) + w1_0_1*w_out_0*cosh(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "reduction_status": "skipped",
+    "coefficient_equations": [
+      "w1_0_0*w_out_0**3",
+      "w1_0_0*w_out_0**2*(2*c0 + 1)",
+      "w_out_0*(c0**2*w1_0_0 + c0*w1_0_0 + w1_0_0**3 + w1_0_1)"
+    ],
+    "sympy_solutions": [
+      {
+        "w_out_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      }
+    ],
+    "candidate_id": "candidate_0004",
+    "structure": {
+      "structure_id": "single_sinh_3",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "sinh",
+            "family": "hyperbolic",
+            "expression": "sinh(z)",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "activation_functions": {
+      "h1_0": {
+        "name": "sinh",
+        "family": "hyperbolic",
+        "expression": "sinh(z)",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    }
+  },
+  {
+    "symbolic_status": "success",
+    "constraint_status": "success",
+    "extraction_status": "success",
+    "solve_status": "success",
+    "verification_status": "FAILED",
+    "exact_solutions": [],
+    "solutions": [],
+    "branch_attempts": [
+      {
+        "solution": {
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      }
+    ],
+    "nontrivial_status": "NONE",
+    "substitution_status": "success",
+    "identity_verification_status": "not_verified",
+    "failure_reason": "solver produced branches but none passed independent back-substitution verification",
+    "timing": {
+      "residual": 0.0012293330000829883,
+      "extraction": 0.014264666999224573,
+      "solve": 0.007488541996281128
+    },
+    "residual": "w1_0_0**3*w_out_0*sinh(b1_0 + t*w1_0_1 + w1_0_0*x) + w1_0_0*w_out_0*(c0 + w_out_0*cosh(b1_0 + t*w1_0_1 + w1_0_0*x))**2*sinh(b1_0 + t*w1_0_1 + w1_0_0*x) + w1_0_0*w_out_0*(c0 + w_out_0*cosh(b1_0 + t*w1_0_1 + w1_0_0*x))*sinh(b1_0 + t*w1_0_1 + w1_0_0*x) + w1_0_1*w_out_0*sinh(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "reduction_status": "skipped",
+    "coefficient_equations": [
+      "w1_0_0*w_out_0**3",
+      "w1_0_0*w_out_0**2*(2*c0 + 1)",
+      "w_out_0*(c0**2*w1_0_0 + c0*w1_0_0 + w1_0_0**3 + w1_0_1)"
+    ],
+    "sympy_solutions": [
+      {
+        "w_out_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      }
+    ],
+    "candidate_id": "candidate_0005",
+    "structure": {
+      "structure_id": "single_cosh_4",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "cosh",
+            "family": "hyperbolic",
+            "expression": "cosh(z)",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "activation_functions": {
+      "h1_0": {
+        "name": "cosh",
+        "family": "hyperbolic",
+        "expression": "cosh(z)",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    }
+  },
+  {
+    "symbolic_status": "success",
+    "constraint_status": "success",
+    "extraction_status": "success",
+    "solve_status": "success",
+    "verification_status": "FAILED",
+    "exact_solutions": [],
+    "solutions": [],
+    "branch_attempts": [
+      {
+        "solution": {
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "-sqrt(6)*I*w_out_0/6",
+          "w1_0_1": "-sqrt(6)*I*w_out_0**3/18 - sqrt(6)*I*w_out_0/24"
+        },
+        "substitution_status": "skipped",
+        "nontrivial_status": "DOMAIN_INVALID",
+        "identity_verification_status": "skipped"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "sqrt(6)*I*w_out_0/6",
+          "w1_0_1": "sqrt(6)*I*w_out_0**3/18 + sqrt(6)*I*w_out_0/24"
+        },
+        "substitution_status": "skipped",
+        "nontrivial_status": "DOMAIN_INVALID",
+        "identity_verification_status": "skipped"
+      }
+    ],
+    "nontrivial_status": "NONE",
+    "substitution_status": "success",
+    "identity_verification_status": "not_verified",
+    "failure_reason": "solver produced branches but none passed independent back-substitution verification",
+    "timing": {
+      "residual": 0.003986457995779347,
+      "extraction": 0.023937875004776288,
+      "solve": 0.055497917004686315
+    },
+    "residual": "2*w1_0_0**3*w_out_0*(tan(b1_0 + t*w1_0_1 + w1_0_0*x)**2 + 1)*(3*tan(b1_0 + t*w1_0_1 + w1_0_0*x)**2 + 1) + w1_0_0*w_out_0*(c0 + w_out_0*tan(b1_0 + t*w1_0_1 + w1_0_0*x))**2*(tan(b1_0 + t*w1_0_1 + w1_0_0*x)**2 + 1) + w1_0_0*w_out_0*(c0 + w_out_0*tan(b1_0 + t*w1_0_1 + w1_0_0*x))*(tan(b1_0 + t*w1_0_1 + w1_0_0*x)**2 + 1) + w1_0_1*w_out_0*(tan(b1_0 + t*w1_0_1 + w1_0_0*x)**2 + 1)",
+    "reduction_status": "skipped",
+    "coefficient_equations": [
+      "w1_0_0*w_out_0**2*(2*c0 + 1)",
+      "w1_0_0*w_out_0*(6*w1_0_0**2 + w_out_0**2)",
+      "w_out_0*(c0**2*w1_0_0 + c0*w1_0_0 + 2*w1_0_0**3 + w1_0_1)",
+      "w_out_0*(c0**2*w1_0_0 + c0*w1_0_0 + 8*w1_0_0**3 + w1_0_0*w_out_0**2 + w1_0_1)"
+    ],
+    "sympy_solutions": [
+      {
+        "w_out_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "-sqrt(6)*I*w_out_0/6",
+        "w1_0_1": "-sqrt(6)*I*w_out_0**3/18 - sqrt(6)*I*w_out_0/24"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "sqrt(6)*I*w_out_0/6",
+        "w1_0_1": "sqrt(6)*I*w_out_0**3/18 + sqrt(6)*I*w_out_0/24"
+      }
+    ],
+    "candidate_id": "candidate_0006",
+    "structure": {
+      "structure_id": "single_tan_5",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "tan",
+            "family": "trigonometric",
+            "expression": "tan(z)",
+            "parameters": [],
+            "domain": "partial_domain",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "activation_functions": {
+      "h1_0": {
+        "name": "tan",
+        "family": "trigonometric",
+        "expression": "tan(z)",
+        "parameters": [],
+        "domain": "partial_domain",
+        "nargs": 1
+      }
+    }
+  },
+  {
+    "symbolic_status": "success",
+    "constraint_status": "success",
+    "extraction_status": "success",
+    "solve_status": "success",
+    "verification_status": "FAILED",
+    "exact_solutions": [],
+    "solutions": [],
+    "branch_attempts": [
+      {
+        "solution": {
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      }
+    ],
+    "nontrivial_status": "NONE",
+    "substitution_status": "success",
+    "identity_verification_status": "not_verified",
+    "failure_reason": "solver produced branches but none passed independent back-substitution verification",
+    "timing": {
+      "residual": 0.005913667002459988,
+      "extraction": 0.029329707998840604,
+      "solve": 0.01108791699516587
+    },
+    "residual": "8*w1_0_0**3*w_out_0*(tan(b1_0 + t*w1_0_1 + w1_0_0*x)**2 + 1)*(3*tan(b1_0 + t*w1_0_1 + w1_0_0*x)**2 + 2)*tan(b1_0 + t*w1_0_1 + w1_0_0*x) + 2*w1_0_0*w_out_0*(c0 + w_out_0*tan(b1_0 + t*w1_0_1 + w1_0_0*x)**2)**2*(tan(b1_0 + t*w1_0_1 + w1_0_0*x)**2 + 1)*tan(b1_0 + t*w1_0_1 + w1_0_0*x) + 2*w1_0_0*w_out_0*(c0 + w_out_0*tan(b1_0 + t*w1_0_1 + w1_0_0*x)**2)*(tan(b1_0 + t*w1_0_1 + w1_0_0*x)**2 + 1)*tan(b1_0 + t*w1_0_1 + w1_0_0*x) + 2*w1_0_1*w_out_0*(tan(b1_0 + t*w1_0_1 + w1_0_0*x)**2 + 1)*tan(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "reduction_status": "skipped",
+    "coefficient_equations": [
+      "2*w1_0_0*w_out_0**3",
+      "2*w_out_0*(c0**2*w1_0_0 + c0*w1_0_0 + 8*w1_0_0**3 + w1_0_1)",
+      "2*w1_0_0*w_out_0*(2*c0*w_out_0 + 12*w1_0_0**2 + w_out_0**2 + w_out_0)",
+      "2*w_out_0*(c0**2*w1_0_0 + 2*c0*w1_0_0*w_out_0 + c0*w1_0_0 + 20*w1_0_0**3 + w1_0_0*w_out_0 + w1_0_1)"
+    ],
+    "sympy_solutions": [
+      {
+        "w_out_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      }
+    ],
+    "candidate_id": "candidate_0007",
+    "structure": {
+      "structure_id": "single_tan_pow2_6",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "tan_pow2",
+            "family": "trigonometric",
+            "expression": "tan(z)**2",
+            "parameters": [],
+            "domain": "partial_domain",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "activation_functions": {
+      "h1_0": {
+        "name": "tan_pow2",
+        "family": "trigonometric",
+        "expression": "tan(z)**2",
+        "parameters": [],
+        "domain": "partial_domain",
+        "nargs": 1
+      }
+    }
+  },
+  {
+    "symbolic_status": "success",
+    "constraint_status": "success",
+    "extraction_status": "success",
+    "solve_status": "success",
+    "verification_status": "FAILED",
+    "exact_solutions": [],
+    "solutions": [],
+    "branch_attempts": [
+      {
+        "solution": {
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      }
+    ],
+    "nontrivial_status": "NONE",
+    "substitution_status": "success",
+    "identity_verification_status": "not_verified",
+    "failure_reason": "solver produced branches but none passed independent back-substitution verification",
+    "timing": {
+      "residual": 0.0014259999952628277,
+      "extraction": 0.015946416002407204,
+      "solve": 0.010504792000574525
+    },
+    "residual": "-w1_0_0**3*w_out_0*cos(b1_0 + t*w1_0_1 + w1_0_0*x) + w1_0_0*w_out_0*(c0 + w_out_0*sin(b1_0 + t*w1_0_1 + w1_0_0*x))**2*cos(b1_0 + t*w1_0_1 + w1_0_0*x) + w1_0_0*w_out_0*(c0 + w_out_0*sin(b1_0 + t*w1_0_1 + w1_0_0*x))*cos(b1_0 + t*w1_0_1 + w1_0_0*x) + w1_0_1*w_out_0*cos(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "reduction_status": "skipped",
+    "coefficient_equations": [
+      "w1_0_0*w_out_0**3",
+      "w1_0_0*w_out_0**2*(2*c0 + 1)",
+      "w_out_0*(c0**2*w1_0_0 + c0*w1_0_0 - w1_0_0**3 + w1_0_1)"
+    ],
+    "sympy_solutions": [
+      {
+        "w_out_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      }
+    ],
+    "candidate_id": "candidate_0008",
+    "structure": {
+      "structure_id": "single_sin_7",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "sin",
+            "family": "trigonometric",
+            "expression": "sin(z)",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "activation_functions": {
+      "h1_0": {
+        "name": "sin",
+        "family": "trigonometric",
+        "expression": "sin(z)",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    }
+  },
+  {
+    "symbolic_status": "success",
+    "constraint_status": "success",
+    "extraction_status": "success",
+    "solve_status": "success",
+    "verification_status": "FAILED",
+    "exact_solutions": [],
+    "solutions": [],
+    "branch_attempts": [
+      {
+        "solution": {
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      }
+    ],
+    "nontrivial_status": "NONE",
+    "substitution_status": "success",
+    "identity_verification_status": "not_verified",
+    "failure_reason": "solver produced branches but none passed independent back-substitution verification",
+    "timing": {
+      "residual": 0.0012604579969774932,
+      "extraction": 0.016293332999339327,
+      "solve": 0.010403291002148762
+    },
+    "residual": "w1_0_0**3*w_out_0*sin(b1_0 + t*w1_0_1 + w1_0_0*x) - w1_0_0*w_out_0*(c0 + w_out_0*cos(b1_0 + t*w1_0_1 + w1_0_0*x))**2*sin(b1_0 + t*w1_0_1 + w1_0_0*x) - w1_0_0*w_out_0*(c0 + w_out_0*cos(b1_0 + t*w1_0_1 + w1_0_0*x))*sin(b1_0 + t*w1_0_1 + w1_0_0*x) - w1_0_1*w_out_0*sin(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "reduction_status": "skipped",
+    "coefficient_equations": [
+      "-w1_0_0*w_out_0**3",
+      "-w1_0_0*w_out_0**2*(2*c0 + 1)",
+      "w_out_0*(-c0**2*w1_0_0 - c0*w1_0_0 + w1_0_0**3 - w1_0_1)"
+    ],
+    "sympy_solutions": [
+      {
+        "w_out_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      }
+    ],
+    "candidate_id": "candidate_0009",
+    "structure": {
+      "structure_id": "single_cos_8",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "cos",
+            "family": "trigonometric",
+            "expression": "cos(z)",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "activation_functions": {
+      "h1_0": {
+        "name": "cos",
+        "family": "trigonometric",
+        "expression": "cos(z)",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    }
+  },
+  {
+    "symbolic_status": "success",
+    "constraint_status": "success",
+    "extraction_status": "success",
+    "solve_status": "success",
+    "verification_status": "FAILED",
+    "exact_solutions": [],
+    "solutions": [],
+    "branch_attempts": [
+      {
+        "solution": {
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      }
+    ],
+    "nontrivial_status": "NONE",
+    "substitution_status": "success",
+    "identity_verification_status": "not_verified",
+    "failure_reason": "solver produced branches but none passed independent back-substitution verification",
+    "timing": {
+      "residual": 0.0017076669973903336,
+      "extraction": 0.026530542003456503,
+      "solve": 0.008060333995672408
+    },
+    "residual": "w1_0_0**3*w_out_0*exp(b1_0 + t*w1_0_1 + w1_0_0*x) + w1_0_0*w_out_0*(c0 + w_out_0*exp(b1_0 + t*w1_0_1 + w1_0_0*x))**2*exp(b1_0 + t*w1_0_1 + w1_0_0*x) + w1_0_0*w_out_0*(c0 + w_out_0*exp(b1_0 + t*w1_0_1 + w1_0_0*x))*exp(b1_0 + t*w1_0_1 + w1_0_0*x) + w1_0_1*w_out_0*exp(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "reduction_status": "skipped",
+    "coefficient_equations": [
+      "w1_0_0*w_out_0**3",
+      "w1_0_0*w_out_0**2*(2*c0 + 1)",
+      "w_out_0*(c0**2*w1_0_0 + c0*w1_0_0 + w1_0_0**3 + w1_0_1)"
+    ],
+    "sympy_solutions": [
+      {
+        "w_out_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      }
+    ],
+    "candidate_id": "candidate_0010",
+    "structure": {
+      "structure_id": "single_exp_9",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "exp",
+            "family": "elementary",
+            "expression": "exp(z)",
+            "parameters": [],
+            "domain": "real_axis",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "activation_functions": {
+      "h1_0": {
+        "name": "exp",
+        "family": "elementary",
+        "expression": "exp(z)",
+        "parameters": [],
+        "domain": "real_axis",
+        "nargs": 1
+      }
+    }
+  },
+  {
+    "symbolic_status": "success",
+    "constraint_status": "success",
+    "extraction_status": "success",
+    "solve_status": "success",
+    "verification_status": "FAILED",
+    "exact_solutions": [],
+    "solutions": [],
+    "branch_attempts": [
+      {
+        "solution": {
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      }
+    ],
+    "nontrivial_status": "NONE",
+    "substitution_status": "success",
+    "identity_verification_status": "not_verified",
+    "failure_reason": "solver produced branches but none passed independent back-substitution verification",
+    "timing": {
+      "residual": 0.0019911249983124435,
+      "extraction": 0.05719374999898719,
+      "solve": 0.03537908299767878
+    },
+    "residual": "2*w1_0_0**3*w_out_0/(b1_0 + t*w1_0_1 + w1_0_0*x)**3 + w1_0_0*w_out_0*(c0 + w_out_0*log(b1_0 + t*w1_0_1 + w1_0_0*x))**2/(b1_0 + t*w1_0_1 + w1_0_0*x) + w1_0_0*w_out_0*(c0 + w_out_0*log(b1_0 + t*w1_0_1 + w1_0_0*x))/(b1_0 + t*w1_0_1 + w1_0_0*x) + w1_0_1*w_out_0/(b1_0 + t*w1_0_1 + w1_0_0*x)",
+    "reduction_status": "skipped",
+    "coefficient_equations": [
+      "w1_0_0**3*w_out_0**3",
+      "b1_0**2*w1_0_0*w_out_0**3",
+      "w1_0_0*w1_0_1**2*w_out_0**3",
+      "2*w1_0_0**2*w1_0_1*w_out_0**3",
+      "2*b1_0*w1_0_0**2*w_out_0**3",
+      "2*b1_0*w1_0_0*w1_0_1*w_out_0**3",
+      "w1_0_0**3*w_out_0**2*(2*c0 + 1)",
+      "b1_0**2*w1_0_0*w_out_0**2*(2*c0 + 1)",
+      "w1_0_0*w1_0_1**2*w_out_0**2*(2*c0 + 1)",
+      "2*w1_0_0**2*w1_0_1*w_out_0**2*(2*c0 + 1)",
+      "2*b1_0*w1_0_0**2*w_out_0**2*(2*c0 + 1)",
+      "2*b1_0*w1_0_0*w1_0_1*w_out_0**2*(2*c0 + 1)",
+      "w1_0_0**2*w_out_0*(c0**2*w1_0_0 + c0*w1_0_0 + w1_0_1)",
+      "w1_0_1**2*w_out_0*(c0**2*w1_0_0 + c0*w1_0_0 + w1_0_1)",
+      "2*b1_0*w1_0_0*w_out_0*(c0**2*w1_0_0 + c0*w1_0_0 + w1_0_1)",
+      "2*b1_0*w1_0_1*w_out_0*(c0**2*w1_0_0 + c0*w1_0_0 + w1_0_1)",
+      "2*w1_0_0*w1_0_1*w_out_0*(c0**2*w1_0_0 + c0*w1_0_0 + w1_0_1)",
+      "w_out_0*(b1_0**2*c0**2*w1_0_0 + b1_0**2*c0*w1_0_0 + b1_0**2*w1_0_1 + 2*w1_0_0**3)"
+    ],
+    "sympy_solutions": [
+      {
+        "w_out_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      }
+    ],
+    "candidate_id": "candidate_0011",
+    "structure": {
+      "structure_id": "single_log_10",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "log",
+            "family": "elementary",
+            "expression": "log(z)",
+            "parameters": [],
+            "domain": "partial_domain",
+            "nargs": 1
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "activation_functions": {
+      "h1_0": {
+        "name": "log",
+        "family": "elementary",
+        "expression": "log(z)",
+        "parameters": [],
+        "domain": "partial_domain",
+        "nargs": 1
+      }
+    }
+  },
+  {
+    "symbolic_status": "success",
+    "constraint_status": "success",
+    "extraction_status": "success",
+    "solve_status": "success",
+    "verification_status": "EXACT_VERIFIED",
+    "exact_solutions": [
+      {
+        "expression": "w_out_0*JacobiSN(b1_0 + t*w1_0_0**3 - t*w1_0_0*w_out_0**2/6 + t*w1_0_0/4 + w1_0_0*x, -w_out_0**2/(6*w1_0_0**2)) - 1/2",
+        "constraints": {
+          "c0": "-1/2",
+          "m_h1_0": "-w_out_0**2/(6*w1_0_0**2)",
+          "w1_0_1": "w1_0_0**3 - w1_0_0*w_out_0**2/6 + w1_0_0/4"
+        },
+        "residual": "0"
+      }
+    ],
+    "solutions": [
+      {
+        "expression": "w_out_0*JacobiSN(b1_0 + t*w1_0_0**3 - t*w1_0_0*w_out_0**2/6 + t*w1_0_0/4 + w1_0_0*x, -w_out_0**2/(6*w1_0_0**2)) - 1/2",
+        "constraints": {
+          "c0": "-1/2",
+          "m_h1_0": "-w_out_0**2/(6*w1_0_0**2)",
+          "w1_0_1": "w1_0_0**3 - w1_0_0*w_out_0**2/6 + w1_0_0/4"
+        },
+        "residual": "0"
+      }
+    ],
+    "branch_attempts": [
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "m_h1_0": "-w_out_0**2/(6*w1_0_0**2)",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "m_h1_0": "-w_out_0**2/(6*w1_0_0**2)",
+          "w1_0_1": "w1_0_0**3 - w1_0_0*w_out_0**2/6 + w1_0_0/4"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "NONTRIVIAL",
+        "identity_verification_status": "verified"
+      }
+    ],
+    "nontrivial_status": "NONTRIVIAL",
+    "substitution_status": "success",
+    "identity_verification_status": "verified",
+    "failure_reason": null,
+    "timing": {
+      "residual": 0.007781583000905812,
+      "extraction": 0.033364875002007466,
+      "solve": 5.015830249998544
+    },
+    "residual": "w1_0_0**3*w_out_0*(-m_h1_0*JacobiCN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)**2 + 4*m_h1_0*JacobiSN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)**2 - JacobiDN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)**2)*JacobiCN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)*JacobiDN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0) + w1_0_0*w_out_0*(c0 + w_out_0*JacobiSN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0))**2*JacobiCN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)*JacobiDN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0) + w1_0_0*w_out_0*(c0 + w_out_0*JacobiSN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0))*JacobiCN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)*JacobiDN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0) + w1_0_1*w_out_0*JacobiCN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)*JacobiDN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)",
+    "reduction_status": "skipped",
+    "coefficient_equations": [
+      "w1_0_0*w_out_0**2*(2*c0 + 1)",
+      "w1_0_0*w_out_0*(6*m_h1_0*w1_0_0**2 + w_out_0**2)",
+      "w_out_0*(c0**2*w1_0_0 + c0*w1_0_0 - m_h1_0*w1_0_0**3 - w1_0_0**3 + w1_0_1)"
+    ],
+    "sympy_solutions": [
+      {
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      },
+      {
+        "w_out_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w_out_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "m_h1_0": "-w_out_0**2/(6*w1_0_0**2)",
+        "w_out_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "m_h1_0": "-w_out_0**2/(6*w1_0_0**2)",
+        "w1_0_1": "w1_0_0**3 - w1_0_0*w_out_0**2/6 + w1_0_0/4"
+      }
+    ],
+    "candidate_id": "candidate_0012",
+    "structure": {
+      "structure_id": "single_JacobiSN_11",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "JacobiSN",
+            "family": "jacobi",
+            "expression": "JacobiSN(z, m)",
+            "parameters": [
+              "m"
+            ],
+            "domain": "real_axis",
+            "nargs": 2
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "m_h1_0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "special_function_parameter": [
+          "m_h1_0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "activation_functions": {
+      "h1_0": {
+        "name": "JacobiSN",
+        "family": "jacobi",
+        "expression": "JacobiSN(z, m)",
+        "parameters": [
+          "m"
+        ],
+        "domain": "real_axis",
+        "nargs": 2
+      }
+    }
+  },
+  {
+    "symbolic_status": "success",
+    "constraint_status": "success",
+    "extraction_status": "success",
+    "solve_status": "success",
+    "verification_status": "EXACT_VERIFIED",
+    "exact_solutions": [
+      {
+        "expression": "w_out_0*JacobiCN(b1_0 + t*w1_0_0**3 - t*w1_0_0*w_out_0**2/3 + t*w1_0_0/4 + w1_0_0*x, w_out_0**2/(6*w1_0_0**2)) - 1/2",
+        "constraints": {
+          "m_h1_0": "w_out_0**2/(6*w1_0_0**2)",
+          "c0": "-1/2",
+          "w1_0_1": "w1_0_0**3 - w1_0_0*w_out_0**2/3 + w1_0_0/4"
+        },
+        "residual": "0"
+      }
+    ],
+    "solutions": [
+      {
+        "expression": "w_out_0*JacobiCN(b1_0 + t*w1_0_0**3 - t*w1_0_0*w_out_0**2/3 + t*w1_0_0/4 + w1_0_0*x, w_out_0**2/(6*w1_0_0**2)) - 1/2",
+        "constraints": {
+          "m_h1_0": "w_out_0**2/(6*w1_0_0**2)",
+          "c0": "-1/2",
+          "w1_0_1": "w1_0_0**3 - w1_0_0*w_out_0**2/3 + w1_0_0/4"
+        },
+        "residual": "0"
+      }
+    ],
+    "branch_attempts": [
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "m_h1_0": "w_out_0**2/(6*w1_0_0**2)",
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "m_h1_0": "w_out_0**2/(6*w1_0_0**2)",
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "m_h1_0": "w_out_0**2/(6*w1_0_0**2)",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "m_h1_0": "w_out_0**2/(6*w1_0_0**2)",
+          "c0": "-1/2",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "m_h1_0": "w_out_0**2/(6*w1_0_0**2)",
+          "c0": "-1/2",
+          "w1_0_1": "w1_0_0**3 - w1_0_0*w_out_0**2/3 + w1_0_0/4"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "NONTRIVIAL",
+        "identity_verification_status": "verified"
+      }
+    ],
+    "nontrivial_status": "NONTRIVIAL",
+    "substitution_status": "success",
+    "identity_verification_status": "verified",
+    "failure_reason": null,
+    "timing": {
+      "residual": 0.007106124998244923,
+      "extraction": 0.03446662500209641,
+      "solve": 5.014598374997149
+    },
+    "residual": "w1_0_0**3*w_out_0*(4*m_h1_0*JacobiCN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)**2 - m_h1_0*JacobiSN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)**2 + JacobiDN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)**2)*JacobiDN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)*JacobiSN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0) - w1_0_0*w_out_0*(c0 + w_out_0*JacobiCN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0))**2*JacobiDN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)*JacobiSN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0) - w1_0_0*w_out_0*(c0 + w_out_0*JacobiCN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0))*JacobiDN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)*JacobiSN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0) - w1_0_1*w_out_0*JacobiDN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)*JacobiSN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)",
+    "reduction_status": "skipped",
+    "coefficient_equations": [
+      "-w1_0_0*w_out_0**2*(2*c0 + 1)",
+      "w1_0_0*w_out_0*(-6*m_h1_0*w1_0_0**2 + w_out_0**2)",
+      "w_out_0*(-c0**2*w1_0_0 - c0*w1_0_0 + 4*m_h1_0*w1_0_0**3 + w1_0_0**3 - w1_0_0*w_out_0**2 - w1_0_1)"
+    ],
+    "sympy_solutions": [
+      {
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      },
+      {
+        "w_out_0": "0"
+      },
+      {
+        "m_h1_0": "w_out_0**2/(6*w1_0_0**2)",
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "m_h1_0": "w_out_0**2/(6*w1_0_0**2)",
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      },
+      {
+        "m_h1_0": "w_out_0**2/(6*w1_0_0**2)",
+        "w_out_0": "0"
+      },
+      {
+        "m_h1_0": "w_out_0**2/(6*w1_0_0**2)",
+        "c0": "-1/2",
+        "w_out_0": "0"
+      },
+      {
+        "m_h1_0": "w_out_0**2/(6*w1_0_0**2)",
+        "c0": "-1/2",
+        "w1_0_1": "w1_0_0**3 - w1_0_0*w_out_0**2/3 + w1_0_0/4"
+      }
+    ],
+    "candidate_id": "candidate_0013",
+    "structure": {
+      "structure_id": "single_JacobiCN_12",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "JacobiCN",
+            "family": "jacobi",
+            "expression": "JacobiCN(z, m)",
+            "parameters": [
+              "m"
+            ],
+            "domain": "real_axis",
+            "nargs": 2
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "m_h1_0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "special_function_parameter": [
+          "m_h1_0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "activation_functions": {
+      "h1_0": {
+        "name": "JacobiCN",
+        "family": "jacobi",
+        "expression": "JacobiCN(z, m)",
+        "parameters": [
+          "m"
+        ],
+        "domain": "real_axis",
+        "nargs": 2
+      }
+    }
+  },
+  {
+    "symbolic_status": "success",
+    "constraint_status": "success",
+    "extraction_status": "success",
+    "solve_status": "success",
+    "verification_status": "EXACT_VERIFIED",
+    "exact_solutions": [
+      {
+        "expression": "w_out_0*JacobiDN(b1_0 + t*w1_0_1 - sqrt(6)*w_out_0*x/6, -6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)) - 1/2",
+        "constraints": {
+          "c0": "-1/2",
+          "w1_0_0": "-sqrt(6)*w_out_0/6",
+          "m_h1_0": "-6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)"
+        },
+        "residual": "0"
+      },
+      {
+        "expression": "w_out_0*JacobiDN(b1_0 + t*w1_0_1 + sqrt(6)*w_out_0*x/6, 6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)) - 1/2",
+        "constraints": {
+          "c0": "-1/2",
+          "w1_0_0": "sqrt(6)*w_out_0/6",
+          "m_h1_0": "6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)"
+        },
+        "residual": "0"
+      }
+    ],
+    "solutions": [
+      {
+        "expression": "w_out_0*JacobiDN(b1_0 + t*w1_0_1 - sqrt(6)*w_out_0*x/6, -6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)) - 1/2",
+        "constraints": {
+          "c0": "-1/2",
+          "w1_0_0": "-sqrt(6)*w_out_0/6",
+          "m_h1_0": "-6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)"
+        },
+        "residual": "0"
+      },
+      {
+        "expression": "w_out_0*JacobiDN(b1_0 + t*w1_0_1 + sqrt(6)*w_out_0*x/6, 6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)) - 1/2",
+        "constraints": {
+          "c0": "-1/2",
+          "w1_0_0": "sqrt(6)*w_out_0/6",
+          "m_h1_0": "6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)"
+        },
+        "residual": "0"
+      }
+    ],
+    "branch_attempts": [
+      {
+        "solution": {
+          "m_h1_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "m_h1_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "0",
+          "m_h1_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "0",
+          "w1_0_1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "0",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "m_h1_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "-sqrt(6)*w_out_0/6",
+          "m_h1_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "-sqrt(6)*w_out_0/6",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "-sqrt(6)*w_out_0/6",
+          "m_h1_0": "-6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "NONTRIVIAL",
+        "identity_verification_status": "verified"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "sqrt(6)*w_out_0/6",
+          "m_h1_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "sqrt(6)*w_out_0/6",
+          "w_out_0": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c0": "-1/2",
+          "w1_0_0": "sqrt(6)*w_out_0/6",
+          "m_h1_0": "6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "NONTRIVIAL",
+        "identity_verification_status": "verified"
+      }
+    ],
+    "nontrivial_status": "NONTRIVIAL",
+    "substitution_status": "success",
+    "identity_verification_status": "verified",
+    "failure_reason": null,
+    "timing": {
+      "residual": 0.006575708001037128,
+      "extraction": 0.03639324999676319,
+      "solve": 5.035814709000988
+    },
+    "residual": "m_h1_0*w1_0_0**3*w_out_0*(m_h1_0*JacobiCN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)**2 - m_h1_0*JacobiSN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)**2 + 4*JacobiDN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)**2)*JacobiCN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)*JacobiSN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0) - m_h1_0*w1_0_0*w_out_0*(c0 + w_out_0*JacobiDN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0))**2*JacobiCN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)*JacobiSN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0) - m_h1_0*w1_0_0*w_out_0*(c0 + w_out_0*JacobiDN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0))*JacobiCN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)*JacobiSN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0) - m_h1_0*w1_0_1*w_out_0*JacobiCN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)*JacobiSN(b1_0 + t*w1_0_1 + w1_0_0*x, m_h1_0)",
+    "reduction_status": "skipped",
+    "coefficient_equations": [
+      "-m_h1_0*w1_0_0*w_out_0**2*(2*c0 + 1)",
+      "m_h1_0**2*w1_0_0*w_out_0*(-6*w1_0_0**2 + w_out_0**2)",
+      "m_h1_0*w_out_0*(-c0**2*w1_0_0 - c0*w1_0_0 + m_h1_0*w1_0_0**3 + 4*w1_0_0**3 - w1_0_0*w_out_0**2 - w1_0_1)"
+    ],
+    "sympy_solutions": [
+      {
+        "m_h1_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "m_h1_0": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      },
+      {
+        "w_out_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "0",
+        "m_h1_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "0",
+        "w1_0_1": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "0",
+        "w_out_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w_out_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "m_h1_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "-sqrt(6)*w_out_0/6",
+        "m_h1_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "-sqrt(6)*w_out_0/6",
+        "w_out_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "-sqrt(6)*w_out_0/6",
+        "m_h1_0": "-6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "sqrt(6)*w_out_0/6",
+        "m_h1_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "sqrt(6)*w_out_0/6",
+        "w_out_0": "0"
+      },
+      {
+        "c0": "-1/2",
+        "w1_0_0": "sqrt(6)*w_out_0/6",
+        "m_h1_0": "6*sqrt(6)*w1_0_1/w_out_0**3 + 2 - 3/(2*w_out_0**2)"
+      }
+    ],
+    "candidate_id": "candidate_0014",
+    "structure": {
+      "structure_id": "single_JacobiDN_13",
+      "nodes": {
+        "x": {
+          "node_id": "x",
+          "layer": 0,
+          "index": 0,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "t": {
+          "node_id": "t",
+          "layer": 0,
+          "index": 1,
+          "activation": null,
+          "source_ids": [],
+          "bias": null
+        },
+        "h1_0": {
+          "node_id": "h1_0",
+          "layer": 1,
+          "index": 0,
+          "activation": {
+            "name": "JacobiDN",
+            "family": "jacobi",
+            "expression": "JacobiDN(z, m)",
+            "parameters": [
+              "m"
+            ],
+            "domain": "real_axis",
+            "nargs": 2
+          },
+          "source_ids": [
+            "x",
+            "t"
+          ],
+          "bias": "b1_0"
+        }
+      },
+      "connections": [
+        {
+          "source": "x",
+          "target": "h1_0",
+          "weight": "w1_0_0"
+        },
+        {
+          "source": "t",
+          "target": "h1_0",
+          "weight": "w1_0_1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "node_id": "h1_0",
+          "weight": "w_out_0"
+        }
+      ],
+      "unknown_parameters": [
+        "b1_0",
+        "c0",
+        "m_h1_0",
+        "w1_0_0",
+        "w1_0_1",
+        "w_out_0"
+      ],
+      "parameter_roles": {
+        "node_bias": [
+          "b1_0"
+        ],
+        "output_bias": [
+          "c0"
+        ],
+        "special_function_parameter": [
+          "m_h1_0"
+        ],
+        "node_weight": [
+          "w1_0_0",
+          "w1_0_1"
+        ],
+        "output_weight": [
+          "w_out_0"
+        ]
+      },
+      "metadata": {
+        "source_type": "generated",
+        "generation_rule": "single_node_baseline"
+      }
+    },
+    "activation_functions": {
+      "h1_0": {
+        "name": "JacobiDN",
+        "family": "jacobi",
+        "expression": "JacobiDN(z, m)",
+        "parameters": [
+          "m"
+        ],
+        "domain": "real_axis",
+        "nargs": 2
+      }
+    }
+  }
+]

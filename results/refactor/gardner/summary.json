@@ -1,0 +1,11 @@
+{
+  "generated_structures": 14,
+  "unique_structures": 14,
+  "compile_success": 14,
+  "constraint_success": 14,
+  "solve_success": 14,
+  "exact_candidates": 3,
+  "exact_branches": 4,
+  "elapsed_seconds": 16.032,
+  "seed": 42
+}

@@ -32,6 +32,7 @@ if str(PDES_DIR) not in sys.path:
     sys.path.insert(0, str(PDES_DIR))
 
 import sfg_bbm_21 as sfg  # noqa: E402
+import sfg_reduction  # noqa: E402
 
 DEFAULT_RESULTS_DIR = REPO_ROOT / "results" / "gardner"
 GARDNER_PDE_STR = "gardner_equation=ut + u*ux + u**2*ux + uxxx = 0"
@@ -481,6 +482,7 @@ def main(argv: list[str] | None = None) -> int:
             log_lines,
             residual_fn=residual_fn,
             pde_equation=GARDNER_PDE_STR,
+            reduce_fn=sfg_reduction.reduce_special_function_expression,
         )
         processed.append(record)
         if record.get("verification_status") == "EXACT_VERIFIED":
