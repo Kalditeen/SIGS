@@ -16,6 +16,7 @@ layer widths, for example [2, 3] for the two-hidden-layer [2,2,3,1] network.
 from __future__ import annotations
 
 import argparse
+import gc
 import random
 import re
 import signal
@@ -363,8 +364,14 @@ def _pad_codes(codes: list[int], n_roles: int) -> list[int]:
     return codes[:n_roles]
 
 
-def lift_to_nnsca(codes: list[int], widths: list[int]) -> str:
-    """Build the numeric NNSCA trial function with all Stage I weights set to 1."""
+def lift_to_nnsca(codes: list[int], widths: list[int], first_layer_args: list[str] | None = None) -> str:
+    """Build the numeric NNSCA trial function with all Stage I weights set to 1.
+
+    ``first_layer_args`` is an optional sequence of numeric first-layer phase
+    templates.  When supplied, first-layer neurons cycle through it instead of
+    all receiving the same ``x + t`` argument; the later ``numerics_to_symbols``
+    pass still turns every numeric coefficient into an independent parameter.
+    """
     n_roles = sum(widths)
     codes = _pad_codes(codes, n_roles)
     layers = []
@@ -375,7 +382,10 @@ def lift_to_nnsca(codes: list[int], widths: list[int]) -> str:
             code = codes[offset]
             offset += 1
             if l == 0:
-                arg = "1.000000*x + 1.000000*t + 0.000000"
+                if first_layer_args:
+                    arg = first_layer_args[j % len(first_layer_args)]
+                else:
+                    arg = "1.000000*x + 1.000000*t + 0.000000"
             else:
                 terms = [
                     f"1.000000*({layers[-1][p]})"
@@ -926,16 +936,22 @@ def _solve_with_timeout(equations, symbols, timeout):
         except (ValueError, OSError):
             old_handler = None
         if old_handler is not None:
-            signal.alarm(int(timeout) if timeout > 0 else 1)
+            gc_was_enabled = gc.isenabled()
+            gc.disable()
             try:
-                return sp.solve(equations, symbols, dict=True), None
-            except TimeoutError:
-                return None, "timeout"
-            except Exception as exc:
-                return None, f"{type(exc).__name__}: {exc}"
+                signal.alarm(int(timeout) if timeout > 0 else 1)
+                try:
+                    return sp.solve(equations, symbols, dict=True), None
+                except TimeoutError:
+                    return None, "timeout"
+                except Exception as exc:
+                    return None, f"{type(exc).__name__}: {exc}"
+                finally:
+                    signal.alarm(0)
+                    signal.signal(signal.SIGALRM, old_handler)
             finally:
-                signal.alarm(0)
-                signal.signal(signal.SIGALRM, old_handler)
+                if gc_was_enabled:
+                    gc.enable()
     try:
         return sp.solve(equations, symbols, dict=True), None
     except Exception as exc:
@@ -1770,20 +1786,29 @@ def _probe_nonconstant_solution(expr, x, t, tol: float = 1e-6) -> bool:
 def _call_with_timeout(func, timeout):
     if hasattr(signal, "SIGALRM"):
         try:
-            old_handler = signal.signal(signal.SIGALRM, lambda *_args: (_ for _ in ()).throw(TimeoutError()))
+            old_handler = signal.signal(
+                signal.SIGALRM,
+                lambda *_args: (_ for _ in ()).throw(TimeoutError()),
+            )
         except (ValueError, OSError):
             old_handler = None
         if old_handler is not None:
-            signal.alarm(int(timeout) if timeout > 0 else 1)
+            gc_was_enabled = gc.isenabled()
+            gc.disable()
             try:
-                return func(), None
-            except TimeoutError:
-                return None, "timeout"
-            except Exception as exc:
-                return None, f"{type(exc).__name__}: {exc}"
+                signal.alarm(int(timeout) if timeout > 0 else 1)
+                try:
+                    return func(), None
+                except TimeoutError:
+                    return None, "timeout"
+                except Exception as exc:
+                    return None, f"{type(exc).__name__}: {exc}"
+                finally:
+                    signal.alarm(0)
+                    signal.signal(signal.SIGALRM, old_handler)
             finally:
-                signal.alarm(0)
-                signal.signal(signal.SIGALRM, old_handler)
+                if gc_was_enabled:
+                    gc.enable()
     try:
         return func(), None
     except Exception as exc:
