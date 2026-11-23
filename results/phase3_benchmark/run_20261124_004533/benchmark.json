@@ -1,0 +1,289 @@
+{
+  "candidate_id": "candidate_0001",
+  "status": "EXACT_VERIFIED",
+  "stage2": {
+    "symbolic_status": "success",
+    "constraint_status": "success",
+    "extraction_status": "success",
+    "solve_status": "success",
+    "verification_status": "EXACT_VERIFIED",
+    "exact_solutions": [
+      {
+        "expression": "c_h1*JacobiCN(a**3*t - a*c_h1**2*t/3 + a*t/4 + a*x + d, c_h1**2/(6*a**2)) - 1/2",
+        "constraints": {
+          "m_h1": "c_h1**2/(6*a**2)",
+          "c0": "-1/2",
+          "b": "a**3 - a*c_h1**2/3 + a/4"
+        },
+        "residual": "0"
+      }
+    ],
+    "solutions": [
+      {
+        "expression": "c_h1*JacobiCN(a**3*t - a*c_h1**2*t/3 + a*t/4 + a*x + d, c_h1**2/(6*a**2)) - 1/2",
+        "constraints": {
+          "m_h1": "c_h1**2/(6*a**2)",
+          "c0": "-1/2",
+          "b": "a**3 - a*c_h1**2/3 + a/4"
+        },
+        "residual": "0"
+      }
+    ],
+    "branch_attempts": [
+      {
+        "solution": {
+          "a": "0",
+          "b": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "a": "0",
+          "c_h1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "c_h1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "m_h1": "c_h1**2/(6*a**2)",
+          "a": "0",
+          "b": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "m_h1": "c_h1**2/(6*a**2)",
+          "a": "0",
+          "c_h1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "m_h1": "c_h1**2/(6*a**2)",
+          "c_h1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "m_h1": "c_h1**2/(6*a**2)",
+          "c0": "-1/2",
+          "c_h1": "0"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "CONSTANT_TRIVIAL",
+        "identity_verification_status": "trivial_or_constant"
+      },
+      {
+        "solution": {
+          "m_h1": "c_h1**2/(6*a**2)",
+          "c0": "-1/2",
+          "b": "a**3 - a*c_h1**2/3 + a/4"
+        },
+        "substitution_status": "success",
+        "nontrivial_status": "NONTRIVIAL",
+        "identity_verification_status": "verified"
+      }
+    ],
+    "nontrivial_status": "NONTRIVIAL",
+    "substitution_status": "success",
+    "identity_verification_status": "verified",
+    "failure_reason": null,
+    "timing": {
+      "residual": 0.008999124998808838,
+      "extraction": 0.0370356669955072,
+      "solve": 5.018224125000415
+    },
+    "residual": "a**3*c_h1*(4*m_h1*JacobiCN(a*x + b*t + d, m_h1)**2 - m_h1*JacobiSN(a*x + b*t + d, m_h1)**2 + JacobiDN(a*x + b*t + d, m_h1)**2)*JacobiDN(a*x + b*t + d, m_h1)*JacobiSN(a*x + b*t + d, m_h1) - a*c_h1*(c0 + c_h1*JacobiCN(a*x + b*t + d, m_h1))**2*JacobiDN(a*x + b*t + d, m_h1)*JacobiSN(a*x + b*t + d, m_h1) - a*c_h1*(c0 + c_h1*JacobiCN(a*x + b*t + d, m_h1))*JacobiDN(a*x + b*t + d, m_h1)*JacobiSN(a*x + b*t + d, m_h1) - b*c_h1*JacobiDN(a*x + b*t + d, m_h1)*JacobiSN(a*x + b*t + d, m_h1)",
+    "reduction_status": "skipped",
+    "coefficient_equations": [
+      "-a*c_h1**2*(2*c0 + 1)",
+      "a*c_h1*(-6*a**2*m_h1 + c_h1**2)",
+      "c_h1*(4*a**3*m_h1 + a**3 - a*c0**2 - a*c0 - a*c_h1**2 - b)"
+    ],
+    "sympy_solutions": [
+      {
+        "a": "0",
+        "b": "0"
+      },
+      {
+        "a": "0",
+        "c_h1": "0"
+      },
+      {
+        "c_h1": "0"
+      },
+      {
+        "m_h1": "c_h1**2/(6*a**2)",
+        "a": "0",
+        "b": "0"
+      },
+      {
+        "m_h1": "c_h1**2/(6*a**2)",
+        "a": "0",
+        "c_h1": "0"
+      },
+      {
+        "m_h1": "c_h1**2/(6*a**2)",
+        "c_h1": "0"
+      },
+      {
+        "m_h1": "c_h1**2/(6*a**2)",
+        "c0": "-1/2",
+        "c_h1": "0"
+      },
+      {
+        "m_h1": "c_h1**2/(6*a**2)",
+        "c0": "-1/2",
+        "b": "a**3 - a*c_h1**2/3 + a/4"
+      }
+    ]
+  },
+  "exact_solutions": [
+    {
+      "candidate_id": "candidate_0001",
+      "structure_signature": "node:h1_0:JacobiCN:p1|phase:p1|[('p1', 'h1_0')]|[('h1_0',)]",
+      "expression": "c_h1*JacobiCN(a**3*t - a*c_h1**2*t/3 + a*t/4 + a*x + d, c_h1**2/(6*a**2)) - 1/2",
+      "constraints": {
+        "m_h1": "c_h1**2/(6*a**2)",
+        "c0": "-1/2",
+        "b": "a**3 - a*c_h1**2/3 + a/4"
+      },
+      "residual": "0",
+      "effective_analysis": {
+        "classification": "EXACT_SINGLE_NODE",
+        "active_nodes": [
+          "h1"
+        ],
+        "unreachable_nodes": [],
+        "inactive_edges": [],
+        "inactive_outputs": [],
+        "reduced_expression": "c_h1*JacobiCN(a**3*t - a*c_h1**2*t/3 + a*t/4 + a*x + d, c_h1**2/(6*a**2)) - 1/2",
+        "reasons": [],
+        "parse_errors": []
+      },
+      "traveling_wave": {
+        "classification": "TRAVELING_WAVE_CONFIRMED",
+        "wave_speed": "(-12*a**2 + 4*c_h1**2 - 3)/12",
+        "reason": "u_t + c*u_x == 0 with c independent of x,t"
+      }
+    },
+    {
+      "candidate_id": "candidate_0002",
+      "structure_signature": "node:h1_0:JacobiSN:p1|phase:p1|[('p1', 'h1_0')]|[('h1_0',)]",
+      "expression": "c_h1*JacobiSN(a**3*t - a*c_h1**2*t/6 + a*t/4 + a*x + d, -c_h1**2/(6*a**2)) - 1/2",
+      "constraints": {
+        "c0": "-1/2",
+        "m_h1": "-c_h1**2/(6*a**2)",
+        "b": "a**3 - a*c_h1**2/6 + a/4"
+      },
+      "residual": "0",
+      "effective_analysis": {
+        "classification": "EXACT_SINGLE_NODE",
+        "active_nodes": [
+          "h1"
+        ],
+        "unreachable_nodes": [],
+        "inactive_edges": [],
+        "inactive_outputs": [],
+        "reduced_expression": "c_h1*JacobiSN(a**3*t - a*c_h1**2*t/6 + a*t/4 + a*x + d, -c_h1**2/(6*a**2)) - 1/2",
+        "reasons": [],
+        "parse_errors": []
+      },
+      "traveling_wave": {
+        "classification": "TRAVELING_WAVE_CONFIRMED",
+        "wave_speed": "(-12*a**2 + 2*c_h1**2 - 3)/12",
+        "reason": "u_t + c*u_x == 0 with c independent of x,t"
+      }
+    },
+    {
+      "candidate_id": "candidate_0003",
+      "structure_signature": "node:h1_0:JacobiDN:p1|phase:p1|[('p1', 'h1_0')]|[('h1_0',)]",
+      "expression": "c_h1*JacobiDN(-sqrt(6)*c_h1**3*m_h1*t/36 + sqrt(6)*c_h1**3*t/18 - sqrt(6)*c_h1*t/24 - sqrt(6)*c_h1*x/6 + d, m_h1) - 1/2",
+      "constraints": {
+        "c0": "-1/2",
+        "a": "-sqrt(6)*c_h1/6",
+        "b": "-sqrt(6)*c_h1**3*m_h1/36 + sqrt(6)*c_h1**3/18 - sqrt(6)*c_h1/24"
+      },
+      "residual": "0",
+      "effective_analysis": {
+        "classification": "EXACT_SINGLE_NODE",
+        "active_nodes": [
+          "h1"
+        ],
+        "unreachable_nodes": [],
+        "inactive_edges": [],
+        "inactive_outputs": [],
+        "reduced_expression": "c_h1*JacobiDN(-sqrt(6)*c_h1**3*m_h1*t/36 + sqrt(6)*c_h1**3*t/18 - sqrt(6)*c_h1*t/24 - sqrt(6)*c_h1*x/6 + d, m_h1) - 1/2",
+        "reasons": [],
+        "parse_errors": []
+      },
+      "traveling_wave": {
+        "classification": "TRAVELING_WAVE_CONFIRMED",
+        "wave_speed": "(-2*c_h1**2*m_h1 + 4*c_h1**2 - 3)/12",
+        "reason": "u_t + c*u_x == 0 with c independent of x,t"
+      }
+    },
+    {
+      "candidate_id": "candidate_0003",
+      "structure_signature": "node:h1_0:JacobiDN:p1|phase:p1|[('p1', 'h1_0')]|[('h1_0',)]",
+      "expression": "c_h1*JacobiDN(sqrt(6)*c_h1**3*m_h1*t/36 - sqrt(6)*c_h1**3*t/18 + sqrt(6)*c_h1*t/24 + sqrt(6)*c_h1*x/6 + d, m_h1) - 1/2",
+      "constraints": {
+        "c0": "-1/2",
+        "a": "sqrt(6)*c_h1/6",
+        "b": "sqrt(6)*c_h1**3*m_h1/36 - sqrt(6)*c_h1**3/18 + sqrt(6)*c_h1/24"
+      },
+      "residual": "0",
+      "effective_analysis": {
+        "classification": "EXACT_SINGLE_NODE",
+        "active_nodes": [
+          "h1"
+        ],
+        "unreachable_nodes": [],
+        "inactive_edges": [],
+        "inactive_outputs": [],
+        "reduced_expression": "c_h1*JacobiDN(sqrt(6)*c_h1**3*m_h1*t/36 - sqrt(6)*c_h1**3*t/18 + sqrt(6)*c_h1*t/24 + sqrt(6)*c_h1*x/6 + d, m_h1) - 1/2",
+        "reasons": [],
+        "parse_errors": []
+      },
+      "traveling_wave": {
+        "classification": "TRAVELING_WAVE_CONFIRMED",
+        "wave_speed": "(-2*c_h1**2*m_h1 + 4*c_h1**2 - 3)/12",
+        "reason": "u_t + c*u_x == 0 with c independent of x,t"
+      }
+    }
+  ],
+  "statistics": {
+    "candidate_total": 3,
+    "status_counts": {
+      "EXACT_VERIFIED": 3
+    },
+    "exact_candidates": 3,
+    "exact_branches": 4,
+    "degeneracy_counts": {
+      "DEGENERATE": 3
+    },
+    "total_wall_seconds": 15.33039387500321
+  }
+}

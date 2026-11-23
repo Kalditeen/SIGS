@@ -1,0 +1,1110 @@
+[
+  {
+    "candidate_id": "candidate_0001",
+    "parent_candidate_id": null,
+    "structure_signature": "node:h1_0:JacobiCN:p1|phase:p1|[('p1', 'h1_0')]|[('h1_0',)]",
+    "random_seed": 2026,
+    "network_ir": {
+      "ir_id": "phase3_benchmark_JacobiCN",
+      "phases": [
+        {
+          "node_id": "p1",
+          "x_weight": "a",
+          "t_weight": "b",
+          "bias": "d"
+        }
+      ],
+      "nodes": [
+        {
+          "node_id": "h1",
+          "activation": "JacobiCN",
+          "sources": [
+            "p1"
+          ],
+          "bias": "0"
+        }
+      ],
+      "edges": [
+        {
+          "edge_id": "edge_p1__h1",
+          "source": "p1",
+          "target": "h1",
+          "weight": "1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "source": "h1",
+          "weight": "c_h1"
+        }
+      ],
+      "metadata": {}
+    },
+    "expression": "c0 + c_h1*JacobiCN(a*x + b*t + d, m_h1)",
+    "unknown_parameters": [
+      "0",
+      "1",
+      "a",
+      "b",
+      "c0",
+      "c_h1",
+      "d",
+      "m_h1"
+    ],
+    "parameter_roles": {
+      "phase_x_weight": [
+        "a"
+      ],
+      "phase_t_weight": [
+        "b"
+      ],
+      "phase_bias": [
+        "d"
+      ],
+      "node_bias": [
+        "0"
+      ],
+      "edge_weight": [
+        "1"
+      ],
+      "output_weight": [
+        "c_h1"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "special_function_parameter": [
+        "m_h1"
+      ]
+    },
+    "parameter_consistency": {
+      "ir_parameters": [
+        "0",
+        "1",
+        "a",
+        "b",
+        "c0",
+        "c_h1",
+        "d",
+        "m_h1"
+      ],
+      "expression_unknowns": [
+        "a",
+        "b",
+        "c0",
+        "c_h1",
+        "d",
+        "m_h1"
+      ],
+      "unused_ir_parameters": [
+        "0",
+        "1"
+      ],
+      "missing_from_ir": [],
+      "special_parameters": [
+        "m_h1"
+      ],
+      "consistent": true
+    },
+    "status": "EXACT_VERIFIED",
+    "stage2_record": {
+      "symbolic_status": "success",
+      "constraint_status": "success",
+      "extraction_status": "success",
+      "solve_status": "success",
+      "verification_status": "EXACT_VERIFIED",
+      "exact_solutions": [
+        {
+          "expression": "c_h1*JacobiCN(a**3*t - a*c_h1**2*t/3 + a*t/4 + a*x + d, c_h1**2/(6*a**2)) - 1/2",
+          "constraints": {
+            "m_h1": "c_h1**2/(6*a**2)",
+            "c0": "-1/2",
+            "b": "a**3 - a*c_h1**2/3 + a/4"
+          },
+          "residual": "0"
+        }
+      ],
+      "solutions": [
+        {
+          "expression": "c_h1*JacobiCN(a**3*t - a*c_h1**2*t/3 + a*t/4 + a*x + d, c_h1**2/(6*a**2)) - 1/2",
+          "constraints": {
+            "m_h1": "c_h1**2/(6*a**2)",
+            "c0": "-1/2",
+            "b": "a**3 - a*c_h1**2/3 + a/4"
+          },
+          "residual": "0"
+        }
+      ],
+      "branch_attempts": [
+        {
+          "solution": {
+            "a": "0",
+            "b": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "a": "0",
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "m_h1": "c_h1**2/(6*a**2)",
+            "a": "0",
+            "b": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "m_h1": "c_h1**2/(6*a**2)",
+            "a": "0",
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "m_h1": "c_h1**2/(6*a**2)",
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "m_h1": "c_h1**2/(6*a**2)",
+            "c0": "-1/2",
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "m_h1": "c_h1**2/(6*a**2)",
+            "c0": "-1/2",
+            "b": "a**3 - a*c_h1**2/3 + a/4"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "NONTRIVIAL",
+          "identity_verification_status": "verified"
+        }
+      ],
+      "nontrivial_status": "NONTRIVIAL",
+      "substitution_status": "success",
+      "identity_verification_status": "verified",
+      "failure_reason": null,
+      "timing": {
+        "residual": 0.008999124998808838,
+        "extraction": 0.0370356669955072,
+        "solve": 5.018224125000415
+      },
+      "residual": "a**3*c_h1*(4*m_h1*JacobiCN(a*x + b*t + d, m_h1)**2 - m_h1*JacobiSN(a*x + b*t + d, m_h1)**2 + JacobiDN(a*x + b*t + d, m_h1)**2)*JacobiDN(a*x + b*t + d, m_h1)*JacobiSN(a*x + b*t + d, m_h1) - a*c_h1*(c0 + c_h1*JacobiCN(a*x + b*t + d, m_h1))**2*JacobiDN(a*x + b*t + d, m_h1)*JacobiSN(a*x + b*t + d, m_h1) - a*c_h1*(c0 + c_h1*JacobiCN(a*x + b*t + d, m_h1))*JacobiDN(a*x + b*t + d, m_h1)*JacobiSN(a*x + b*t + d, m_h1) - b*c_h1*JacobiDN(a*x + b*t + d, m_h1)*JacobiSN(a*x + b*t + d, m_h1)",
+      "reduction_status": "skipped",
+      "coefficient_equations": [
+        "-a*c_h1**2*(2*c0 + 1)",
+        "a*c_h1*(-6*a**2*m_h1 + c_h1**2)",
+        "c_h1*(4*a**3*m_h1 + a**3 - a*c0**2 - a*c0 - a*c_h1**2 - b)"
+      ],
+      "sympy_solutions": [
+        {
+          "a": "0",
+          "b": "0"
+        },
+        {
+          "a": "0",
+          "c_h1": "0"
+        },
+        {
+          "c_h1": "0"
+        },
+        {
+          "m_h1": "c_h1**2/(6*a**2)",
+          "a": "0",
+          "b": "0"
+        },
+        {
+          "m_h1": "c_h1**2/(6*a**2)",
+          "a": "0",
+          "c_h1": "0"
+        },
+        {
+          "m_h1": "c_h1**2/(6*a**2)",
+          "c_h1": "0"
+        },
+        {
+          "m_h1": "c_h1**2/(6*a**2)",
+          "c0": "-1/2",
+          "c_h1": "0"
+        },
+        {
+          "m_h1": "c_h1**2/(6*a**2)",
+          "c0": "-1/2",
+          "b": "a**3 - a*c_h1**2/3 + a/4"
+        }
+      ]
+    },
+    "exact_solutions": [
+      {
+        "expression": "c_h1*JacobiCN(a**3*t - a*c_h1**2*t/3 + a*t/4 + a*x + d, c_h1**2/(6*a**2)) - 1/2",
+        "constraints": {
+          "m_h1": "c_h1**2/(6*a**2)",
+          "c0": "-1/2",
+          "b": "a**3 - a*c_h1**2/3 + a/4"
+        },
+        "residual": "0",
+        "effective_analysis": {
+          "classification": "EXACT_SINGLE_NODE",
+          "active_nodes": [
+            "h1"
+          ],
+          "unreachable_nodes": [],
+          "inactive_edges": [],
+          "inactive_outputs": [],
+          "reduced_expression": "c_h1*JacobiCN(a**3*t - a*c_h1**2*t/3 + a*t/4 + a*x + d, c_h1**2/(6*a**2)) - 1/2",
+          "reasons": [],
+          "parse_errors": []
+        }
+      }
+    ],
+    "effective_analysis": [
+      {
+        "classification": "EXACT_SINGLE_NODE",
+        "active_nodes": [
+          "h1"
+        ],
+        "unreachable_nodes": [],
+        "inactive_edges": [],
+        "inactive_outputs": [],
+        "reduced_expression": "c_h1*JacobiCN(a**3*t - a*c_h1**2*t/3 + a*t/4 + a*x + d, c_h1**2/(6*a**2)) - 1/2",
+        "reasons": [],
+        "parse_errors": []
+      }
+    ],
+    "degeneracy_status": "DEGENERATE",
+    "failure_reason": null,
+    "timing": {
+      "residual": 0.008999124998808838,
+      "extraction": 0.0370356669955072,
+      "solve": 5.018224125000415,
+      "total": 5.103119125000376
+    },
+    "expression_node_count": 7
+  },
+  {
+    "candidate_id": "candidate_0002",
+    "parent_candidate_id": null,
+    "structure_signature": "node:h1_0:JacobiSN:p1|phase:p1|[('p1', 'h1_0')]|[('h1_0',)]",
+    "random_seed": 2026,
+    "network_ir": {
+      "ir_id": "phase3_benchmark_JacobiSN",
+      "phases": [
+        {
+          "node_id": "p1",
+          "x_weight": "a",
+          "t_weight": "b",
+          "bias": "d"
+        }
+      ],
+      "nodes": [
+        {
+          "node_id": "h1",
+          "activation": "JacobiSN",
+          "sources": [
+            "p1"
+          ],
+          "bias": "0"
+        }
+      ],
+      "edges": [
+        {
+          "edge_id": "edge_p1__h1",
+          "source": "p1",
+          "target": "h1",
+          "weight": "1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "source": "h1",
+          "weight": "c_h1"
+        }
+      ],
+      "metadata": {}
+    },
+    "expression": "c0 + c_h1*JacobiSN(a*x + b*t + d, m_h1)",
+    "unknown_parameters": [
+      "0",
+      "1",
+      "a",
+      "b",
+      "c0",
+      "c_h1",
+      "d",
+      "m_h1"
+    ],
+    "parameter_roles": {
+      "phase_x_weight": [
+        "a"
+      ],
+      "phase_t_weight": [
+        "b"
+      ],
+      "phase_bias": [
+        "d"
+      ],
+      "node_bias": [
+        "0"
+      ],
+      "edge_weight": [
+        "1"
+      ],
+      "output_weight": [
+        "c_h1"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "special_function_parameter": [
+        "m_h1"
+      ]
+    },
+    "parameter_consistency": {
+      "ir_parameters": [
+        "0",
+        "1",
+        "a",
+        "b",
+        "c0",
+        "c_h1",
+        "d",
+        "m_h1"
+      ],
+      "expression_unknowns": [
+        "a",
+        "b",
+        "c0",
+        "c_h1",
+        "d",
+        "m_h1"
+      ],
+      "unused_ir_parameters": [
+        "0",
+        "1"
+      ],
+      "missing_from_ir": [],
+      "special_parameters": [
+        "m_h1"
+      ],
+      "consistent": true
+    },
+    "status": "EXACT_VERIFIED",
+    "stage2_record": {
+      "symbolic_status": "success",
+      "constraint_status": "success",
+      "extraction_status": "success",
+      "solve_status": "success",
+      "verification_status": "EXACT_VERIFIED",
+      "exact_solutions": [
+        {
+          "expression": "c_h1*JacobiSN(a**3*t - a*c_h1**2*t/6 + a*t/4 + a*x + d, -c_h1**2/(6*a**2)) - 1/2",
+          "constraints": {
+            "c0": "-1/2",
+            "m_h1": "-c_h1**2/(6*a**2)",
+            "b": "a**3 - a*c_h1**2/6 + a/4"
+          },
+          "residual": "0"
+        }
+      ],
+      "solutions": [
+        {
+          "expression": "c_h1*JacobiSN(a**3*t - a*c_h1**2*t/6 + a*t/4 + a*x + d, -c_h1**2/(6*a**2)) - 1/2",
+          "constraints": {
+            "c0": "-1/2",
+            "m_h1": "-c_h1**2/(6*a**2)",
+            "b": "a**3 - a*c_h1**2/6 + a/4"
+          },
+          "residual": "0"
+        }
+      ],
+      "branch_attempts": [
+        {
+          "solution": {
+            "a": "0",
+            "b": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "a": "0",
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "a": "0",
+            "b": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "a": "0",
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "m_h1": "-c_h1**2/(6*a**2)",
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "m_h1": "-c_h1**2/(6*a**2)",
+            "b": "a**3 - a*c_h1**2/6 + a/4"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "NONTRIVIAL",
+          "identity_verification_status": "verified"
+        }
+      ],
+      "nontrivial_status": "NONTRIVIAL",
+      "substitution_status": "success",
+      "identity_verification_status": "verified",
+      "failure_reason": null,
+      "timing": {
+        "residual": 0.007043083001917694,
+        "extraction": 0.03198333400359843,
+        "solve": 5.016868500002602
+      },
+      "residual": "a**3*c_h1*(-m_h1*JacobiCN(a*x + b*t + d, m_h1)**2 + 4*m_h1*JacobiSN(a*x + b*t + d, m_h1)**2 - JacobiDN(a*x + b*t + d, m_h1)**2)*JacobiCN(a*x + b*t + d, m_h1)*JacobiDN(a*x + b*t + d, m_h1) + a*c_h1*(c0 + c_h1*JacobiSN(a*x + b*t + d, m_h1))**2*JacobiCN(a*x + b*t + d, m_h1)*JacobiDN(a*x + b*t + d, m_h1) + a*c_h1*(c0 + c_h1*JacobiSN(a*x + b*t + d, m_h1))*JacobiCN(a*x + b*t + d, m_h1)*JacobiDN(a*x + b*t + d, m_h1) + b*c_h1*JacobiCN(a*x + b*t + d, m_h1)*JacobiDN(a*x + b*t + d, m_h1)",
+      "reduction_status": "skipped",
+      "coefficient_equations": [
+        "a*c_h1**2*(2*c0 + 1)",
+        "a*c_h1*(6*a**2*m_h1 + c_h1**2)",
+        "c_h1*(-a**3*m_h1 - a**3 + a*c0**2 + a*c0 + b)"
+      ],
+      "sympy_solutions": [
+        {
+          "a": "0",
+          "b": "0"
+        },
+        {
+          "a": "0",
+          "c_h1": "0"
+        },
+        {
+          "c_h1": "0"
+        },
+        {
+          "c0": "-1/2",
+          "a": "0",
+          "b": "0"
+        },
+        {
+          "c0": "-1/2",
+          "a": "0",
+          "c_h1": "0"
+        },
+        {
+          "c0": "-1/2",
+          "c_h1": "0"
+        },
+        {
+          "c0": "-1/2",
+          "m_h1": "-c_h1**2/(6*a**2)",
+          "c_h1": "0"
+        },
+        {
+          "c0": "-1/2",
+          "m_h1": "-c_h1**2/(6*a**2)",
+          "b": "a**3 - a*c_h1**2/6 + a/4"
+        }
+      ]
+    },
+    "exact_solutions": [
+      {
+        "expression": "c_h1*JacobiSN(a**3*t - a*c_h1**2*t/6 + a*t/4 + a*x + d, -c_h1**2/(6*a**2)) - 1/2",
+        "constraints": {
+          "c0": "-1/2",
+          "m_h1": "-c_h1**2/(6*a**2)",
+          "b": "a**3 - a*c_h1**2/6 + a/4"
+        },
+        "residual": "0",
+        "effective_analysis": {
+          "classification": "EXACT_SINGLE_NODE",
+          "active_nodes": [
+            "h1"
+          ],
+          "unreachable_nodes": [],
+          "inactive_edges": [],
+          "inactive_outputs": [],
+          "reduced_expression": "c_h1*JacobiSN(a**3*t - a*c_h1**2*t/6 + a*t/4 + a*x + d, -c_h1**2/(6*a**2)) - 1/2",
+          "reasons": [],
+          "parse_errors": []
+        }
+      }
+    ],
+    "effective_analysis": [
+      {
+        "classification": "EXACT_SINGLE_NODE",
+        "active_nodes": [
+          "h1"
+        ],
+        "unreachable_nodes": [],
+        "inactive_edges": [],
+        "inactive_outputs": [],
+        "reduced_expression": "c_h1*JacobiSN(a**3*t - a*c_h1**2*t/6 + a*t/4 + a*x + d, -c_h1**2/(6*a**2)) - 1/2",
+        "reasons": [],
+        "parse_errors": []
+      }
+    ],
+    "degeneracy_status": "DEGENERATE",
+    "failure_reason": null,
+    "timing": {
+      "residual": 0.007043083001917694,
+      "extraction": 0.03198333400359843,
+      "solve": 5.016868500002602,
+      "total": 5.083996875000594
+    },
+    "expression_node_count": 7
+  },
+  {
+    "candidate_id": "candidate_0003",
+    "parent_candidate_id": null,
+    "structure_signature": "node:h1_0:JacobiDN:p1|phase:p1|[('p1', 'h1_0')]|[('h1_0',)]",
+    "random_seed": 2026,
+    "network_ir": {
+      "ir_id": "phase3_benchmark_JacobiDN",
+      "phases": [
+        {
+          "node_id": "p1",
+          "x_weight": "a",
+          "t_weight": "b",
+          "bias": "d"
+        }
+      ],
+      "nodes": [
+        {
+          "node_id": "h1",
+          "activation": "JacobiDN",
+          "sources": [
+            "p1"
+          ],
+          "bias": "0"
+        }
+      ],
+      "edges": [
+        {
+          "edge_id": "edge_p1__h1",
+          "source": "p1",
+          "target": "h1",
+          "weight": "1"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "source": "h1",
+          "weight": "c_h1"
+        }
+      ],
+      "metadata": {}
+    },
+    "expression": "c0 + c_h1*JacobiDN(a*x + b*t + d, m_h1)",
+    "unknown_parameters": [
+      "0",
+      "1",
+      "a",
+      "b",
+      "c0",
+      "c_h1",
+      "d",
+      "m_h1"
+    ],
+    "parameter_roles": {
+      "phase_x_weight": [
+        "a"
+      ],
+      "phase_t_weight": [
+        "b"
+      ],
+      "phase_bias": [
+        "d"
+      ],
+      "node_bias": [
+        "0"
+      ],
+      "edge_weight": [
+        "1"
+      ],
+      "output_weight": [
+        "c_h1"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "special_function_parameter": [
+        "m_h1"
+      ]
+    },
+    "parameter_consistency": {
+      "ir_parameters": [
+        "0",
+        "1",
+        "a",
+        "b",
+        "c0",
+        "c_h1",
+        "d",
+        "m_h1"
+      ],
+      "expression_unknowns": [
+        "a",
+        "b",
+        "c0",
+        "c_h1",
+        "d",
+        "m_h1"
+      ],
+      "unused_ir_parameters": [
+        "0",
+        "1"
+      ],
+      "missing_from_ir": [],
+      "special_parameters": [
+        "m_h1"
+      ],
+      "consistent": true
+    },
+    "status": "EXACT_VERIFIED",
+    "stage2_record": {
+      "symbolic_status": "success",
+      "constraint_status": "success",
+      "extraction_status": "success",
+      "solve_status": "success",
+      "verification_status": "EXACT_VERIFIED",
+      "exact_solutions": [
+        {
+          "expression": "c_h1*JacobiDN(-sqrt(6)*c_h1**3*m_h1*t/36 + sqrt(6)*c_h1**3*t/18 - sqrt(6)*c_h1*t/24 - sqrt(6)*c_h1*x/6 + d, m_h1) - 1/2",
+          "constraints": {
+            "c0": "-1/2",
+            "a": "-sqrt(6)*c_h1/6",
+            "b": "-sqrt(6)*c_h1**3*m_h1/36 + sqrt(6)*c_h1**3/18 - sqrt(6)*c_h1/24"
+          },
+          "residual": "0"
+        },
+        {
+          "expression": "c_h1*JacobiDN(sqrt(6)*c_h1**3*m_h1*t/36 - sqrt(6)*c_h1**3*t/18 + sqrt(6)*c_h1*t/24 + sqrt(6)*c_h1*x/6 + d, m_h1) - 1/2",
+          "constraints": {
+            "c0": "-1/2",
+            "a": "sqrt(6)*c_h1/6",
+            "b": "sqrt(6)*c_h1**3*m_h1/36 - sqrt(6)*c_h1**3/18 + sqrt(6)*c_h1/24"
+          },
+          "residual": "0"
+        }
+      ],
+      "solutions": [
+        {
+          "expression": "c_h1*JacobiDN(-sqrt(6)*c_h1**3*m_h1*t/36 + sqrt(6)*c_h1**3*t/18 - sqrt(6)*c_h1*t/24 - sqrt(6)*c_h1*x/6 + d, m_h1) - 1/2",
+          "constraints": {
+            "c0": "-1/2",
+            "a": "-sqrt(6)*c_h1/6",
+            "b": "-sqrt(6)*c_h1**3*m_h1/36 + sqrt(6)*c_h1**3/18 - sqrt(6)*c_h1/24"
+          },
+          "residual": "0"
+        },
+        {
+          "expression": "c_h1*JacobiDN(sqrt(6)*c_h1**3*m_h1*t/36 - sqrt(6)*c_h1**3*t/18 + sqrt(6)*c_h1*t/24 + sqrt(6)*c_h1*x/6 + d, m_h1) - 1/2",
+          "constraints": {
+            "c0": "-1/2",
+            "a": "sqrt(6)*c_h1/6",
+            "b": "sqrt(6)*c_h1**3*m_h1/36 - sqrt(6)*c_h1**3/18 + sqrt(6)*c_h1/24"
+          },
+          "residual": "0"
+        }
+      ],
+      "branch_attempts": [
+        {
+          "solution": {
+            "a": "0",
+            "b": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "a": "0",
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "a": "0",
+            "m_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "m_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "a": "0",
+            "b": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "a": "0",
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "a": "0",
+            "m_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "m_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "a": "-sqrt(6)*c_h1/6",
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "a": "-sqrt(6)*c_h1/6",
+            "m_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "a": "-sqrt(6)*c_h1/6",
+            "b": "-sqrt(6)*c_h1**3*m_h1/36 + sqrt(6)*c_h1**3/18 - sqrt(6)*c_h1/24"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "NONTRIVIAL",
+          "identity_verification_status": "verified"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "a": "sqrt(6)*c_h1/6",
+            "c_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "a": "sqrt(6)*c_h1/6",
+            "m_h1": "0"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "CONSTANT_TRIVIAL",
+          "identity_verification_status": "trivial_or_constant"
+        },
+        {
+          "solution": {
+            "c0": "-1/2",
+            "a": "sqrt(6)*c_h1/6",
+            "b": "sqrt(6)*c_h1**3*m_h1/36 - sqrt(6)*c_h1**3/18 + sqrt(6)*c_h1/24"
+          },
+          "substitution_status": "success",
+          "nontrivial_status": "NONTRIVIAL",
+          "identity_verification_status": "verified"
+        }
+      ],
+      "nontrivial_status": "NONTRIVIAL",
+      "substitution_status": "success",
+      "identity_verification_status": "verified",
+      "failure_reason": null,
+      "timing": {
+        "residual": 0.0063375000027008355,
+        "extraction": 0.03639112500241026,
+        "solve": 5.032959541997116
+      },
+      "residual": "a**3*c_h1*m_h1*(m_h1*JacobiCN(a*x + b*t + d, m_h1)**2 - m_h1*JacobiSN(a*x + b*t + d, m_h1)**2 + 4*JacobiDN(a*x + b*t + d, m_h1)**2)*JacobiCN(a*x + b*t + d, m_h1)*JacobiSN(a*x + b*t + d, m_h1) - a*c_h1*m_h1*(c0 + c_h1*JacobiDN(a*x + b*t + d, m_h1))**2*JacobiCN(a*x + b*t + d, m_h1)*JacobiSN(a*x + b*t + d, m_h1) - a*c_h1*m_h1*(c0 + c_h1*JacobiDN(a*x + b*t + d, m_h1))*JacobiCN(a*x + b*t + d, m_h1)*JacobiSN(a*x + b*t + d, m_h1) - b*c_h1*m_h1*JacobiCN(a*x + b*t + d, m_h1)*JacobiSN(a*x + b*t + d, m_h1)",
+      "reduction_status": "skipped",
+      "coefficient_equations": [
+        "-a*c_h1**2*m_h1*(2*c0 + 1)",
+        "a*c_h1*m_h1**2*(-6*a**2 + c_h1**2)",
+        "c_h1*m_h1*(a**3*m_h1 + 4*a**3 - a*c0**2 - a*c0 - a*c_h1**2 - b)"
+      ],
+      "sympy_solutions": [
+        {
+          "a": "0",
+          "b": "0"
+        },
+        {
+          "a": "0",
+          "c_h1": "0"
+        },
+        {
+          "a": "0",
+          "m_h1": "0"
+        },
+        {
+          "m_h1": "0"
+        },
+        {
+          "c_h1": "0"
+        },
+        {
+          "c0": "-1/2",
+          "a": "0",
+          "b": "0"
+        },
+        {
+          "c0": "-1/2",
+          "a": "0",
+          "c_h1": "0"
+        },
+        {
+          "c0": "-1/2",
+          "a": "0",
+          "m_h1": "0"
+        },
+        {
+          "c0": "-1/2",
+          "c_h1": "0"
+        },
+        {
+          "c0": "-1/2",
+          "m_h1": "0"
+        },
+        {
+          "c0": "-1/2",
+          "a": "-sqrt(6)*c_h1/6",
+          "c_h1": "0"
+        },
+        {
+          "c0": "-1/2",
+          "a": "-sqrt(6)*c_h1/6",
+          "m_h1": "0"
+        },
+        {
+          "c0": "-1/2",
+          "a": "-sqrt(6)*c_h1/6",
+          "b": "-sqrt(6)*c_h1**3*m_h1/36 + sqrt(6)*c_h1**3/18 - sqrt(6)*c_h1/24"
+        },
+        {
+          "c0": "-1/2",
+          "a": "sqrt(6)*c_h1/6",
+          "c_h1": "0"
+        },
+        {
+          "c0": "-1/2",
+          "a": "sqrt(6)*c_h1/6",
+          "m_h1": "0"
+        },
+        {
+          "c0": "-1/2",
+          "a": "sqrt(6)*c_h1/6",
+          "b": "sqrt(6)*c_h1**3*m_h1/36 - sqrt(6)*c_h1**3/18 + sqrt(6)*c_h1/24"
+        }
+      ]
+    },
+    "exact_solutions": [
+      {
+        "expression": "c_h1*JacobiDN(-sqrt(6)*c_h1**3*m_h1*t/36 + sqrt(6)*c_h1**3*t/18 - sqrt(6)*c_h1*t/24 - sqrt(6)*c_h1*x/6 + d, m_h1) - 1/2",
+        "constraints": {
+          "c0": "-1/2",
+          "a": "-sqrt(6)*c_h1/6",
+          "b": "-sqrt(6)*c_h1**3*m_h1/36 + sqrt(6)*c_h1**3/18 - sqrt(6)*c_h1/24"
+        },
+        "residual": "0",
+        "effective_analysis": {
+          "classification": "EXACT_SINGLE_NODE",
+          "active_nodes": [
+            "h1"
+          ],
+          "unreachable_nodes": [],
+          "inactive_edges": [],
+          "inactive_outputs": [],
+          "reduced_expression": "c_h1*JacobiDN(-sqrt(6)*c_h1**3*m_h1*t/36 + sqrt(6)*c_h1**3*t/18 - sqrt(6)*c_h1*t/24 - sqrt(6)*c_h1*x/6 + d, m_h1) - 1/2",
+          "reasons": [],
+          "parse_errors": []
+        }
+      },
+      {
+        "expression": "c_h1*JacobiDN(sqrt(6)*c_h1**3*m_h1*t/36 - sqrt(6)*c_h1**3*t/18 + sqrt(6)*c_h1*t/24 + sqrt(6)*c_h1*x/6 + d, m_h1) - 1/2",
+        "constraints": {
+          "c0": "-1/2",
+          "a": "sqrt(6)*c_h1/6",
+          "b": "sqrt(6)*c_h1**3*m_h1/36 - sqrt(6)*c_h1**3/18 + sqrt(6)*c_h1/24"
+        },
+        "residual": "0",
+        "effective_analysis": {
+          "classification": "EXACT_SINGLE_NODE",
+          "active_nodes": [
+            "h1"
+          ],
+          "unreachable_nodes": [],
+          "inactive_edges": [],
+          "inactive_outputs": [],
+          "reduced_expression": "c_h1*JacobiDN(sqrt(6)*c_h1**3*m_h1*t/36 - sqrt(6)*c_h1**3*t/18 + sqrt(6)*c_h1*t/24 + sqrt(6)*c_h1*x/6 + d, m_h1) - 1/2",
+          "reasons": [],
+          "parse_errors": []
+        }
+      }
+    ],
+    "effective_analysis": [
+      {
+        "classification": "EXACT_SINGLE_NODE",
+        "active_nodes": [
+          "h1"
+        ],
+        "unreachable_nodes": [],
+        "inactive_edges": [],
+        "inactive_outputs": [],
+        "reduced_expression": "c_h1*JacobiDN(-sqrt(6)*c_h1**3*m_h1*t/36 + sqrt(6)*c_h1**3*t/18 - sqrt(6)*c_h1*t/24 - sqrt(6)*c_h1*x/6 + d, m_h1) - 1/2",
+        "reasons": [],
+        "parse_errors": []
+      },
+      {
+        "classification": "EXACT_SINGLE_NODE",
+        "active_nodes": [
+          "h1"
+        ],
+        "unreachable_nodes": [],
+        "inactive_edges": [],
+        "inactive_outputs": [],
+        "reduced_expression": "c_h1*JacobiDN(sqrt(6)*c_h1**3*m_h1*t/36 - sqrt(6)*c_h1**3*t/18 + sqrt(6)*c_h1*t/24 + sqrt(6)*c_h1*x/6 + d, m_h1) - 1/2",
+        "reasons": [],
+        "parse_errors": []
+      }
+    ],
+    "degeneracy_status": "DEGENERATE",
+    "failure_reason": null,
+    "timing": {
+      "residual": 0.0063375000027008355,
+      "extraction": 0.03639112500241026,
+      "solve": 5.032959541997116,
+      "total": 5.143277875002241
+    },
+    "expression_node_count": 7
+  }
+]

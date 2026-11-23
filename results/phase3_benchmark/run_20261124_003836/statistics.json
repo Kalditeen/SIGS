@@ -1,0 +1,12 @@
+{
+  "candidate_total": 1,
+  "status_counts": {
+    "EXACT_VERIFIED": 1
+  },
+  "exact_candidates": 1,
+  "exact_branches": 1,
+  "degeneracy_counts": {
+    "DEGENERATE": 1
+  },
+  "total_wall_seconds": 5.1097070000032545
+}

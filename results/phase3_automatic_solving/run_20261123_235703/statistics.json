@@ -1,0 +1,19 @@
+{
+  "candidate_total": 4,
+  "status_counts": {
+    "CONSTRAINT_FAILED": 4
+  },
+  "exact_candidates": 0,
+  "exact_branches": 0,
+  "degeneracy_counts": {
+    "UNKNOWN": 4
+  },
+  "total_wall_seconds": 16.21591525000258,
+  "selected_candidate_ids": [
+    "candidate_0052",
+    "candidate_0046",
+    "candidate_0060",
+    "candidate_0058"
+  ],
+  "missing_categories": []
+}

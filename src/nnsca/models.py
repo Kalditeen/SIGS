@@ -285,6 +285,7 @@ class NetworkStructure:
 class AnsatzCandidate:
     candidate_id: str
     structure: NetworkStructure
+    network_ir: object | None = None
     expression: sp.Expr | None = None
     unknown_parameters: list[sp.Symbol] = field(default_factory=list)
     activation_functions: dict = field(default_factory=dict)
@@ -294,7 +295,8 @@ class AnsatzCandidate:
     def to_dict(self) -> dict:
         return {
             "candidate_id": self.candidate_id,
-            "structure": self.structure.to_dict(),
+            "structure": self.structure.to_dict() if self.structure is not None else None,
+            "network_ir": self.network_ir.to_dict() if self.network_ir is not None else None,
             "expression": sp.sstr(self.expression) if self.expression is not None else None,
             "unknown_parameters": [str(s) for s in self.unknown_parameters],
             "activation_functions": self.activation_functions,

@@ -1,0 +1,25 @@
+{
+  "max_candidates": null,
+  "candidate_ids": [
+    "candidate_0001",
+    "candidate_0002",
+    "candidate_0003",
+    "candidate_0004"
+  ],
+  "seed": null,
+  "min_depth": null,
+  "max_depth": null,
+  "min_nodes": null,
+  "max_nodes": null,
+  "max_expression_nodes": 4000,
+  "full_verification": true,
+  "timeouts": {
+    "extract": 6.0,
+    "solve": 8.0,
+    "residual": 6.0,
+    "verify": 8.0
+  },
+  "python_version": "3.12.4",
+  "sympy_version": "1.14.0",
+  "pde": "Gardner u_t + u*u_x + u**2*u_x + u_xxx = 0"
+}

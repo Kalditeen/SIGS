@@ -10,6 +10,7 @@ from __future__ import annotations
 import sys
 import time
 from pathlib import Path
+from dataclasses import dataclass
 
 import sympy as sp
 
@@ -23,6 +24,15 @@ for path in (PDES_DIR, SRC_DIR):
 import sfg_bbm_21 as sfg  # noqa: E402
 
 X, T = sfg.X, sfg.T
+
+@dataclass
+class Stage2Input:
+    pde: object
+    expression: sp.Expr
+    unknown_parameters: list[sp.Symbol]
+    parameter_roles: dict
+    candidate_id: str
+    network_structure: dict | None = None
 
 def _has_imaginary_value(value: sp.Expr) -> bool:
     try:

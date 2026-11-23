@@ -1,0 +1,30 @@
+[
+  {
+    "candidate_id": "candidate_0001",
+    "structure_signature": "node:h1_0:JacobiCN:p1|phase:p1|[('p1', 'h1_0')]|[('h1_0',)]",
+    "expression": "c_h1*JacobiCN(a**3*t - a*c_h1**2*t/3 + a*t/4 + a*x + d, c_h1**2/(6*a**2)) - 1/2",
+    "constraints": {
+      "m_h1": "c_h1**2/(6*a**2)",
+      "c0": "-1/2",
+      "b": "a**3 - a*c_h1**2/3 + a/4"
+    },
+    "residual": "0",
+    "effective_analysis": {
+      "classification": "EXACT_SINGLE_NODE",
+      "active_nodes": [
+        "h1"
+      ],
+      "unreachable_nodes": [],
+      "inactive_edges": [],
+      "inactive_outputs": [],
+      "reduced_expression": "c_h1*JacobiCN(a**3*t - a*c_h1**2*t/3 + a*t/4 + a*x + d, c_h1**2/(6*a**2)) - 1/2",
+      "reasons": [],
+      "parse_errors": []
+    },
+    "traveling_wave": {
+      "classification": "TRAVELING_WAVE_CONFIRMED",
+      "wave_speed": "(-12*a**2 + 4*c_h1**2 - 3)/12",
+      "reason": "u_t + c*u_x == 0 with c independent of x,t"
+    }
+  }
+]

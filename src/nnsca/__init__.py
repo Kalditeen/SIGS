@@ -1,6 +1,6 @@
 """NNSCA package: network data model, compiler, and Stage2 adapter."""
 
-from .compiler import AnsatzCompiler, CompiledAnsatz
+from .compiler.ansatz_compiler import AnsatzCompiler, CompiledAnsatz
 from .models import (
     AnsatzCandidate,
     NetworkConnection,

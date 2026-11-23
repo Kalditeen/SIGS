@@ -1,0 +1,548 @@
+[
+  {
+    "candidate_id": "candidate_0002",
+    "parent_candidate_id": null,
+    "structure_signature": "node:h1_0:sech:p1,p2|node:h1_1:tanh:p1,p2|node:h2_0:JacobiCN:h1_0|node:h2_1:exp:h1_0,h1_1|node:h2_2:square:h1_1|phase:p1|phase:p2|[('h1_0', 'h2_0'), ('h1_0', 'h2_1'), ('h1_1', 'h2_1'), ('h1_1', 'h2_2'), ('p1', 'h1_0'), ('p1', 'h1_1'), ('p2', 'h1_0'), ('p2', 'h1_1')]|[('h2_0',), ('h2_1',), ('h2_2',)]",
+    "random_seed": 2026,
+    "network_ir": {
+      "ir_id": "paper_framework_2231",
+      "phases": [
+        {
+          "node_id": "p1",
+          "x_weight": "a_p1",
+          "t_weight": "b_p1",
+          "bias": "d_p1"
+        },
+        {
+          "node_id": "p2",
+          "x_weight": "a_p2",
+          "t_weight": "b_p2",
+          "bias": "d_p2"
+        }
+      ],
+      "nodes": [
+        {
+          "node_id": "g1",
+          "activation": "tanh",
+          "sources": [
+            "p1",
+            "p2"
+          ],
+          "bias": "bias_g1"
+        },
+        {
+          "node_id": "g2",
+          "activation": "sech",
+          "sources": [
+            "p1",
+            "p2"
+          ],
+          "bias": "bias_g2"
+        },
+        {
+          "node_id": "h1",
+          "activation": "square",
+          "sources": [
+            "g1"
+          ],
+          "bias": "bias_h1"
+        },
+        {
+          "node_id": "h2",
+          "activation": "exp",
+          "sources": [
+            "g1",
+            "g2"
+          ],
+          "bias": "bias_h2"
+        },
+        {
+          "node_id": "h3",
+          "activation": "JacobiCN",
+          "sources": [
+            "g2"
+          ],
+          "bias": "bias_h3"
+        }
+      ],
+      "edges": [
+        {
+          "edge_id": "edge_p1__g1",
+          "source": "p1",
+          "target": "g1",
+          "weight": "w_p1__g1"
+        },
+        {
+          "edge_id": "edge_p2__g1",
+          "source": "p2",
+          "target": "g1",
+          "weight": "w_p2__g1"
+        },
+        {
+          "edge_id": "edge_p1__g2",
+          "source": "p1",
+          "target": "g2",
+          "weight": "w_p1__g2"
+        },
+        {
+          "edge_id": "edge_p2__g2",
+          "source": "p2",
+          "target": "g2",
+          "weight": "w_p2__g2"
+        },
+        {
+          "edge_id": "edge_g1__h1",
+          "source": "g1",
+          "target": "h1",
+          "weight": "w_g1__h1"
+        },
+        {
+          "edge_id": "edge_g1__h2",
+          "source": "g1",
+          "target": "h2",
+          "weight": "w_g1__h2"
+        },
+        {
+          "edge_id": "edge_g2__h2",
+          "source": "g2",
+          "target": "h2",
+          "weight": "w_g2__h2"
+        },
+        {
+          "edge_id": "edge_g2__h3",
+          "source": "g2",
+          "target": "h3",
+          "weight": "w_g2__h3"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "source": "h1",
+          "weight": "c_h1"
+        },
+        {
+          "source": "h2",
+          "weight": "c_h2"
+        },
+        {
+          "source": "h3",
+          "weight": "c_h3"
+        }
+      ],
+      "metadata": {
+        "source": "paper_architecture_template"
+      }
+    },
+    "expression": "c0 + c_h1*(bias_h1 + w_g1__h1*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)))**2 + c_h2*exp(bias_h2 + w_g1__h2*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)) + w_g2__h2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))) + c_h3*JacobiCN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)",
+    "unknown_parameters": [
+      "a_p1",
+      "a_p2",
+      "b_p1",
+      "b_p2",
+      "bias_g1",
+      "bias_g2",
+      "bias_h1",
+      "bias_h2",
+      "bias_h3",
+      "c0",
+      "c_h1",
+      "c_h2",
+      "c_h3",
+      "d_p1",
+      "d_p2",
+      "m_h3",
+      "w_g1__h1",
+      "w_g1__h2",
+      "w_g2__h2",
+      "w_g2__h3",
+      "w_p1__g1",
+      "w_p1__g2",
+      "w_p2__g1",
+      "w_p2__g2"
+    ],
+    "parameter_roles": {
+      "phase_x_weight": [
+        "a_p1",
+        "a_p2"
+      ],
+      "phase_t_weight": [
+        "b_p1",
+        "b_p2"
+      ],
+      "phase_bias": [
+        "d_p1",
+        "d_p2"
+      ],
+      "node_bias": [
+        "bias_g1",
+        "bias_g2",
+        "bias_h1",
+        "bias_h2",
+        "bias_h3"
+      ],
+      "edge_weight": [
+        "w_g1__h1",
+        "w_g1__h2",
+        "w_g2__h2",
+        "w_g2__h3",
+        "w_p1__g1",
+        "w_p1__g2",
+        "w_p2__g1",
+        "w_p2__g2"
+      ],
+      "output_weight": [
+        "c_h1",
+        "c_h2",
+        "c_h3"
+      ],
+      "output_bias": [
+        "c0"
+      ],
+      "special_function_parameter": [
+        "m_h3"
+      ]
+    },
+    "parameter_consistency": {
+      "ir_parameters": [
+        "a_p1",
+        "a_p2",
+        "b_p1",
+        "b_p2",
+        "bias_g1",
+        "bias_g2",
+        "bias_h1",
+        "bias_h2",
+        "bias_h3",
+        "c0",
+        "c_h1",
+        "c_h2",
+        "c_h3",
+        "d_p1",
+        "d_p2",
+        "m_h3",
+        "w_g1__h1",
+        "w_g1__h2",
+        "w_g2__h2",
+        "w_g2__h3",
+        "w_p1__g1",
+        "w_p1__g2",
+        "w_p2__g1",
+        "w_p2__g2"
+      ],
+      "expression_unknowns": [
+        "a_p1",
+        "a_p2",
+        "b_p1",
+        "b_p2",
+        "bias_g1",
+        "bias_g2",
+        "bias_h1",
+        "bias_h2",
+        "bias_h3",
+        "c0",
+        "c_h1",
+        "c_h2",
+        "c_h3",
+        "d_p1",
+        "d_p2",
+        "m_h3",
+        "w_g1__h1",
+        "w_g1__h2",
+        "w_g2__h2",
+        "w_g2__h3",
+        "w_p1__g1",
+        "w_p1__g2",
+        "w_p2__g1",
+        "w_p2__g2"
+      ],
+      "unused_ir_parameters": [],
+      "missing_from_ir": [],
+      "special_parameters": [
+        "m_h3"
+      ],
+      "consistent": true
+    },
+    "status": "CONSTRAINT_FAILED",
+    "stage2_record": {
+      "symbolic_status": "success",
+      "constraint_status": "timeout",
+      "extraction_status": "timeout",
+      "solve_status": "skipped",
+      "verification_status": "SYMBOLIC_UNRESOLVED",
+      "exact_solutions": [],
+      "solutions": [],
+      "branch_attempts": [],
+      "nontrivial_status": "skipped",
+      "substitution_status": "skipped",
+      "identity_verification_status": "skipped",
+      "failure_reason": "coefficient extraction timeout",
+      "timing": {
+        "residual": 0.3445052079987363,
+        "extraction": 4.004009750002297
+      },
+      "residual": "-12*c_h1*w_g1__h1**2*(a_p1*w_p1__g1 + a_p2*w_p2__g1)**3*(tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2 - 1)**2*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)) + 2*c_h1*w_g1__h1*(1 - tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2)*(bias_h1 + w_g1__h1*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)))*(b_p1*w_p1__g1 + b_p2*w_p2__g1) - 4*c_h1*w_g1__h1*(bias_h1 + w_g1__h1*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)))*(a_p1*w_p1__g1 + a_p2*w_p2__g1)**3*(tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2 - 1)**2 - 8*c_h1*w_g1__h1*(bias_h1 + w_g1__h1*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)))*(a_p1*w_p1__g1 + a_p2*w_p2__g1)**3*(tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2 - 1)*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2 + c_h2*(w_g1__h2*(1 - tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2)*(b_p1*w_p1__g1 + b_p2*w_p2__g1) - w_g2__h2*(b_p1*w_p1__g2 + b_p2*w_p2__g2)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)))*exp(bias_h2 + w_g1__h2*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)) + w_g2__h2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))) - c_h2*(w_g1__h2*(a_p1*w_p1__g1 + a_p2*w_p2__g1)*(tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2 - 1) + w_g2__h2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)))**3*exp(bias_h2 + w_g1__h2*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)) + w_g2__h2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))) - 3*c_h2*(w_g1__h2*(a_p1*w_p1__g1 + a_p2*w_p2__g1)*(tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2 - 1) + w_g2__h2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)))*(2*w_g1__h2*(a_p1*w_p1__g1 + a_p2*w_p2__g1)**2*(tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2 - 1)*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)) + w_g2__h2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)**2*(tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**2 - 1)*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)) + w_g2__h2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)**2*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)))*exp(bias_h2 + w_g1__h2*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)) + w_g2__h2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))) - c_h2*(2*w_g1__h2*(a_p1*w_p1__g1 + a_p2*w_p2__g1)**3*(tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2 - 1)**2 + 4*w_g1__h2*(a_p1*w_p1__g1 + a_p2*w_p2__g1)**3*(tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2 - 1)*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2 + 5*w_g2__h2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)**3*(tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**2 - 1)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)) + w_g2__h2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)**3*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)))*exp(bias_h2 + w_g1__h2*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)) + w_g2__h2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))) - 4*c_h3*m_h3*w_g2__h3**3*(a_p1*w_p1__g2 + a_p2*w_p2__g2)**3*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**3*JacobiCN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)**2*JacobiDN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*JacobiSN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**3 + c_h3*m_h3*w_g2__h3**3*(a_p1*w_p1__g2 + a_p2*w_p2__g2)**3*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**3*JacobiDN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*JacobiSN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)**3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**3 - 3*c_h3*m_h3*w_g2__h3**2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)**3*(tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**2 - 1)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*JacobiCN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*JacobiSN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)**2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**2 - 3*c_h3*m_h3*w_g2__h3**2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)**3*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**3*JacobiCN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*JacobiSN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)**2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**2 - c_h3*w_g2__h3**3*(a_p1*w_p1__g2 + a_p2*w_p2__g2)**3*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**3*JacobiDN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)**3*JacobiSN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**3 + 3*c_h3*w_g2__h3**2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)**3*(tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**2 - 1)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*JacobiCN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*JacobiDN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)**2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**2 + 3*c_h3*w_g2__h3**2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)**3*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**3*JacobiCN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*JacobiDN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)**2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**2 + 5*c_h3*w_g2__h3*(a_p1*w_p1__g2 + a_p2*w_p2__g2)**3*(tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**2 - 1)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*JacobiDN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*JacobiSN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)) + c_h3*w_g2__h3*(a_p1*w_p1__g2 + a_p2*w_p2__g2)**3*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**3*JacobiDN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*JacobiSN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)) + c_h3*w_g2__h3*(b_p1*w_p1__g2 + b_p2*w_p2__g2)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*JacobiDN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*JacobiSN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)) + (2*c_h1*w_g1__h1*(1 - tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2)*(bias_h1 + w_g1__h1*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)))*(a_p1*w_p1__g1 + a_p2*w_p2__g1) + c_h2*(w_g1__h2*(1 - tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2)*(a_p1*w_p1__g1 + a_p2*w_p2__g1) - w_g2__h2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)))*exp(bias_h2 + w_g1__h2*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)) + w_g2__h2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))) + c_h3*w_g2__h3*(a_p1*w_p1__g2 + a_p2*w_p2__g2)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*JacobiDN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*JacobiSN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)))*(c0 + c_h1*(bias_h1 + w_g1__h1*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)))**2 + c_h2*exp(bias_h2 + w_g1__h2*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)) + w_g2__h2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))) + c_h3*JacobiCN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3))**2 + (2*c_h1*w_g1__h1*(1 - tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2)*(bias_h1 + w_g1__h1*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)))*(a_p1*w_p1__g1 + a_p2*w_p2__g1) + c_h2*(w_g1__h2*(1 - tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2)*(a_p1*w_p1__g1 + a_p2*w_p2__g1) - w_g2__h2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)))*exp(bias_h2 + w_g1__h2*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)) + w_g2__h2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))) + c_h3*w_g2__h3*(a_p1*w_p1__g2 + a_p2*w_p2__g2)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*JacobiDN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*JacobiSN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3)*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)))*(c0 + c_h1*(bias_h1 + w_g1__h1*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)))**2 + c_h2*exp(bias_h2 + w_g1__h2*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)) + w_g2__h2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))) + c_h3*JacobiCN(bias_h3 + w_g2__h3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)), m_h3))",
+      "reduction_status": "skipped"
+    },
+    "exact_solutions": [],
+    "effective_analysis": [],
+    "degeneracy_status": "UNKNOWN",
+    "failure_reason": null,
+    "timing": {
+      "residual": 0.3445052079987363,
+      "extraction": 4.004009750002297,
+      "total": 4.388721416995395
+    },
+    "expression_node_count": 69
+  },
+  {
+    "candidate_id": "candidate_0046",
+    "parent_candidate_id": null,
+    "structure_signature": "node:h1_0:sech:p1,p2|node:h1_1:tanh:p1,p2|phase:p1|phase:p2|[('p1', 'h1_0'), ('p1', 'h1_1'), ('p2', 'h1_0'), ('p2', 'h1_1')]|[('h1_0',), ('h1_1',)]",
+    "random_seed": 2026,
+    "network_ir": {
+      "ir_id": "paper_framework_2231__remove_layer__1951",
+      "phases": [
+        {
+          "node_id": "p1",
+          "x_weight": "a_p1",
+          "t_weight": "b_p1",
+          "bias": "d_p1"
+        },
+        {
+          "node_id": "p2",
+          "x_weight": "a_p2",
+          "t_weight": "b_p2",
+          "bias": "d_p2"
+        }
+      ],
+      "nodes": [
+        {
+          "node_id": "g1",
+          "activation": "tanh",
+          "sources": [
+            "p1",
+            "p2"
+          ],
+          "bias": "bias_g1"
+        },
+        {
+          "node_id": "g2",
+          "activation": "sech",
+          "sources": [
+            "p1",
+            "p2"
+          ],
+          "bias": "bias_g2"
+        }
+      ],
+      "edges": [
+        {
+          "edge_id": "edge_p1__g1",
+          "source": "p1",
+          "target": "g1",
+          "weight": "w_p1__g1"
+        },
+        {
+          "edge_id": "edge_p2__g1",
+          "source": "p2",
+          "target": "g1",
+          "weight": "w_p2__g1"
+        },
+        {
+          "edge_id": "edge_p1__g2",
+          "source": "p1",
+          "target": "g2",
+          "weight": "w_p1__g2"
+        },
+        {
+          "edge_id": "edge_p2__g2",
+          "source": "p2",
+          "target": "g2",
+          "weight": "w_p2__g2"
+        }
+      ],
+      "output_bias": "c0",
+      "output_terms": [
+        {
+          "source": "g1",
+          "weight": "c_g1"
+        },
+        {
+          "source": "g2",
+          "weight": "c_g2"
+        }
+      ],
+      "metadata": {
+        "source": "paper_architecture_template",
+        "removed_nodes": [
+          "h1",
+          "h2",
+          "h3"
+        ],
+        "mutation_history": [
+          {
+            "parent_ir_id": "paper_framework_2231",
+            "mutation_type": "remove_layer",
+            "changed_nodes": [
+              "h1",
+              "h2",
+              "h3"
+            ],
+            "changed_edges": [
+              "edge_g1__h1",
+              "edge_g1__h2",
+              "edge_g2__h2",
+              "edge_g2__h3"
+            ],
+            "random_seed": 2026
+          }
+        ]
+      }
+    },
+    "expression": "c0 + c_g1*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)) + c_g2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))",
+    "unknown_parameters": [
+      "a_p1",
+      "a_p2",
+      "b_p1",
+      "b_p2",
+      "bias_g1",
+      "bias_g2",
+      "c0",
+      "c_g1",
+      "c_g2",
+      "d_p1",
+      "d_p2",
+      "w_p1__g1",
+      "w_p1__g2",
+      "w_p2__g1",
+      "w_p2__g2"
+    ],
+    "parameter_roles": {
+      "phase_x_weight": [
+        "a_p1",
+        "a_p2"
+      ],
+      "phase_t_weight": [
+        "b_p1",
+        "b_p2"
+      ],
+      "phase_bias": [
+        "d_p1",
+        "d_p2"
+      ],
+      "node_bias": [
+        "bias_g1",
+        "bias_g2"
+      ],
+      "edge_weight": [
+        "w_p1__g1",
+        "w_p1__g2",
+        "w_p2__g1",
+        "w_p2__g2"
+      ],
+      "output_weight": [
+        "c_g1",
+        "c_g2"
+      ],
+      "output_bias": [
+        "c0"
+      ]
+    },
+    "parameter_consistency": {
+      "ir_parameters": [
+        "a_p1",
+        "a_p2",
+        "b_p1",
+        "b_p2",
+        "bias_g1",
+        "bias_g2",
+        "c0",
+        "c_g1",
+        "c_g2",
+        "d_p1",
+        "d_p2",
+        "w_p1__g1",
+        "w_p1__g2",
+        "w_p2__g1",
+        "w_p2__g2"
+      ],
+      "expression_unknowns": [
+        "a_p1",
+        "a_p2",
+        "b_p1",
+        "b_p2",
+        "bias_g1",
+        "bias_g2",
+        "c0",
+        "c_g1",
+        "c_g2",
+        "d_p1",
+        "d_p2",
+        "w_p1__g1",
+        "w_p1__g2",
+        "w_p2__g1",
+        "w_p2__g2"
+      ],
+      "unused_ir_parameters": [],
+      "missing_from_ir": [],
+      "special_parameters": [],
+      "consistent": true
+    },
+    "status": "CONSTRAINT_FAILED",
+    "stage2_record": {
+      "symbolic_status": "success",
+      "constraint_status": "success",
+      "extraction_status": "success",
+      "solve_status": "unsupported",
+      "verification_status": "SYMBOLIC_UNRESOLVED",
+      "exact_solutions": [],
+      "solutions": [],
+      "branch_attempts": [],
+      "nontrivial_status": "skipped",
+      "substitution_status": "skipped",
+      "identity_verification_status": "skipped",
+      "failure_reason": "coefficient solve system too large",
+      "timing": {
+        "residual": 0.016785457999503706,
+        "extraction": 0.24229316700075287,
+        "solve": 1.9169965526089072e-06
+      },
+      "residual": "c_g1*(1 - tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2)*(b_p1*w_p1__g1 + b_p2*w_p2__g1) - c_g2*(b_p1*w_p1__g2 + b_p2*w_p2__g2)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)) + (c_g1*(1 - tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2)*(a_p1*w_p1__g1 + a_p2*w_p2__g1) - c_g2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)))*(c0 + c_g1*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)) + c_g2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)))**2 + (c_g1*(1 - tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2)*(a_p1*w_p1__g1 + a_p2*w_p2__g1) - c_g2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)))*(c0 + c_g1*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2)) + c_g2*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))) - (2*c_g1*(a_p1*w_p1__g1 + a_p2*w_p2__g1)**3*(tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2 - 1)**2 + 4*c_g1*(a_p1*w_p1__g1 + a_p2*w_p2__g1)**3*(tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2 - 1)*tanh(bias_g1 + w_p1__g1*(a_p1*x + b_p1*t + d_p1) + w_p2__g1*(a_p2*x + b_p2*t + d_p2))**2 + 5*c_g2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)**3*(tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**2 - 1)*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)) + c_g2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)**3*tanh(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2))**3*sech(bias_g2 + w_p1__g2*(a_p1*x + b_p1*t + d_p1) + w_p2__g2*(a_p2*x + b_p2*t + d_p2)))",
+      "reduction_status": "skipped",
+      "coefficient_equations": [
+        "-c_g2**3*(a_p1*w_p1__g2 + a_p2*w_p2__g2)",
+        "c_g1*c_g2**2*(a_p1*w_p1__g1 + a_p2*w_p2__g1)",
+        "-c_g1**2*c_g2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)",
+        "-c_g1*c_g2**2*(a_p1*w_p1__g1 + a_p2*w_p2__g1)",
+        "2*c_g1**2*c_g2*(a_p1*w_p1__g1 + a_p2*w_p2__g1)",
+        "2*c_g1*c_g2**2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)",
+        "-2*c_g1**2*c_g2*(a_p1*w_p1__g1 + a_p2*w_p2__g1)",
+        "-2*c_g1*c_g2**2*(a_p1*w_p1__g2 + a_p2*w_p2__g2)",
+        "c_g1**2*(2*a_p1*c0*w_p1__g1 + a_p1*w_p1__g1 + 2*a_p2*c0*w_p2__g1 + a_p2*w_p2__g1)",
+        "c_g2**2*(2*a_p1*c0*w_p1__g2 + a_p1*w_p1__g2 + 2*a_p2*c0*w_p2__g2 + a_p2*w_p2__g2)",
+        "c_g1*c_g2*(2*a_p1*c0*w_p1__g1 + a_p1*w_p1__g1 + 2*a_p2*c0*w_p2__g1 + a_p2*w_p2__g1)",
+        "-c_g1**2*(2*a_p1*c0*w_p1__g1 + a_p1*w_p1__g1 + 2*a_p2*c0*w_p2__g1 + a_p2*w_p2__g1)",
+        "-c_g2**2*(2*a_p1*c0*w_p1__g2 + a_p1*w_p1__g2 + 2*a_p2*c0*w_p2__g2 + a_p2*w_p2__g2)",
+        "-c_g1*c_g2*(2*a_p1*c0*w_p1__g1 + a_p1*w_p1__g1 + 2*a_p2*c0*w_p2__g1 + a_p2*w_p2__g1)",
+        "-c_g1*c_g2*(2*a_p1*c0*w_p1__g2 + a_p1*w_p1__g2 + 2*a_p2*c0*w_p2__g2 + a_p2*w_p2__g2)",
+        "-6*c_g2*(a_p1**3*w_p1__g2**3 + 3*a_p1**2*a_p2*w_p1__g2**2*w_p2__g2 + 3*a_p1*a_p2**2*w_p1__g2*w_p2__g2**2 + a_p2**3*w_p2__g2**3)",
+        "-c_g1*(6*a_p1**3*w_p1__g1**3 + 18*a_p1**2*a_p2*w_p1__g1**2*w_p2__g1 + 18*a_p1*a_p2**2*w_p1__g1*w_p2__g1**2 + a_p1*c_g1**2*w_p1__g1 + 6*a_p2**3*w_p2__g1**3 + a_p2*c_g1**2*w_p2__g1)",
+        "c_g2*(5*a_p1**3*w_p1__g2**3 + 15*a_p1**2*a_p2*w_p1__g2**2*w_p2__g2 + 15*a_p1*a_p2**2*w_p1__g2*w_p2__g2**2 - a_p1*c0**2*w_p1__g2 - a_p1*c0*w_p1__g2 + 5*a_p2**3*w_p2__g2**3 - a_p2*c0**2*w_p2__g2 - a_p2*c0*w_p2__g2 - b_p1*w_p1__g2 - b_p2*w_p2__g2)",
+        "c_g1*(-2*a_p1**3*w_p1__g1**3 - 6*a_p1**2*a_p2*w_p1__g1**2*w_p2__g1 - 6*a_p1*a_p2**2*w_p1__g1*w_p2__g1**2 + a_p1*c0**2*w_p1__g1 + a_p1*c0*w_p1__g1 + a_p1*c_g2**2*w_p1__g1 - 2*a_p2**3*w_p2__g1**3 + a_p2*c0**2*w_p2__g1 + a_p2*c0*w_p2__g1 + a_p2*c_g2**2*w_p2__g1 + b_p1*w_p1__g1 + b_p2*w_p2__g1)",
+        "c_g1*(8*a_p1**3*w_p1__g1**3 + 24*a_p1**2*a_p2*w_p1__g1**2*w_p2__g1 + 24*a_p1*a_p2**2*w_p1__g1*w_p2__g1**2 - a_p1*c0**2*w_p1__g1 - a_p1*c0*w_p1__g1 + a_p1*c_g1**2*w_p1__g1 - a_p1*c_g2**2*w_p1__g1 + 8*a_p2**3*w_p2__g1**3 - a_p2*c0**2*w_p2__g1 - a_p2*c0*w_p2__g1 + a_p2*c_g1**2*w_p2__g1 - a_p2*c_g2**2*w_p2__g1 - b_p1*w_p1__g1 - b_p2*w_p2__g1)"
+      ]
+    },
+    "exact_solutions": [],
+    "effective_analysis": [],
+    "degeneracy_status": "UNKNOWN",
+    "failure_reason": null,
+    "timing": {
+      "residual": 0.016785457999503706,
+      "extraction": 0.24229316700075287,
+      "solve": 1.9169965526089072e-06,
+      "total": 0.26832808299514
+    },
+    "expression_node_count": 30
+  }
+]

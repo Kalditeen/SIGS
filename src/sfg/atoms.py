@@ -70,6 +70,8 @@ def _atom(name: str, family: str, expression: str, domain: str, parameters=()) -
 
 
 _ATOM_DEFS: dict[str, ActivationAtom] = {
+    "identity": _atom("identity", "elementary", "z", "real_axis"),
+    "square": _atom("square", "elementary", "z**2", "real_axis"),
     "tanh": _atom("tanh", "hyperbolic", "tanh(z)", "real_axis"),
     "sech": _atom("sech", "hyperbolic", "sech(z)", "real_axis"),
     "sech_pow2": _atom("sech_pow2", "hyperbolic", "sech(z)**2", "real_axis"),
