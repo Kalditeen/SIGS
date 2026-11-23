@@ -1,0 +1,5 @@
+run started at 2026-11-23 18:50:42
+network=[2, 1]
+coefficients alpha=1 beta=1 gamma=1
+mode=random seed=101
+elapsed=33.24s

@@ -1,0 +1,2610 @@
+{
+  "repo_root": "/Users/kang/SIGS",
+  "created_at": "20261123_084737",
+  "arguments": {
+    "n_prior": 120,
+    "n_cluster": 120,
+    "n_subclusters": 4,
+    "stage1_candidates": 40,
+    "stage1_n_samples": 80,
+    "seed": 42,
+    "skip_stage1": false,
+    "skip_model_prior": false,
+    "output_dir": null
+  },
+  "paths": {
+    "cluster_file": "/Users/kang/SIGS/data/clusters.pkl",
+    "config_file": "/Users/kang/SIGS/configs/config.yaml",
+    "checkpoint_file": "/Users/kang/SIGS/data/model.ckpt"
+  },
+  "part_A": {
+    "stored_cluster_sampling": {
+      "summary_by_mathclass": {
+        "SPATIOTEMPORAL_2D": {
+          "label": "SPATIOTEMPORAL_2D",
+          "raw_count": 120,
+          "parseable_count": 120,
+          "parse_success_rate": 1.0,
+          "unique_full_expression_count": 118,
+          "unique_function_bearing_univariate_subexpressions": 132,
+          "function_occurrences": {
+            "sin": 90,
+            "cos": 60,
+            "tanh": 30,
+            "exp": 30
+          },
+          "univariate_candidates": [
+            {
+              "canonical": "sin(pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 2
+            },
+            {
+              "canonical": "cos(0.304*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(0.312*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(0.316*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(0.363*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(0.51*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(0.655*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(0.7*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(0.789*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(0.814*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.2*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.224*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.226*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.284*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.344*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.446*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.452*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.464*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.496*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.512*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.56*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.605*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.662*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.716*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.904*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(10.322*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(10.704*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.248*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.32*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.36*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.384*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.47*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.54*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.66*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.766*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.9*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.958*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.076*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.104*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.14*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.612*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.663*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.738*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.762*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.825*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(4.36*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(4.744*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(5.239*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(5.384*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(5.535*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(6.104*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(6.507*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(6.69*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(6.99*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(7.462*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(8.048*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(8.12*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(8.346*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(8.528*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(9.954*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(0.697836706210747*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(0.721500721500722*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(0.755287009063444*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(1.19047619047619*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(1.23152709359606*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(1.2987012987013*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(1.77935943060498*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(1.78571428571429*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(10*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(10.4166666666667*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(10.4384133611691*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(11*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(12*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(12.8755364806867*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(13*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(14*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(15*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(16*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(2*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(2.13068181818182*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(2.16450216450216*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(2.1978021978022*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(2.25225225225225*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(2.5531914893617*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(2.85714285714286*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(3*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(3.32225913621262*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(3.385240352065*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(3.62844702467344*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(3.63108206245461*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(3.73134328358209*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(3.77643504531722*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(3.89408099688473*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(4*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(5*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(5.61797752808989*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(6*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(6.75675675675676*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(7.63358778625954*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(7.75193798449612*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(8*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(9*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(9*pi*z/8)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "exp(-0.166003413623461*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-0.169703632907096*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-0.353544625756456*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-0.855118907066959*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-1.14654195011338*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-1.44040312601218*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-1.46907967224326*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-1.47976459936623*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-1.52733269616387*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-1.66454081632653*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-1.7389204202391*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-10.2891049109961*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-11.2449347592982*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-13.4057739524101*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-14.6179676051281*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-14.8462998812296*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-2.1679695843479*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-3.17332370222107*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-3.59142926710494*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-31.09375*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-32.3228634039445*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-4.00980173758075*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-4.35102040816327*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-4.97338318996482*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-54.023195721411*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-6.14409673603431*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-9.15642194075807*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-144.136966701353*pi**2*z)",
+              "real_finite_differentiable_fraction": 0.6666666666666666,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-147.073431860576*pi**2*z)",
+              "real_finite_differentiable_fraction": 0.6666666666666666,
+              "ops": 5
+            }
+          ],
+          "sample_expressions": [
+            "(((1.528+0.988)/2)*tanh(((x+0.915-1.558*t)*(1.588+0.988))/(4*0.901)))",
+            "(((2.455+0.788)/2)*tanh(((x+0.722-1.64*t)*(2.475+0.777))/(4*0.677)))",
+            "(((1.301-0.311)/2)*tanh(((x-0.533-1.501*t)*(1.301-0.311))/(4*0.801)))",
+            "(((2.311+0.088)/2)*tanh(((x+0.088-1.588*t)*(2.388+0.088))/(4*0.78)))",
+            "(((2.573-0.336)/2)*tanh(((x+0.722-1.933*t)*(2.573-0.336))/(4*0.51)))",
+            "(((1.481+0.045)/2)*tanh(((x+0.335-1.08*t)*(1.488+0.099))/(4*0.249)))",
+            "(((2.777-0.476)/2)*tanh(((x-0.481-0.711*t)*(2.777-0.477))/(4*0.61)))",
+            "(((1.011+0.61)/2)*tanh(((x-0.161-1.111*t)*(1.011+0.61))/(4*0.131)))",
+            "(((1.566-0.566)/2)*tanh(((x-0.936-0.966*t)*(1.566-0.366))/(4*0.466)))",
+            "(((2.644-0.433)/2)*tanh(((x-0.434-0.424*t)*(2.744-0.433))/(4*0.433)))",
+            "(((2.002+0.999)/2)*tanh(((x+0.299-0.136*t)*(2.002+0.999))/(4*0.127)))",
+            "(((2.506-0.766)/2)*tanh(((x-0.706-0.761*t)*(2.506-0.766))/(4*0.626)))",
+            "(((1.967-0.555)/2)*tanh(((x-0.155-1.55*t)*(1.167-0.555))/(4*0.744)))",
+            "(((2.688-0.377)/2)*tanh(((x-0.711-0.771*t)*(1.678-0.377))/(4*0.377)))",
+            "(((2.125-0.529)/2)*tanh(((x+0.535-1.55*t)*(2.159-0.599))/(4*0.89)))",
+            "(((1.376-0.506)/2)*tanh(((x-0.922-1.512*t)*(1.376-0.517))/(4*0.622)))",
+            "(((2.388-0.09)/2)*tanh(((x+0.309-0.355*t)*(2.388-0.09))/(4*0.999)))",
+            "(((1.341-0.688)/2)*tanh(((x+0.455-1.611*t)*(1.311-0.655))/(4*0.633)))",
+            "(((2.176-0.62)/2)*tanh(((x-0.3-0.1*2)*t)/(2.167-0.62)))",
+            "(((1.092+0.712)/2)*tanh(((x+0.022-0.154*t)*(1.099+0.711))/(4*0.781)))"
+          ]
+        },
+        "SPATIOTEMPORAL_3D": {
+          "label": "SPATIOTEMPORAL_3D",
+          "raw_count": 120,
+          "parseable_count": 120,
+          "parse_success_rate": 1.0,
+          "unique_full_expression_count": 116,
+          "unique_function_bearing_univariate_subexpressions": 0,
+          "function_occurrences": {
+            "exp": 60,
+            "cos": 59
+          },
+          "univariate_candidates": [],
+          "sample_expressions": [
+            "(1+1.531*exp(-((x-1.624)^2+(y+4.722)^2)/(0.358*(1+t))))",
+            "(1+1.651*exp(-((x-1.822)^2+(y-2.304)^2)/(1.744*(1+t))))",
+            "(1+1.464*exp(-((x-5.531)^2+(y+1.071)^2)/(1.522*(1+t))))",
+            "(1+0.533*exp(-((x+3.331)^2+(y+1.399)^2)/(1.178*(1+t))))",
+            "(1+0.654*exp(-((x-0.223)^2+(y-2.423)^2)/(1.922*(1+t))))",
+            "(1+1.967*exp(-((x+1.442)^2+(y-1.394)^2)/(1.022*(1+t))))",
+            "(1+1.804*exp(-((x+2.36)^2+(y+4.681)^2)/(0.881*(1+t))))",
+            "(1+0.767*exp(-((x-3.311)^2+(y-3.911)^2)/(1.517*(1+t))))",
+            "(1+1.023*exp(-((x+5.155)^2+(y-0.453)^2)/(2.554*(1+t))))",
+            "(1+1.868*exp(-((x+5.099)^2+(y-1.755)^2)/(1.366*(1+t))))",
+            "(1+1.008*exp(-((x+4.366)^2+(y+2.346)^2)/(2.261*(1+t))))",
+            "(1+1.222*exp(-((x+0.359)^2+(y-4.061)^2)/(1.344*(1+t))))",
+            "(1+1.311*exp(-((x-0.066)^2+(y-0.023)^2)/(2.322*(1+t))))",
+            "(1+1.105*exp(-((x+2.266)^2+(y-4.466)^2)/(1.24*(1+t))))",
+            "(1+1.505*exp(-((x+0.789)^2+(y+5.788)^2)/(2.188*(1+t))))",
+            "(1+1.854*exp(-((x+5.711)^2+(y+3.445)^2)/(0.355*(1+t))))",
+            "(1+1.177*exp(-((x-1.951)^2+(y+4.751)^2)/(1.755*(1+t))))",
+            "(1+1.18*exp(-((x+4.961)^2+(y+4.336)^2)/(0.554*(1+t))))",
+            "(1+0.854*exp(-((x-5.711)^2+(y-1.711)^2)/(1.515*(1+t))))",
+            "(1+1.978*exp(-((x+5.099)^2+(y+2.444)^2)/(0.444*(1+t))))"
+          ]
+        },
+        "SPATIAL_1D": {
+          "label": "SPATIAL_1D",
+          "raw_count": 120,
+          "parseable_count": 120,
+          "parse_success_rate": 1.0,
+          "unique_full_expression_count": 119,
+          "unique_function_bearing_univariate_subexpressions": 156,
+          "function_occurrences": {
+            "sin": 91,
+            "exp": 9,
+            "cos": 6,
+            "log": 5
+          },
+          "univariate_candidates": [
+            {
+              "canonical": "cos(z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 1
+            },
+            {
+              "canonical": "exp(z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 1
+            },
+            {
+              "canonical": "sin(z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 1
+            },
+            {
+              "canonical": "exp(2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 2
+            },
+            {
+              "canonical": "exp(z)/z",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 2
+            },
+            {
+              "canonical": "log(z + 10)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 2
+            },
+            {
+              "canonical": "log(z**2)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 2
+            },
+            {
+              "canonical": "sin(9*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 2
+            },
+            {
+              "canonical": "sin(pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 2
+            },
+            {
+              "canonical": "sin(sin(z))",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 2
+            },
+            {
+              "canonical": "z + sin(z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 2
+            },
+            {
+              "canonical": "z*cos(z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 2
+            },
+            {
+              "canonical": "(2 - z)*exp(z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "-exp(2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "0.1231*sin(pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "0.1322*sin(pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "0.444*sin(pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "0.6074*sin(pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "0.844*exp(-z**2)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(4*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(6*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(8*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(exp(z)/z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-z**2)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(0.697836706210747*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(0.998003992015968*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(1.001001001001*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(1.1037527593819*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(1.66112956810631*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(10*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(10.0806451612903*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(11*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(12*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(13*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(14*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(15*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(16*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(2*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(2.09937018894332*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(2.2354694485842*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(2.49584026622296*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(2.52951096121417*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(3*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(3.2967032967033*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(3.51617440225035*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(3.78501135503407*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(3.81194409148666*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(4*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(4.27350427350427*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(4.99001996007984*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(5*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(5.51876379690949*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(6*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(7*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(7.75193798449612*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(8*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(8.80281690140845*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(9*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(9.25925925925926*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "z + sin(z) - 3",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "-0.1479*sin(pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0001018*sin(15*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0001072*sin(14*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0001111*sin(9*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0001179*sin(4*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0001299*sin(9*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0001441*sin(8*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0001723*sin(9*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0001735*sin(7*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0001922*sin(9*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0002014*sin(8*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0002029*sin(6*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0002029*sin(8*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0002154*sin(5*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0002558*sin(4*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0002756*sin(6*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0003413*sin(5*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0003486*sin(4*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0004187*sin(3*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0004937*sin(3*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0005591*sin(3*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.000659*sin(16*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0008935*sin(11*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0009282*sin(14*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0009921*sin(11*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.002123*sin(3*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.005756*sin(2*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.007405*sin(2*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.0261*sin(2*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.03079*sin(2*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.03219*sin(2*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.52*cos(3*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "0.86*cos(8*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "1.533*sin(3.51617440225035*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "10.03*sin(9.25925925925926*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "10.232*sin(8.80281690140845*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "16.393*sin(4.27350427350427*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "2.089*sin(3.78501135503407*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "3.058*sin(0.697836706210747*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "3.834*sin(1.66112956810631*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "4.444*sin(1.001001001001*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "5.222*sin(4.99001996007984*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "5.244*sin(0.998003992015968*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "5.325*sin(1.1037527593819*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "5.325*sin(5.51876379690949*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "8*z + sin(sin(z))",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "9.605*sin(10.0806451612903*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "exp((-z - 5)/z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "exp(-exp(2*z))",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "exp(cos(exp(z)/z))",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "exp(z) + log(z**2)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 4
+            },
+            {
+              "canonical": "-0.0001009*sin(16*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.0001055*sin(13*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.0001098*sin(15*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.000114*sin(10*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.000115*sin(14*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.000146*sin(9*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.0001656*sin(6*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.0001904*sin(9*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.000346*sin(5*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.0004389*sin(4*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.0005128*sin(3*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.0005129*sin(4*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.0007385*sin(14*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.0008356*sin(16*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.0009066*sin(11*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.000933*sin(11*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.0009556*sin(13*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.0009562*sin(13*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.0009667*sin(15*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.0009686*sin(12*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.002065*sin(3*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.00235*sin(3*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.02212*sin(2*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.02362*sin(2*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.03085*sin(2*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.8*cos(6*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-0.94*sin(2*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-1.12*sin(3*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-1.52*cos(4*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-2.181*sin(2.09937018894332*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-2.29*sin(2.52951096121417*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-2.584*sin(2.2354694485842*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-3.494*sin(2.49584026622296*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-3.921*sin(3.81194409148666*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-5.176*sin(3.2967032967033*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-9.7*sin(8*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-9.917*sin(7.75193798449612*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-log(z**2)/z**2",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(exp(cos(exp(z)/z)))",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "-z + exp(exp(cos(exp(z)/z)))",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 6
+            },
+            {
+              "canonical": "log(z)",
+              "real_finite_differentiable_fraction": 0.5,
+              "ops": 1
+            },
+            {
+              "canonical": "sin(log(z))",
+              "real_finite_differentiable_fraction": 0.5,
+              "ops": 2
+            },
+            {
+              "canonical": "log(4/z**3)",
+              "real_finite_differentiable_fraction": 0.5,
+              "ops": 3
+            },
+            {
+              "canonical": "sin(sqrt(5)*sqrt(z)/5)",
+              "real_finite_differentiable_fraction": 0.5,
+              "ops": 7
+            }
+          ],
+          "sample_expressions": [
+            "(sin(11*pi*x)*(8.935e-4))",
+            "(sin(14*pi*x)*(9.282e-4))",
+            "(sin(7*pi*x)*(1.735e-4))",
+            "(sin(13*pi*x)*(-1.055e-4))",
+            "(sin(13*pi*x)*(-9.562e-4))",
+            "(sin(14*pi*x)*(-7.385e-4))",
+            "(sin(15*pi*x)*(-1.098e-4))",
+            "(sin(11*pi*x)*(-9.33e-4))",
+            "(sin(1*pi*x)*(1.322e-1))",
+            "(sin(9*pi*x)*(-1.46e-4))",
+            "(sin(15*pi*x)*(-9.667e-4))",
+            "(sin(10*pi*x)*(-1.14e-4))",
+            "(sin(9*pi*x)*(1.922e-4))",
+            "(sin(14*pi*x)*(1.072e-4))",
+            "(sin(16*pi*x)*(-8.356e-4))",
+            "(sin(6*pi*x)*(-1.656e-4))",
+            "(sin(16*pi*x)*(-1.009e-4))",
+            "(sin(9*pi*x)*(1.299e-4))",
+            "(sin(16*pi*x)*(6.59e-4))",
+            "(sin(11*pi*x)*(-9.066e-4))"
+          ]
+        },
+        "TEMPORAL_1D": {
+          "label": "TEMPORAL_1D",
+          "raw_count": 120,
+          "parseable_count": 120,
+          "parse_success_rate": 1.0,
+          "unique_full_expression_count": 120,
+          "unique_function_bearing_univariate_subexpressions": 120,
+          "function_occurrences": {
+            "exp": 60,
+            "cos": 60
+          },
+          "univariate_candidates": [
+            {
+              "canonical": "cos(0.258*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(0.282*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(0.335*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(0.377*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(0.692*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(0.738*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.099*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.11*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.168*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.236*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.242*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.308*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.336*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.362*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.412*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.452*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.588*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.635*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.694*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.845*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.848*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.88*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.892*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.904*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.944*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.981*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(1.99*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.024*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.055*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.13*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.168*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.208*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.512*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.547*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.552*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.74*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.78*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.832*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(2.87*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.096*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.18*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.222*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.648*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.72*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.77*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.809*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.92*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(3.993*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(4.736*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(4.761*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(5*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(5.239*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(5.551*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(6.3*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(7.304*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(7.568*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(7.695*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(7.744*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(8.712*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "cos(9.373*pi*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.016*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.042*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.099*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.104*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.156*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.171*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.196*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.251*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.278*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.28*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.295*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.296*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.301*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.306*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.325*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.326*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.336*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.351*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.365*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.386*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.409*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.414*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.483*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.509*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.548*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.567*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.616*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.624*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.66*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.794*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(-0.0589967600945915*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-0.256931842937047*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-0.276262996152532*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-0.291521527042763*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-0.414192842474451*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-0.710512095313942*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-0.783804616820155*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-0.858113735824736*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-1.02739533760884*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-1.12168972811712*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-1.73521435950413*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-2.14231095738339*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-2.65219147910177*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-2.82620439685019*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-20.4728950403691*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-21.8210197710718*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-23.1206057328286*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-27.099609375*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-28.2599780123586*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-3.39702207413578*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-35.204475308642*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-35.9040027017709*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-4.04091735609375*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-5.2177657324502*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-6.42329607342618*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-6.59768286707482*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-8.70266938326095*pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-101.488312636961*pi**2*z)",
+              "real_finite_differentiable_fraction": 0.8333333333333334,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-89.4886363636364*pi**2*z)",
+              "real_finite_differentiable_fraction": 0.8333333333333334,
+              "ops": 5
+            },
+            {
+              "canonical": "exp(-159.429578593174*pi**2*z)",
+              "real_finite_differentiable_fraction": 0.6666666666666666,
+              "ops": 5
+            }
+          ],
+          "sample_expressions": [
+            "(exp(-0.171*t))",
+            "(exp(-0.196*t))",
+            "(exp(-0.386*t))",
+            "(exp(-0.104*t))",
+            "(exp(-0.251*t))",
+            "(exp(-0.794*t))",
+            "(exp(-0.156*t))",
+            "(exp(-0.016*t))",
+            "(exp(-0.296*t))",
+            "(exp(-0.624*t))",
+            "(exp(-0.099*t))",
+            "(exp(-0.414*t))",
+            "(exp(-0.042*t))",
+            "(exp(-0.548*t))",
+            "(exp(-0.28*t))",
+            "(exp(-0.326*t))",
+            "(exp(-0.325*t))",
+            "(exp(-0.336*t))",
+            "(exp(-0.66*t))",
+            "(exp(-0.509*t))"
+          ]
+        },
+        "CONSTANT": {
+          "label": "CONSTANT",
+          "raw_count": 120,
+          "parseable_count": 120,
+          "parse_success_rate": 1.0,
+          "unique_full_expression_count": 102,
+          "unique_function_bearing_univariate_subexpressions": 0,
+          "function_occurrences": {
+            "exp": 3,
+            "sin": 2
+          },
+          "univariate_candidates": [],
+          "sample_expressions": [
+            "(-x/6/x)",
+            "(x+sin(sqrt(5))-x)",
+            "(-x/x)",
+            "(4-5*5)",
+            "(-y/y)",
+            "(sin(y^2/y^2))",
+            "(11+1/1)",
+            "(exp(x^3/x^3))",
+            "(exp(x^3/x^3))",
+            "(4.4*-97)",
+            "(-x^3/x^3)",
+            "(exp(-((1)*pi^2^2*0.93*t*(0.602^2))/t))",
+            "(cos(0/y^2))",
+            "(-x/x)",
+            "(exp(-x^2/x^2))",
+            "(exp(-0.0*x))",
+            "((-0.755+1.945)/2)",
+            "((-0.831+2.877)/2)",
+            "((-0.057+2.738)/2)",
+            "((0.131+1.633)/2)"
+          ]
+        }
+      },
+      "errors": {},
+      "cluster_metadata": {
+        "cluster_categories": {
+          "SPATIAL_1D": {
+            "stored_expression_count": 5536,
+            "stored_vector_count": 5536
+          },
+          "CONSTANT": {
+            "stored_expression_count": 567,
+            "stored_vector_count": 567
+          },
+          "SPATIAL_2D": {
+            "stored_expression_count": 3848,
+            "stored_vector_count": 3848
+          },
+          "SPATIOTEMPORAL_3D": {
+            "stored_expression_count": 1592,
+            "stored_vector_count": 1592
+          },
+          "TEMPORAL_1D": {
+            "stored_expression_count": 4585,
+            "stored_vector_count": 4585
+          },
+          "SPATIOTEMPORAL_2D": {
+            "stored_expression_count": 7563,
+            "stored_vector_count": 7563
+          },
+          "ERROR": {
+            "stored_expression_count": 4,
+            "stored_vector_count": 4
+          }
+        }
+      }
+    },
+    "gvae_prior_decode": {
+      "summary_by_decode_mode": {
+        "gvae_prior_native_sample": {
+          "label": "gvae_prior_native_sample",
+          "raw_count": 120,
+          "parseable_count": 110,
+          "parse_success_rate": 0.9166666666666666,
+          "unique_full_expression_count": 87,
+          "unique_function_bearing_univariate_subexpressions": 0,
+          "function_occurrences": {
+            "sin": 3,
+            "cos": 2,
+            "exp": 1
+          },
+          "univariate_candidates": [],
+          "sample_expressions": [
+            "(((t))*t)+t",
+            "y^3",
+            "5.e-210",
+            "6675.2",
+            "-50.88*t",
+            "-0.0+t",
+            "(((t))*0.1*(t+(0.6))*691.1)^3",
+            "-(1.257)*1.0",
+            "2.3",
+            "-t-pi",
+            "0459719528.14/t",
+            "(-t+t+t/(t)^2+t)^2*t^1/t",
+            "-pi/pi/t/t",
+            "cos(5.0)",
+            "0.15*t",
+            "pi",
+            "pi+pi",
+            "-6",
+            "-t",
+            "x"
+          ]
+        },
+        "gvae_prior_argmax_decode": {
+          "label": "gvae_prior_argmax_decode",
+          "raw_count": 120,
+          "parseable_count": 76,
+          "parse_success_rate": 0.6333333333333333,
+          "unique_full_expression_count": 53,
+          "unique_function_bearing_univariate_subexpressions": 4,
+          "function_occurrences": {
+            "exp": 3,
+            "cos": 1
+          },
+          "univariate_candidates": [
+            {
+              "canonical": "cos(pi**2*z)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp(2.2*z**2)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 3
+            },
+            {
+              "canonical": "exp((2*z**3 + 0.077)/z**2)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 6
+            },
+            {
+              "canonical": "-exp((2*z**3 + 0.077)/z**2)",
+              "real_finite_differentiable_fraction": 1.0,
+              "ops": 7
+            }
+          ],
+          "sample_expressions": [
+            "-t-t",
+            "-t",
+            "2",
+            "t-t-t",
+            "S-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T",
+            "1.1*pi",
+            "S+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T/T/T",
+            "-t",
+            "0.0*t*t",
+            "t",
+            "((tanh(tanh(tanh((t-0.0-0.0+0.0+0.0))))/0.0))*0.0*0.0",
+            "t-t-t-t-t-t-t-t-t-t-t-t-t/t/t/t/t/t/t",
+            "te-4e-4",
+            "cos(S-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T-T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T-T-T)",
+            "-t",
+            "t/t/t",
+            "S+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T",
+            "S+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T+T",
+            "-t/t/t/t/t/t/t/t/t/t/t/t/t/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T/T",
+            "0.1"
+          ]
+        }
+      },
+      "errors": {}
+    }
+  },
+  "part_B": {
+    "reference_mutation_invariant": false,
+    "original_vs_altered_exactly_equal": false,
+    "original_stage1": {
+      "candidate_count": 28,
+      "unique_expression_count": 28,
+      "contains_sech_text_count": 15,
+      "contains_jacobicn_count": 11,
+      "sample_candidates": [
+        "0.000000 + 1.000000*((1.000000*(exp(1.000000*((1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 1.000000*(exp(1.000000*((1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(exp(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(exp(1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 1.000000*((1.000000*(exp(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(exp(1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(sech(1.000000*((1.000000*x + 1.000000*t**2 + 1.000000)) + 1.000000*((1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000)) + 0.000000)**2) + 1.000000*(sech(1.000000*((1.000000*x + 1.000000*t**2 + 1.000000)) + 1.000000*((1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000)) + 0.000000)**2) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(tanh(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*(tanh(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(sech(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*(sech(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(sin(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*(sin(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(JacobiCN(1.000000*((1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000)) + 1.000000*((1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2))) + 0.000000, 0.500000)) + 1.000000*(JacobiCN(1.000000*((1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000)) + 1.000000*((1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2))) + 0.000000, 0.500000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(cos(1.000000*((1.000000*t + 1.000000*sin(1.000000*x + 1.000000) + 1.000000)) + 1.000000*((1.000000*x + 1.000000*cos(1.000000*t + 1.000000) + 1.000000)) + 0.000000)) + 1.000000*(cos(1.000000*((1.000000*t + 1.000000*sin(1.000000*x + 1.000000) + 1.000000)) + 1.000000*((1.000000*x + 1.000000*cos(1.000000*t + 1.000000) + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(JacobiCN(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000, 0.500000)) + 1.000000*(JacobiCN(1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2), 0.500000)) + 0.000000)) + 1.000000*((1.000000*(JacobiCN(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000, 0.500000)) + 1.000000*(JacobiCN(1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2), 0.500000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(tanh(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(tanh(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*((1.000000*(tanh(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(tanh(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(sech(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(sech(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*((1.000000*(sech(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(sech(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(sin(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(sin(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*((1.000000*(sin(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(sin(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(sech(1.000000*x + 1.000000*t**2 + 1.000000)**2) + 1.000000*(sech(1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000)**2) + 0.000000)) + 1.000000*((1.000000*(sech(1.000000*x + 1.000000*t**2 + 1.000000)**2) + 1.000000*(sech(1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000)**2) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(cos(1.000000*t + 1.000000*sin(1.000000*x + 1.000000) + 1.000000)) + 1.000000*(cos(1.000000*x + 1.000000*cos(1.000000*t + 1.000000) + 1.000000)) + 0.000000)) + 1.000000*((1.000000*(cos(1.000000*t + 1.000000*sin(1.000000*x + 1.000000) + 1.000000)) + 1.000000*(cos(1.000000*x + 1.000000*cos(1.000000*t + 1.000000) + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*(cos(1.000000*(tanh(1.000000*(JacobiCN(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000, 0.500000)) + 1.000000*(exp(1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2))) + 0.000000)) + 1.000000*(tanh(1.000000*(JacobiCN(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000, 0.500000)) + 1.000000*(exp(1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2))) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*(sech(1.000000*(JacobiCN(1.000000*(JacobiCN(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000, 0.500000)) + 1.000000*(exp(1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2))) + 0.000000, 0.500000)) + 1.000000*(JacobiCN(1.000000*(JacobiCN(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000, 0.500000)) + 1.000000*(exp(1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2))) + 0.000000, 0.500000)) + 0.000000)**2)",
+        "0.000000 + 1.000000*(cos(1.000000*(cos(1.000000*(exp(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 1.000000*(tanh(1.000000*(exp(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*(cos(1.000000*(sech(1.000000*((1.000000*t + 1.000000*JacobiCN(1.000000*x + 1.000000, 0.500000) + 1.000000)) + 1.000000*(JacobiCN(1.000000*x + 1.000000*t + 1.000000, 0.500000)) + 0.000000)**2) + 1.000000*(cos(1.000000*((1.000000*t + 1.000000*JacobiCN(1.000000*x + 1.000000, 0.500000) + 1.000000)) + 1.000000*(JacobiCN(1.000000*x + 1.000000*t + 1.000000, 0.500000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*(cos(1.000000*((1.000000*(exp(1.000000*x - 1.000000*t + 1.000000)) + 1.000000*(cos(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 0.000000)) + 1.000000*(sech(1.000000*(exp(1.000000*x - 1.000000*t + 1.000000)) + 1.000000*(cos(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 0.000000)**2) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(JacobiCN(1.000000*(sech(1.000000*t + 1.000000*JacobiCN(1.000000*x + 1.000000, 0.500000) + 1.000000)**2) + 1.000000*(cos(1.000000*x + 1.000000*t + 1.000000)) + 0.000000, 0.500000)) + 1.000000*(cos(1.000000*(sech(1.000000*t + 1.000000*JacobiCN(1.000000*x + 1.000000, 0.500000) + 1.000000)**2) + 1.000000*(cos(1.000000*x + 1.000000*t + 1.000000)) + 0.000000)) + 0.000000))"
+      ]
+    },
+    "altered_reference_stage1": {
+      "candidate_count": 30,
+      "unique_expression_count": 30,
+      "contains_sech_text_count": 17,
+      "contains_jacobicn_count": 11,
+      "sample_candidates": [
+        "0.000000 + 1.000000*((1.000000*(exp(1.000000*((1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 1.000000*(exp(1.000000*((1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(exp(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(exp(1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 1.000000*((1.000000*(exp(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(exp(1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(sech(1.000000*((1.000000*x + 1.000000*t**2 + 1.000000)) + 1.000000*((1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000)) + 0.000000)**2) + 1.000000*(sech(1.000000*((1.000000*x + 1.000000*t**2 + 1.000000)) + 1.000000*((1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000)) + 0.000000)**2) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(tanh(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*(tanh(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(sech(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*(sech(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(sin(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*(sin(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(JacobiCN(1.000000*((1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000)) + 1.000000*((1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2))) + 0.000000, 0.500000)) + 1.000000*(JacobiCN(1.000000*((1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000)) + 1.000000*((1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2))) + 0.000000, 0.500000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(cos(1.000000*((1.000000*t + 1.000000*sin(1.000000*x + 1.000000) + 1.000000)) + 1.000000*((1.000000*x + 1.000000*cos(1.000000*t + 1.000000) + 1.000000)) + 0.000000)) + 1.000000*(cos(1.000000*((1.000000*t + 1.000000*sin(1.000000*x + 1.000000) + 1.000000)) + 1.000000*((1.000000*x + 1.000000*cos(1.000000*t + 1.000000) + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(JacobiCN(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000, 0.500000)) + 1.000000*(JacobiCN(1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2), 0.500000)) + 0.000000)) + 1.000000*((1.000000*(JacobiCN(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000, 0.500000)) + 1.000000*(JacobiCN(1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2), 0.500000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(tanh(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(tanh(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*((1.000000*(tanh(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(tanh(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(sech(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(sech(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*((1.000000*(sech(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(sech(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(sin(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(sin(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*((1.000000*(sin(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(sin(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(sech(1.000000*x + 1.000000*t**2 + 1.000000)**2) + 1.000000*(sech(1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000)**2) + 0.000000)) + 1.000000*((1.000000*(sech(1.000000*x + 1.000000*t**2 + 1.000000)**2) + 1.000000*(sech(1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000)**2) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(cos(1.000000*t + 1.000000*sin(1.000000*x + 1.000000) + 1.000000)) + 1.000000*(cos(1.000000*x + 1.000000*cos(1.000000*t + 1.000000) + 1.000000)) + 0.000000)) + 1.000000*((1.000000*(cos(1.000000*t + 1.000000*sin(1.000000*x + 1.000000) + 1.000000)) + 1.000000*(cos(1.000000*x + 1.000000*cos(1.000000*t + 1.000000) + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*(cos(1.000000*(tanh(1.000000*(JacobiCN(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000, 0.500000)) + 1.000000*(exp(1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2))) + 0.000000)) + 1.000000*(tanh(1.000000*(JacobiCN(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000, 0.500000)) + 1.000000*(exp(1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2))) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*(sech(1.000000*(JacobiCN(1.000000*(JacobiCN(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000, 0.500000)) + 1.000000*(exp(1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2))) + 0.000000, 0.500000)) + 1.000000*(JacobiCN(1.000000*(JacobiCN(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000, 0.500000)) + 1.000000*(exp(1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2))) + 0.000000, 0.500000)) + 0.000000)**2)",
+        "0.000000 + 1.000000*(cos(1.000000*(cos(1.000000*(exp(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 1.000000*(tanh(1.000000*(exp(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*(cos(1.000000*(sech(1.000000*((1.000000*t + 1.000000*JacobiCN(1.000000*x + 1.000000, 0.500000) + 1.000000)) + 1.000000*(JacobiCN(1.000000*x + 1.000000*t + 1.000000, 0.500000)) + 0.000000)**2) + 1.000000*(cos(1.000000*((1.000000*t + 1.000000*JacobiCN(1.000000*x + 1.000000, 0.500000) + 1.000000)) + 1.000000*(JacobiCN(1.000000*x + 1.000000*t + 1.000000, 0.500000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*(cos(1.000000*((1.000000*(exp(1.000000*x - 1.000000*t + 1.000000)) + 1.000000*(cos(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 0.000000)) + 1.000000*(sech(1.000000*(exp(1.000000*x - 1.000000*t + 1.000000)) + 1.000000*(cos(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 0.000000)**2) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(JacobiCN(1.000000*(sech(1.000000*t + 1.000000*JacobiCN(1.000000*x + 1.000000, 0.500000) + 1.000000)**2) + 1.000000*(cos(1.000000*x + 1.000000*t + 1.000000)) + 0.000000, 0.500000)) + 1.000000*(cos(1.000000*(sech(1.000000*t + 1.000000*JacobiCN(1.000000*x + 1.000000, 0.500000) + 1.000000)**2) + 1.000000*(cos(1.000000*x + 1.000000*t + 1.000000)) + 0.000000)) + 0.000000))"
+      ]
+    },
+    "target_prior_ablated_stage1": {
+      "candidate_count": 40,
+      "unique_expression_count": 40,
+      "contains_sech_text_count": 0,
+      "contains_jacobicn_count": 21,
+      "sample_candidates": [
+        "0.000000 + 1.000000*((1.000000*(exp(1.000000*((1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 1.000000*(exp(1.000000*((1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(exp(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(exp(1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 1.000000*((1.000000*(exp(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(exp(1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(tanh(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*(tanh(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(sin(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*(sin(1.000000*((1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*((1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(JacobiCN(1.000000*((1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000)) + 1.000000*((1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2))) + 0.000000, 0.500000)) + 1.000000*(JacobiCN(1.000000*((1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000)) + 1.000000*((1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2))) + 0.000000, 0.500000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(exp(1.000000*((1.000000*x - 1.000000*t + 1.000000)) + 1.000000*(tanh(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 0.000000)) + 1.000000*(exp(1.000000*((1.000000*x - 1.000000*t + 1.000000)) + 1.000000*(tanh(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*(cos(1.000000*((1.000000*t + 1.000000*sin(1.000000*x + 1.000000) + 1.000000)) + 1.000000*((1.000000*x + 1.000000*cos(1.000000*t + 1.000000) + 1.000000)) + 0.000000)) + 1.000000*(cos(1.000000*((1.000000*t + 1.000000*sin(1.000000*x + 1.000000) + 1.000000)) + 1.000000*((1.000000*x + 1.000000*cos(1.000000*t + 1.000000) + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(JacobiCN(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000, 0.500000)) + 1.000000*(JacobiCN(1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2), 0.500000)) + 0.000000)) + 1.000000*((1.000000*(JacobiCN(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000, 0.500000)) + 1.000000*(JacobiCN(1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2), 0.500000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(tanh(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(tanh(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*((1.000000*(tanh(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(tanh(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(sin(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(sin(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 1.000000*((1.000000*(sin(1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(sin(1.000000*x**2 + 1.000000*t**2 + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(cos(1.000000*t + 1.000000*sin(1.000000*x + 1.000000) + 1.000000)) + 1.000000*(cos(1.000000*x + 1.000000*cos(1.000000*t + 1.000000) + 1.000000)) + 0.000000)) + 1.000000*((1.000000*(cos(1.000000*t + 1.000000*sin(1.000000*x + 1.000000) + 1.000000)) + 1.000000*(cos(1.000000*x + 1.000000*cos(1.000000*t + 1.000000) + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*(JacobiCN(1.000000*(sin(1.000000*(cos(1.000000*x + 1.000000*t**2 + 1.000000)) + 1.000000*(tanh(1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000)) + 0.000000)) + 1.000000*(sin(1.000000*(cos(1.000000*x + 1.000000*t**2 + 1.000000)) + 1.000000*(tanh(1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000)) + 0.000000)) + 0.000000, 0.500000))",
+        "0.000000 + 1.000000*(sin(1.000000*(JacobiCN(1.000000*(cos(1.000000*x + 1.000000*sin(1.000000*t + 1.000000) + 1.000000)) + 1.000000*(sin(1.000000*t + 1.000000*exp(1.000000*x + 1.000000) + 1.000000)) + 0.000000, 0.500000)) + 1.000000*(JacobiCN(1.000000*(cos(1.000000*x + 1.000000*sin(1.000000*t + 1.000000) + 1.000000)) + 1.000000*(sin(1.000000*t + 1.000000*exp(1.000000*x + 1.000000) + 1.000000)) + 0.000000, 0.500000)) + 0.000000))",
+        "0.000000 + 1.000000*(tanh(1.000000*((1.000000*(cos(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(cos(1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 1.000000*(exp(1.000000*(cos(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(cos(1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*(sin(1.000000*(tanh(1.000000*(tanh(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(sin(1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 1.000000*(cos(1.000000*(tanh(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(sin(1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*(JacobiCN(1.000000*(cos(1.000000*(cos(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(cos(1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 1.000000*(exp(1.000000*(cos(1.000000*x + 1.000000*t + 1.000000)) + 1.000000*(cos(1.000000*x - 1.000000*t + 1.000000)) + 0.000000)) + 0.000000, 0.500000))",
+        "0.000000 + 1.000000*((1.000000*(sin(1.000000*(exp(1.000000*t + 1.000000*exp(1.000000*x + 1.000000) + 1.000000)) + 1.000000*(exp(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000)) + 0.000000)) + 1.000000*(tanh(1.000000*(exp(1.000000*t + 1.000000*exp(1.000000*x + 1.000000) + 1.000000)) + 1.000000*(exp(1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*(JacobiCN(1.000000*(cos(1.000000*(cos(1.000000*x + 1.000000*t**2 + 1.000000)) + 1.000000*((1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000)) + 0.000000)) + 1.000000*(exp(1.000000*(cos(1.000000*x + 1.000000*t**2 + 1.000000)) + 1.000000*((1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000)) + 0.000000)) + 0.000000, 0.500000))",
+        "0.000000 + 1.000000*((1.000000*(JacobiCN(1.000000*(cos(1.000000*t + 1.000000*JacobiCN(1.000000*x + 1.000000, 0.500000) + 1.000000)) + 1.000000*(JacobiCN(1.000000*x + 1.000000*t + 1.000000, 0.500000)) + 0.000000, 0.500000)) + 1.000000*(exp(1.000000*(cos(1.000000*t + 1.000000*JacobiCN(1.000000*x + 1.000000, 0.500000) + 1.000000)) + 1.000000*(JacobiCN(1.000000*x + 1.000000*t + 1.000000, 0.500000)) + 0.000000)) + 0.000000))",
+        "0.000000 + 1.000000*((1.000000*((1.000000*(cos(1.000000*x + 1.000000*t**2 + 1.000000)) + 1.000000*(tanh(1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000)) + 0.000000)) + 1.000000*(exp(1.000000*(cos(1.000000*x + 1.000000*t**2 + 1.000000)) + 1.000000*(tanh(1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000)) + 0.000000)) + 0.000000))"
+      ]
+    },
+    "target_prior_ablation_candidate_overlap": 0.35714285714285715,
+    "config_audit": {
+      "reference_solution_original": "3*sech(sqrt(2)*(-2*t + x)/4)**2",
+      "reference_solution_alternative": "x/7 + sin(3*x) + cos(2*t)",
+      "original_seed_functions": [
+        [
+          "sech2",
+          16
+        ],
+        [
+          "tanh",
+          1
+        ],
+        [
+          "exp",
+          7
+        ],
+        [
+          "sech",
+          15
+        ],
+        [
+          "sin",
+          8
+        ],
+        [
+          "cos",
+          10
+        ],
+        [
+          "JacobiCN",
+          19
+        ]
+      ],
+      "original_search_atoms": [
+        "x - t",
+        "x + t",
+        "x - 4*t",
+        "x - t**2",
+        "x + t**2",
+        "x - t**3",
+        "x - exp(t)",
+        "x + sin(t)",
+        "cos(x) + t",
+        "1/(1 + (x - t)**2)",
+        "exp(x)",
+        "exp(-x)",
+        "exp(x - t)",
+        "x - 2*t",
+        "x + 2*t",
+        "x*t",
+        "x**2 + t**2",
+        "x**2 - t**2",
+        "t*cos(x)",
+        "t*sin(x)",
+        "x*cos(t)",
+        "x*sin(t)",
+        "JacobiCN(x - 2*t, 0.5)",
+        "JacobiCN(x + t, 0.5)"
+      ],
+      "original_first_layer_phases": [
+        "1.000000*x + 1.000000*t + 1.000000",
+        "1.000000*x - 1.000000*t + 1.000000",
+        "1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000",
+        "1.000000*x**2 + 1.000000*t**2 + 1.000000",
+        "1.000000*x + 1.000000*t**2 + 1.000000",
+        "1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000",
+        "1.000000*t + 1.000000*sin(1.000000*x + 1.000000) + 1.000000",
+        "1.000000*x + 1.000000*cos(1.000000*t + 1.000000) + 1.000000",
+        "1.000000*x + 1.000000*sin(1.000000*t + 1.000000) + 1.000000",
+        "1.000000*t + 1.000000*exp(1.000000*x + 1.000000) + 1.000000",
+        "1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000",
+        "1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2)",
+        "1.000000*x + 1.000000*JacobiCN(1.000000*t + 1.000000, 0.500000) + 1.000000",
+        "1.000000*t + 1.000000*JacobiCN(1.000000*x + 1.000000, 0.500000) + 1.000000"
+      ],
+      "blind_seed_functions": [
+        [
+          "tanh",
+          1
+        ],
+        [
+          "exp",
+          7
+        ],
+        [
+          "sin",
+          8
+        ],
+        [
+          "cos",
+          10
+        ],
+        [
+          "JacobiCN",
+          19
+        ]
+      ],
+      "blind_search_atoms": [
+        "x - t",
+        "x + t",
+        "x - 4*t",
+        "x - t**2",
+        "x + t**2",
+        "x - t**3",
+        "x - exp(t)",
+        "x + sin(t)",
+        "cos(x) + t",
+        "1/(1 + (x - t)**2)",
+        "exp(x)",
+        "exp(-x)",
+        "exp(x - t)",
+        "x + 2*t",
+        "x*t",
+        "x**2 + t**2",
+        "x**2 - t**2",
+        "t*cos(x)",
+        "t*sin(x)",
+        "x*cos(t)",
+        "x*sin(t)",
+        "JacobiCN(x + t, 0.5)"
+      ],
+      "blind_first_layer_phases": [
+        "1.000000*x + 1.000000*t + 1.000000",
+        "1.000000*x - 1.000000*t + 1.000000",
+        "1.000000*x*t + 1.000000*x + 1.000000*t + 1.000000",
+        "1.000000*x**2 + 1.000000*t**2 + 1.000000",
+        "1.000000*x + 1.000000*t**2 + 1.000000",
+        "1.000000*t + 1.000000*cos(1.000000*x + 1.000000) + 1.000000",
+        "1.000000*t + 1.000000*sin(1.000000*x + 1.000000) + 1.000000",
+        "1.000000*x + 1.000000*cos(1.000000*t + 1.000000) + 1.000000",
+        "1.000000*x + 1.000000*sin(1.000000*t + 1.000000) + 1.000000",
+        "1.000000*t + 1.000000*exp(1.000000*x + 1.000000) + 1.000000",
+        "1.000000*x + 1.000000*exp(1.000000*t + 1.000000) + 1.000000",
+        "1.000000/(1.000000 + (1.000000*x - 1.000000*t)**2)",
+        "1.000000*x + 1.000000*JacobiCN(1.000000*t + 1.000000, 0.500000) + 1.000000",
+        "1.000000*t + 1.000000*JacobiCN(1.000000*x + 1.000000, 0.500000) + 1.000000"
+      ]
+    },
+    "interpretation": {
+      "reference_independence": "FAIL/UNEXPECTED: changing true_solution changed Stage-I candidates.",
+      "important_caveat": "This only tests direct dependence on true_solution. It does not mean the search is free of hand-designed priors: seed_functions, search_atoms and first_layer_phases remain manually specified."
+    }
+  },
+  "warnings": []
+}

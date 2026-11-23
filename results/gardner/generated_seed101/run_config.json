@@ -1,0 +1,45 @@
+{
+  "argv": [
+    "--mode",
+    "generated-only",
+    "--seed",
+    "101",
+    "--num-candidates",
+    "30",
+    "--widths",
+    "2,1",
+    "--results-dir",
+    "/Users/kang/SIGS/results/gardner/generated_seed101"
+  ],
+  "python_version": "3.12.4",
+  "sympy_version": "1.14.0",
+  "pde": "gardner",
+  "coefficients": {
+    "alpha": "1",
+    "beta": "1",
+    "gamma": "1"
+  },
+  "config": {
+    "generator": {
+      "mode": "random",
+      "random_seed": 101,
+      "max_depth": 3,
+      "max_nodes": 8,
+      "max_candidates": 30,
+      "max_parameters_per_function": 3,
+      "include_seeds": false
+    },
+    "network": {
+      "widths": [
+        2,
+        1
+      ]
+    },
+    "solver": {
+      "extract_timeout": 12.0,
+      "solve_timeout": 15.0,
+      "verify_timeout": 8.0,
+      "residual_timeout": 8.0
+    }
+  }
+}

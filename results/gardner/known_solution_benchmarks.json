@@ -1,0 +1,119 @@
+[
+  {
+    "id": "gardner_jacobi_cn",
+    "expression": "JacobiCN(z,m)",
+    "alpha": 1,
+    "beta": 1,
+    "gamma": 1,
+    "constraints": {
+      "c0": "-1/2",
+      "a": "k",
+      "b": "-k*(4*c1**2 - 12*k**2 - 3)/12",
+      "d": "0",
+      "m": "c1**2/(6*k**2)"
+    },
+    "source": "cnoidal reduction of the Gardner travelling-wave ODE; independently verified by raw SymPy residual.",
+    "notes": [
+      "m is the elliptic parameter (modulus square).",
+      "m != 0 and k != 0 for a genuinely elliptic branch.",
+      "c1 may be positive or negative; m = c1**2/(6*k**2) >= 0."
+    ],
+    "audit": {
+      "source_expression": "JacobiCN(z,m)",
+      "constraints": {
+        "c0": "-1/2",
+        "a": "k",
+        "b": "-k*(4*c1**2 - 12*k**2 - 3)/12",
+        "d": "0",
+        "m": "c1**2/(6*k**2)"
+      },
+      "trial_expression": "c1*JacobiCN(-c1**2*k*t/3 + k**3*t + k*t/4 + k*x, c1**2/(6*k**2)) - 1/2",
+      "residual": "-c1**3*k*JacobiCN(-c1**2*k*t/3 + k**3*t + k*t/4 + k*x, c1**2/(6*k**2))**2*JacobiDN(-c1**2*k*t/3 + k**3*t + k*t/4 + k*x, c1**2/(6*k**2))*JacobiSN(-c1**2*k*t/3 + k**3*t + k*t/4 + k*x, c1**2/(6*k**2))/3 - c1**3*k*JacobiDN(-c1**2*k*t/3 + k**3*t + k*t/4 + k*x, c1**2/(6*k**2))*JacobiSN(-c1**2*k*t/3 + k**3*t + k*t/4 + k*x, c1**2/(6*k**2))**3/6 + c1**3*k*JacobiDN(-c1**2*k*t/3 + k**3*t + k*t/4 + k*x, c1**2/(6*k**2))*JacobiSN(-c1**2*k*t/3 + k**3*t + k*t/4 + k*x, c1**2/(6*k**2))/3 + c1*k**3*JacobiDN(-c1**2*k*t/3 + k**3*t + k*t/4 + k*x, c1**2/(6*k**2))**3*JacobiSN(-c1**2*k*t/3 + k**3*t + k*t/4 + k*x, c1**2/(6*k**2)) - c1*k**3*JacobiDN(-c1**2*k*t/3 + k**3*t + k*t/4 + k*x, c1**2/(6*k**2))*JacobiSN(-c1**2*k*t/3 + k**3*t + k*t/4 + k*x, c1**2/(6*k**2))",
+      "status": "EXACT_VERIFIED",
+      "certified_zero": true,
+      "parameter_conditions": [
+        "m != 0 for a genuinely elliptic branch",
+        "parameter denominators must be nonzero"
+      ],
+      "domain_notes": [
+        "The elliptic parameter is the modulus square m."
+      ]
+    }
+  },
+  {
+    "id": "kdv_limit_sech2",
+    "expression": "sech(z)**2",
+    "alpha": 6,
+    "beta": 0,
+    "gamma": 1,
+    "constraints": {
+      "c0": "0",
+      "c1": "2*k**2",
+      "a": "k",
+      "b": "-4*k**3",
+      "d": "0"
+    },
+    "source": "Auxiliary KdV limit (alpha=6, beta=0). Standard sech^2 soliton.",
+    "notes": [
+      "Auxiliary test only; not part of the alpha=beta=gamma=1 main experiment."
+    ],
+    "audit": {
+      "source_expression": "sech(z)**2",
+      "constraints": {
+        "c0": "0",
+        "c1": "2*k**2",
+        "a": "k",
+        "b": "-4*k**3",
+        "d": "0"
+      },
+      "trial_expression": "2*k**2*sech(4*k**3*t - k*x)**2",
+      "residual": "48*k**5*tanh(4*k**3*t - k*x)**3*sech(4*k**3*t - k*x)**2 + 48*k**5*tanh(4*k**3*t - k*x)*sech(4*k**3*t - k*x)**4 - 48*k**5*tanh(4*k**3*t - k*x)*sech(4*k**3*t - k*x)**2",
+      "status": "EXACT_VERIFIED",
+      "certified_zero": true,
+      "parameter_conditions": [
+        "a != 0"
+      ],
+      "domain_notes": [
+        "sech-based waves are smooth on the real axis."
+      ]
+    }
+  },
+  {
+    "id": "mkdv_limit_sech",
+    "expression": "sech(z)",
+    "alpha": 0,
+    "beta": 6,
+    "gamma": 1,
+    "constraints": {
+      "c0": "0",
+      "c1": "k",
+      "a": "k",
+      "b": "-k**3",
+      "d": "0"
+    },
+    "source": "Auxiliary mKdV limit (alpha=0, beta=6). Standard sech soliton.",
+    "notes": [
+      "Auxiliary test only; not part of the alpha=beta=gamma=1 main experiment."
+    ],
+    "audit": {
+      "source_expression": "sech(z)",
+      "constraints": {
+        "c0": "0",
+        "c1": "k",
+        "a": "k",
+        "b": "-k**3",
+        "d": "0"
+      },
+      "trial_expression": "k*sech(k**3*t - k*x)",
+      "residual": "6*k**4*tanh(k**3*t - k*x)**3*sech(k**3*t - k*x) + 6*k**4*tanh(k**3*t - k*x)*sech(k**3*t - k*x)**3 - 6*k**4*tanh(k**3*t - k*x)*sech(k**3*t - k*x)",
+      "status": "EXACT_VERIFIED",
+      "certified_zero": true,
+      "parameter_conditions": [
+        "a != 0"
+      ],
+      "domain_notes": [
+        "sech-based waves are smooth on the real axis."
+      ]
+    }
+  }
+]

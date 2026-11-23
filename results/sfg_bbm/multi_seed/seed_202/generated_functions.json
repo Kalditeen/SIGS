@@ -1,0 +1,2051 @@
+[
+  {
+    "function_id": "func_0001",
+    "expression": "tanh(sin(alpha*z))",
+    "category": "hyperbolic",
+    "parameters": [
+      "alpha"
+    ],
+    "tree_depth": 2,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "alpha*(1 - tanh(sin(alpha*z))**2)*cos(alpha*z)",
+      "second": "alpha**2*(sin(alpha*z) + 2*cos(alpha*z)**2*tanh(sin(alpha*z)))*(tanh(sin(alpha*z))**2 - 1)",
+      "third": "alpha**3*(tanh(sin(alpha*z))**2 - 1)*(-2*(tanh(sin(alpha*z))**2 - 1)*cos(alpha*z)**2 - 6*sin(alpha*z)*tanh(sin(alpha*z)) - 4*cos(alpha*z)**2*tanh(sin(alpha*z))**2 + 1)*cos(alpha*z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0002",
+    "expression": "cosh(z) + JacobiDN(z, m)",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "-m*JacobiCN(z, m)*JacobiSN(z, m) + sinh(z)",
+      "second": "-m*JacobiCN(z, m)**2*JacobiDN(z, m) + m*JacobiDN(z, m)*JacobiSN(z, m)**2 + cosh(z)",
+      "third": "m**2*JacobiCN(z, m)**3*JacobiSN(z, m) - m**2*JacobiCN(z, m)*JacobiSN(z, m)**3 + 4*m*JacobiCN(z, m)*JacobiDN(z, m)**2*JacobiSN(z, m) + sinh(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0003",
+    "expression": "tanh(exp(-z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "-(1 - tanh(exp(-z))**2)*exp(-z)",
+      "second": "(-1 + 2*exp(-z)*tanh(exp(-z)))*(tanh(exp(-z))**2 - 1)*exp(-z)",
+      "third": "(tanh(exp(-z))**2 - 1)*(2*(tanh(exp(-z))**2 - 1)*exp(-2*z) + 1 - 6*exp(-z)*tanh(exp(-z)) + 4*exp(-2*z)*tanh(exp(-z))**2)*exp(-z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0004",
+    "expression": "tanh(z**2)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "2*z*(1 - tanh(z**2)**2)",
+      "second": "2*(4*z**2*(tanh(z**2)**2 - 1)*tanh(z**2) - tanh(z**2)**2 + 1)",
+      "third": "8*z*(tanh(z**2)**2 - 1)*(-2*z**2*(tanh(z**2)**2 - 1) - 4*z**2*tanh(z**2)**2 + 3*tanh(z**2))"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0005",
+    "expression": "tanh(z)*JacobiDN(z, m)",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "-m*tanh(z)*JacobiCN(z, m)*JacobiSN(z, m) + (1 - tanh(z)**2)*JacobiDN(z, m)",
+      "second": "2*m*(tanh(z)**2 - 1)*JacobiCN(z, m)*JacobiSN(z, m) - m*(JacobiCN(z, m)**2 - JacobiSN(z, m)**2)*tanh(z)*JacobiDN(z, m) + 2*(tanh(z)**2 - 1)*tanh(z)*JacobiDN(z, m)",
+      "third": "3*m*(tanh(z)**2 - 1)*(JacobiCN(z, m)**2 - JacobiSN(z, m)**2)*JacobiDN(z, m) - 6*m*(tanh(z)**2 - 1)*tanh(z)*JacobiCN(z, m)*JacobiSN(z, m) + m*(m*JacobiCN(z, m)**2 - m*JacobiSN(z, m)**2 + 4*JacobiDN(z, m)**2)*tanh(z)*JacobiCN(z, m)*JacobiSN(z, m) - 2*(tanh(z)**2 - 1)*(3*tanh(z)**2 - 1)*JacobiDN(z, m)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0006",
+    "expression": "cos(z) + coth(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "-sin(z) - 1/sinh(z)**2",
+      "second": "-cos(z) + 2*cosh(z)/sinh(z)**3",
+      "third": "sin(z) + 2/sinh(z)**2 - 6*cosh(z)**2/sinh(z)**4"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0007",
+    "expression": "JacobiDN(z, m)**2",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 1,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "-2*m*JacobiCN(z, m)*JacobiDN(z, m)*JacobiSN(z, m)",
+      "second": "2*m*(m*JacobiCN(z, m)**2*JacobiSN(z, m)**2 - JacobiCN(z, m)**2*JacobiDN(z, m)**2 + JacobiDN(z, m)**2*JacobiSN(z, m)**2)",
+      "third": "8*m*(m*JacobiCN(z, m)**2 - m*JacobiSN(z, m)**2 + JacobiDN(z, m)**2)*JacobiCN(z, m)*JacobiDN(z, m)*JacobiSN(z, m)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0008",
+    "expression": "tanh(sech(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "-(1 - tanh(sech(z))**2)*tanh(z)*sech(z)",
+      "second": "(tanh(sech(z))**2 - 1)*(2*tanh(z)**2*tanh(sech(z))*sech(z) - 2*tanh(z)**2 + 1)*sech(z)",
+      "third": "(tanh(sech(z))**2 - 1)*(-6*(tanh(z)**2 - 1)*tanh(sech(z))*sech(z) + 2*(tanh(sech(z))**2 - 1)*tanh(z)**2*sech(z)**2 + 4*tanh(z)**2*tanh(sech(z))**2*sech(z)**2 - 6*tanh(z)**2*tanh(sech(z))*sech(z) + 6*tanh(z)**2 - 5)*tanh(z)*sech(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0009",
+    "expression": "coth(z)**2",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "-2*coth(z)/sinh(z)**2",
+      "second": "2*(2*cosh(z)*coth(z) + 1/sinh(z))/sinh(z)**3",
+      "third": "4*(coth(z) - 3*cosh(z)**2*coth(z)/sinh(z)**2 - 3*cosh(z)/sinh(z)**3)/sinh(z)**2"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0010",
+    "expression": "tanh(tanh(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "(1 - tanh(z)**2)*(1 - tanh(tanh(z))**2)",
+      "second": "2*((tanh(z)**2 - 1)*tanh(tanh(z)) - tanh(z))*(tanh(z)**2 - 1)*(tanh(tanh(z))**2 - 1)",
+      "third": "2*(tanh(z)**2 - 1)*(tanh(tanh(z))**2 - 1)*((tanh(z)**2 - 1)**2*(tanh(tanh(z))**2 - 1) + 2*(tanh(z)**2 - 1)**2*tanh(tanh(z))**2 - 6*(tanh(z)**2 - 1)*tanh(z)*tanh(tanh(z)) + 3*tanh(z)**2 - 1)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0011",
+    "expression": "z**2 + log(z)",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "2*z + 1/z",
+      "second": "2 - 1/z**2",
+      "third": "2/z**3"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0012",
+    "expression": "sin(z)*cosh(z)*JacobiDN(z, m)",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 1,
+    "node_count": 8,
+    "symbolic_derivatives": {
+      "first": "-m*sin(z)*cosh(z)*JacobiCN(z, m)*JacobiSN(z, m) + sin(z)*sinh(z)*JacobiDN(z, m) + cos(z)*cosh(z)*JacobiDN(z, m)",
+      "second": "-m*(JacobiCN(z, m)**2 - JacobiSN(z, m)**2)*sin(z)*cosh(z)*JacobiDN(z, m) - 2*m*sin(z)*sinh(z)*JacobiCN(z, m)*JacobiSN(z, m) - 2*m*cos(z)*cosh(z)*JacobiCN(z, m)*JacobiSN(z, m) + 2*cos(z)*sinh(z)*JacobiDN(z, m)",
+      "third": "-3*m*(JacobiCN(z, m)**2 - JacobiSN(z, m)**2)*sin(z)*sinh(z)*JacobiDN(z, m) - 3*m*(JacobiCN(z, m)**2 - JacobiSN(z, m)**2)*cos(z)*cosh(z)*JacobiDN(z, m) + m*(m*JacobiCN(z, m)**2 - m*JacobiSN(z, m)**2 + 4*JacobiDN(z, m)**2)*sin(z)*cosh(z)*JacobiCN(z, m)*JacobiSN(z, m) - 6*m*cos(z)*sinh(z)*JacobiCN(z, m)*JacobiSN(z, m) - 2*sin(z)*sinh(z)*JacobiDN(z, m) + 2*cos(z)*cosh(z)*JacobiDN(z, m)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 5,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0013",
+    "expression": "z**4",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 0,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "4*z**3",
+      "second": "12*z**2",
+      "third": "24*z"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 1,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0014",
+    "expression": "z + exp(z)",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "exp(z) + 1",
+      "second": "exp(z)",
+      "third": "exp(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0015",
+    "expression": "exp(-2*z)",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "-2*exp(-2*z)",
+      "second": "4*exp(-2*z)",
+      "third": "-8*exp(-2*z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0016",
+    "expression": "cosh(z)**2",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "2*sinh(z)*cosh(z)",
+      "second": "2*(sinh(z)**2 + cosh(z)**2)",
+      "third": "8*sinh(z)*cosh(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0017",
+    "expression": "sin(z)*cosh(z) + tan(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 8,
+    "symbolic_derivatives": {
+      "first": "sin(z)*sinh(z) + cos(z)*cosh(z) + tan(z)**2 + 1",
+      "second": "2*((tan(z)**2 + 1)*tan(z) + cos(z)*sinh(z))",
+      "third": "2*((tan(z)**2 + 1)**2 + 2*(tan(z)**2 + 1)*tan(z)**2 - sin(z)*sinh(z) + cos(z)*cosh(z))"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 5,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0018",
+    "expression": "sin(z)**2",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "2*sin(z)*cos(z)",
+      "second": "2*(-sin(z)**2 + cos(z)**2)",
+      "third": "-8*sin(z)*cos(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0019",
+    "expression": "tanh(z) + JacobiDN(z, m)",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "-m*JacobiCN(z, m)*JacobiSN(z, m) - tanh(z)**2 + 1",
+      "second": "-m*JacobiCN(z, m)**2*JacobiDN(z, m) + m*JacobiDN(z, m)*JacobiSN(z, m)**2 + 2*(tanh(z)**2 - 1)*tanh(z)",
+      "third": "m**2*JacobiCN(z, m)**3*JacobiSN(z, m) - m**2*JacobiCN(z, m)*JacobiSN(z, m)**3 + 4*m*JacobiCN(z, m)*JacobiDN(z, m)**2*JacobiSN(z, m) - 2*(tanh(z)**2 - 1)**2 - 4*(tanh(z)**2 - 1)*tanh(z)**2"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0020",
+    "expression": "sin(alpha*z)*tan(z)",
+    "category": "elementary",
+    "parameters": [
+      "alpha"
+    ],
+    "tree_depth": 1,
+    "node_count": 7,
+    "symbolic_derivatives": {
+      "first": "alpha*cos(alpha*z)*tan(z) + (tan(z)**2 + 1)*sin(alpha*z)",
+      "second": "-alpha**2*sin(alpha*z)*tan(z) + 2*alpha*(tan(z)**2 + 1)*cos(alpha*z) + 2*(tan(z)**2 + 1)*sin(alpha*z)*tan(z)",
+      "third": "-alpha**3*cos(alpha*z)*tan(z) - 3*alpha**2*(tan(z)**2 + 1)*sin(alpha*z) + 6*alpha*(tan(z)**2 + 1)*cos(alpha*z)*tan(z) + 2*(tan(z)**2 + 1)*(3*tan(z)**2 + 1)*sin(alpha*z)"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0021",
+    "expression": "tanh(tanh(z)*sech(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "(1 - tanh(tanh(z)*sech(z))**2)*((1 - tanh(z)**2)*sech(z) - tanh(z)**2*sech(z))",
+      "second": "(2*(2*tanh(z)**2 - 1)**2*tanh(tanh(z)*sech(z))*sech(z) - (6*tanh(z)**2 - 5)*tanh(z))*(tanh(tanh(z)*sech(z))**2 - 1)*sech(z)",
+      "third": "(tanh(tanh(z)*sech(z))**2 - 1)*(5*(tanh(z)**2 - 1)**2 + 18*(tanh(z)**2 - 1)*tanh(z)**2 + 2*(2*tanh(z)**2 - 1)**3*(tanh(tanh(z)*sech(z))**2 - 1)*sech(z)**2 + 4*(2*tanh(z)**2 - 1)**3*tanh(tanh(z)*sech(z))**2*sech(z)**2 - 6*(2*tanh(z)**2 - 1)*(6*tanh(z)**2 - 5)*tanh(z)*tanh(tanh(z)*sech(z))*sech(z) + tanh(z)**4)*sech(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0022",
+    "expression": "sinh(z)**2",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "2*sinh(z)*cosh(z)",
+      "second": "2*(sinh(z)**2 + cosh(z)**2)",
+      "third": "8*sinh(z)*cosh(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0023",
+    "expression": "tan(z) + cosh(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "tan(z)**2 + sinh(z) + 1",
+      "second": "2*(tan(z)**2 + 1)*tan(z) + cosh(z)",
+      "third": "2*(tan(z)**2 + 1)**2 + 4*(tan(z)**2 + 1)*tan(z)**2 + sinh(z)"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0024",
+    "expression": "exp(-2*z**2)",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "-4*z*exp(-2*z**2)",
+      "second": "4*(4*z**2 - 1)*exp(-2*z**2)",
+      "third": "16*z*(3 - 4*z**2)*exp(-2*z**2)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0025",
+    "expression": "tan(z) + 1/z",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "tan(z)**2 + 1 - 1/z**2",
+      "second": "2*((tan(z)**2 + 1)*tan(z) + z**(-3))",
+      "third": "2*((tan(z)**2 + 1)**2 + 2*(tan(z)**2 + 1)*tan(z)**2 - 3/z**4)"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0026",
+    "expression": "cos(z)*sech(z)**2",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 7,
+    "symbolic_derivatives": {
+      "first": "-sin(z)*sech(z)**2 - 2*cos(z)*tanh(z)*sech(z)**2",
+      "second": "(2*(3*tanh(z)**2 - 1)*cos(z) + 4*sin(z)*tanh(z) - cos(z))*sech(z)**2",
+      "third": "(-8*(3*tanh(z)**2 - 2)*cos(z)*tanh(z) - 6*(3*tanh(z)**2 - 1)*sin(z) + sin(z) + 6*cos(z)*tanh(z))*sech(z)**2"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0027",
+    "expression": "tanh(z**3)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "3*z**2*(1 - tanh(z**3)**2)",
+      "second": "6*z*(3*z**3*tanh(z**3) - 1)*(tanh(z**3)**2 - 1)",
+      "third": "6*(-9*z**6*(tanh(z**3)**2 - 1)**2 - 18*z**6*(tanh(z**3)**2 - 1)*tanh(z**3)**2 + 18*z**3*(tanh(z**3)**2 - 1)*tanh(z**3) - tanh(z**3)**2 + 1)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0028",
+    "expression": "cos(z)*sech(z)**2",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 7,
+    "symbolic_derivatives": {
+      "first": "-sin(z)*sech(z)**2 - 2*cos(z)*tanh(z)*sech(z)**2",
+      "second": "(2*(3*tanh(z)**2 - 1)*cos(z) + 4*sin(z)*tanh(z) - cos(z))*sech(z)**2",
+      "third": "(-8*(3*tanh(z)**2 - 2)*cos(z)*tanh(z) - 6*(3*tanh(z)**2 - 1)*sin(z) + sin(z) + 6*cos(z)*tanh(z))*sech(z)**2"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0029",
+    "expression": "tanh(log(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "(1 - tanh(log(z))**2)/z",
+      "second": "(2*tanh(log(z)) + 1)*(tanh(log(z))**2 - 1)/z**2",
+      "third": "-2*(tanh(log(z))**2 - 1)*(3*tanh(log(z))**2 + 3*tanh(log(z)))/z**3"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0030",
+    "expression": "tanh(csch(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "-(1 - tanh(csch(z))**2)*coth(z)*csch(z)",
+      "second": "(tanh(csch(z))**2 - 1)*(2*tanh(csch(z))*coth(z)**2*csch(z) - coth(z)**2 - 1/sinh(z)**2)*csch(z)",
+      "third": "(tanh(csch(z))**2 - 1)*(2*(tanh(csch(z))**2 - 1)*coth(z)**3*csch(z)**2 + 4*tanh(csch(z))**2*coth(z)**3*csch(z)**2 - 6*tanh(csch(z))*coth(z)**3*csch(z) + coth(z)**3 - 6*tanh(csch(z))*coth(z)*csch(z)/sinh(z)**2 + 3*coth(z)/sinh(z)**2 + 2*cosh(z)/sinh(z)**3)*csch(z)"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0031",
+    "expression": "sqrt(z)*tanh(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "sqrt(z)*(1 - tanh(z)**2) + tanh(z)/(2*sqrt(z))",
+      "second": "2*sqrt(z)*(tanh(z)**2 - 1)*tanh(z) - (tanh(z)**2 - 1)/sqrt(z) - tanh(z)/(4*z**(3/2))",
+      "third": "-2*sqrt(z)*(tanh(z)**2 - 1)*(3*tanh(z)**2 - 1) + 3*(tanh(z)**2 - 1)*tanh(z)/sqrt(z) + 3*(tanh(z)**2 - 1)/(4*z**(3/2)) + 3*tanh(z)/(8*z**(5/2))"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0032",
+    "expression": "z**2",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 0,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "2*z",
+      "second": "2",
+      "third": "0"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 1,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0033",
+    "expression": "z*sech(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "-z*tanh(z)*sech(z) + sech(z)",
+      "second": "(z*(2*tanh(z)**2 - 1) - 2*tanh(z))*sech(z)",
+      "third": "(-z*(6*tanh(z)**2 - 5)*tanh(z) + 6*tanh(z)**2 - 3)*sech(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0034",
+    "expression": "z*sin(z)*cosh(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "z*sin(z)*sinh(z) + z*cos(z)*cosh(z) + sin(z)*cosh(z)",
+      "second": "2*(z*cos(z)*sinh(z) + sin(z)*sinh(z) + cos(z)*cosh(z))",
+      "third": "2*(-z*sin(z)*sinh(z) + z*cos(z)*cosh(z) + 3*cos(z)*sinh(z))"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0035",
+    "expression": "sin(z)*cosh(z)*JacobiSN(z, m)",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 1,
+    "node_count": 8,
+    "symbolic_derivatives": {
+      "first": "sin(z)*sinh(z)*JacobiSN(z, m) + sin(z)*cosh(z)*JacobiCN(z, m)*JacobiDN(z, m) + cos(z)*cosh(z)*JacobiSN(z, m)",
+      "second": "-(m*JacobiCN(z, m)**2 + JacobiDN(z, m)**2)*sin(z)*cosh(z)*JacobiSN(z, m) + 2*sin(z)*sinh(z)*JacobiCN(z, m)*JacobiDN(z, m) + 2*cos(z)*sinh(z)*JacobiSN(z, m) + 2*cos(z)*cosh(z)*JacobiCN(z, m)*JacobiDN(z, m)",
+      "third": "-3*(m*JacobiCN(z, m)**2 + JacobiDN(z, m)**2)*sin(z)*sinh(z)*JacobiSN(z, m) - 3*(m*JacobiCN(z, m)**2 + JacobiDN(z, m)**2)*cos(z)*cosh(z)*JacobiSN(z, m) - (m*JacobiCN(z, m)**2 - 4*m*JacobiSN(z, m)**2 + JacobiDN(z, m)**2)*sin(z)*cosh(z)*JacobiCN(z, m)*JacobiDN(z, m) - 2*sin(z)*sinh(z)*JacobiSN(z, m) + 6*cos(z)*sinh(z)*JacobiCN(z, m)*JacobiDN(z, m) + 2*cos(z)*cosh(z)*JacobiSN(z, m)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 5,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0036",
+    "expression": "sinh(z)*sech(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "-sinh(z)*tanh(z)*sech(z) + cosh(z)*sech(z)",
+      "second": "((2*tanh(z)**2 - 1)*sinh(z) + sinh(z) - 2*cosh(z)*tanh(z))*sech(z)",
+      "third": "(3*(2*tanh(z)**2 - 1)*cosh(z) - (6*tanh(z)**2 - 5)*sinh(z)*tanh(z) - 3*sinh(z)*tanh(z) + cosh(z))*sech(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0037",
+    "expression": "exp(-z)*tan(z)",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 7,
+    "symbolic_derivatives": {
+      "first": "(tan(z)**2 + 1)*exp(-z) - exp(-z)*tan(z)",
+      "second": "(2*(tan(z)**2 + 1)*tan(z) - 2*tan(z)**2 + tan(z) - 2)*exp(-z)",
+      "third": "(2*(tan(z)**2 + 1)*(3*tan(z)**2 + 1) - 6*(tan(z)**2 + 1)*tan(z) + 3*tan(z)**2 - tan(z) + 3)*exp(-z)"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0038",
+    "expression": "tanh(exp(-z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "-(1 - tanh(exp(-z))**2)*exp(-z)",
+      "second": "(-1 + 2*exp(-z)*tanh(exp(-z)))*(tanh(exp(-z))**2 - 1)*exp(-z)",
+      "third": "(tanh(exp(-z))**2 - 1)*(2*(tanh(exp(-z))**2 - 1)*exp(-2*z) + 1 - 6*exp(-z)*tanh(exp(-z)) + 4*exp(-2*z)*tanh(exp(-z))**2)*exp(-z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0039",
+    "expression": "z**4",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 0,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "4*z**3",
+      "second": "12*z**2",
+      "third": "24*z"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 1,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0040",
+    "expression": "tanh(sin(alpha*z))",
+    "category": "hyperbolic",
+    "parameters": [
+      "alpha"
+    ],
+    "tree_depth": 2,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "alpha*(1 - tanh(sin(alpha*z))**2)*cos(alpha*z)",
+      "second": "alpha**2*(sin(alpha*z) + 2*cos(alpha*z)**2*tanh(sin(alpha*z)))*(tanh(sin(alpha*z))**2 - 1)",
+      "third": "alpha**3*(tanh(sin(alpha*z))**2 - 1)*(-2*(tanh(sin(alpha*z))**2 - 1)*cos(alpha*z)**2 - 6*sin(alpha*z)*tanh(sin(alpha*z)) - 4*cos(alpha*z)**2*tanh(sin(alpha*z))**2 + 1)*cos(alpha*z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0041",
+    "expression": "tanh(JacobiDN(z, m))",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 2,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "-m*(1 - tanh(JacobiDN(z, m))**2)*JacobiCN(z, m)*JacobiSN(z, m)",
+      "second": "m*(tanh(JacobiDN(z, m))**2 - 1)*(2*m*tanh(JacobiDN(z, m))*JacobiCN(z, m)**2*JacobiSN(z, m)**2 + JacobiCN(z, m)**2*JacobiDN(z, m) - JacobiDN(z, m)*JacobiSN(z, m)**2)",
+      "third": "m*(tanh(JacobiDN(z, m))**2 - 1)*(2*m**2*(tanh(JacobiDN(z, m))**2 - 1)*JacobiCN(z, m)**2*JacobiSN(z, m)**2 + 4*m**2*tanh(JacobiDN(z, m))**2*JacobiCN(z, m)**2*JacobiSN(z, m)**2 + 6*m*tanh(JacobiDN(z, m))*JacobiCN(z, m)**2*JacobiDN(z, m) - 6*m*tanh(JacobiDN(z, m))*JacobiDN(z, m)*JacobiSN(z, m)**2 - m*JacobiCN(z, m)**2 + m*JacobiSN(z, m)**2 - 4*JacobiDN(z, m)**2)*JacobiCN(z, m)*JacobiSN(z, m)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0042",
+    "expression": "exp(z)*tanh(z)*sech(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 7,
+    "symbolic_derivatives": {
+      "first": "(1 - tanh(z)**2)*exp(z)*sech(z) - exp(z)*tanh(z)**2*sech(z) + exp(z)*tanh(z)*sech(z)",
+      "second": "(4*(tanh(z)**2 - 1)*tanh(z) + (2*tanh(z)**2 - 1)*tanh(z) - 4*tanh(z)**2 + tanh(z) + 2)*exp(z)*sech(z)",
+      "third": "(-3*(tanh(z)**2 - 1)*(2*tanh(z)**2 - 1) - 2*(tanh(z)**2 - 1)*(3*tanh(z)**2 - 1) - 6*(tanh(z)**2 - 1)*tanh(z)**2 + 12*(tanh(z)**2 - 1)*tanh(z) + 3*(2*tanh(z)**2 - 1)*tanh(z) - (6*tanh(z)**2 - 5)*tanh(z)**2 - 6*tanh(z)**2 + tanh(z) + 3)*exp(z)*sech(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 5,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0043",
+    "expression": "tanh(exp(-z**2))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 7,
+    "symbolic_derivatives": {
+      "first": "-2*z*(1 - tanh(exp(-z**2))**2)*exp(-z**2)",
+      "second": "2*(tanh(exp(-z**2))**2 - 1)*(-2*z**2 + 4*z**2*exp(-z**2)*tanh(exp(-z**2)) + 1)*exp(-z**2)",
+      "third": "4*z*(tanh(exp(-z**2))**2 - 1)*(4*z**2*(tanh(exp(-z**2))**2 - 1)*exp(-2*z**2) + 2*z**2 - 12*z**2*exp(-z**2)*tanh(exp(-z**2)) + 8*z**2*exp(-2*z**2)*tanh(exp(-z**2))**2 - 3 + 6*exp(-z**2)*tanh(exp(-z**2)))*exp(-z**2)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0044",
+    "expression": "z**3 + csch(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "3*z**2 - coth(z)*csch(z)",
+      "second": "6*z + coth(z)**2*csch(z) + csch(z)/sinh(z)**2",
+      "third": "-coth(z)**3*csch(z) + 6 - 3*coth(z)*csch(z)/sinh(z)**2 - 2*cosh(z)*csch(z)/sinh(z)**3"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0045",
+    "expression": "tanh(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 2,
+    "symbolic_derivatives": {
+      "first": "1 - tanh(z)**2",
+      "second": "2*(tanh(z)**2 - 1)*tanh(z)",
+      "third": "-2*(tanh(z)**2 - 1)*(3*tanh(z)**2 - 1)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 1,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0046",
+    "expression": "z**4",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 0,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "4*z**3",
+      "second": "12*z**2",
+      "third": "24*z"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 1,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0047",
+    "expression": "tanh(coth(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "-(1 - tanh(coth(z))**2)/sinh(z)**2",
+      "second": "2*(-cosh(z) + tanh(coth(z))/sinh(z))*(tanh(coth(z))**2 - 1)/sinh(z)**3",
+      "third": "2*(tanh(coth(z))**2 - 1)*((tanh(coth(z))**2 - 1)/sinh(z)**4 - 1 + 3*cosh(z)**2/sinh(z)**2 - 6*cosh(z)*tanh(coth(z))/sinh(z)**3 + 2*tanh(coth(z))**2/sinh(z)**4)/sinh(z)**2"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0048",
+    "expression": "tanh(JacobiDN(z, m))",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 2,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "-m*(1 - tanh(JacobiDN(z, m))**2)*JacobiCN(z, m)*JacobiSN(z, m)",
+      "second": "m*(tanh(JacobiDN(z, m))**2 - 1)*(2*m*tanh(JacobiDN(z, m))*JacobiCN(z, m)**2*JacobiSN(z, m)**2 + JacobiCN(z, m)**2*JacobiDN(z, m) - JacobiDN(z, m)*JacobiSN(z, m)**2)",
+      "third": "m*(tanh(JacobiDN(z, m))**2 - 1)*(2*m**2*(tanh(JacobiDN(z, m))**2 - 1)*JacobiCN(z, m)**2*JacobiSN(z, m)**2 + 4*m**2*tanh(JacobiDN(z, m))**2*JacobiCN(z, m)**2*JacobiSN(z, m)**2 + 6*m*tanh(JacobiDN(z, m))*JacobiCN(z, m)**2*JacobiDN(z, m) - 6*m*tanh(JacobiDN(z, m))*JacobiDN(z, m)*JacobiSN(z, m)**2 - m*JacobiCN(z, m)**2 + m*JacobiSN(z, m)**2 - 4*JacobiDN(z, m)**2)*JacobiCN(z, m)*JacobiSN(z, m)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0049",
+    "expression": "sin(z) + tan(z)",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "cos(z) + tan(z)**2 + 1",
+      "second": "2*(tan(z)**2 + 1)*tan(z) - sin(z)",
+      "third": "2*(tan(z)**2 + 1)**2 + 4*(tan(z)**2 + 1)*tan(z)**2 - cos(z)"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0050",
+    "expression": "tanh(tanh(z)*sech(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "(1 - tanh(tanh(z)*sech(z))**2)*((1 - tanh(z)**2)*sech(z) - tanh(z)**2*sech(z))",
+      "second": "(2*(2*tanh(z)**2 - 1)**2*tanh(tanh(z)*sech(z))*sech(z) - (6*tanh(z)**2 - 5)*tanh(z))*(tanh(tanh(z)*sech(z))**2 - 1)*sech(z)",
+      "third": "(tanh(tanh(z)*sech(z))**2 - 1)*(5*(tanh(z)**2 - 1)**2 + 18*(tanh(z)**2 - 1)*tanh(z)**2 + 2*(2*tanh(z)**2 - 1)**3*(tanh(tanh(z)*sech(z))**2 - 1)*sech(z)**2 + 4*(2*tanh(z)**2 - 1)**3*tanh(tanh(z)*sech(z))**2*sech(z)**2 - 6*(2*tanh(z)**2 - 1)*(6*tanh(z)**2 - 5)*tanh(z)*tanh(tanh(z)*sech(z))*sech(z) + tanh(z)**4)*sech(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0051",
+    "expression": "sinh(z)*sech(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "-sinh(z)*tanh(z)*sech(z) + cosh(z)*sech(z)",
+      "second": "((2*tanh(z)**2 - 1)*sinh(z) + sinh(z) - 2*cosh(z)*tanh(z))*sech(z)",
+      "third": "(3*(2*tanh(z)**2 - 1)*cosh(z) - (6*tanh(z)**2 - 5)*sinh(z)*tanh(z) - 3*sinh(z)*tanh(z) + cosh(z))*sech(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0052",
+    "expression": "log(z) + JacobiCN(z, m)",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "-JacobiDN(z, m)*JacobiSN(z, m) + 1/z",
+      "second": "m*JacobiCN(z, m)*JacobiSN(z, m)**2 - JacobiCN(z, m)*JacobiDN(z, m)**2 - 1/z**2",
+      "third": "4*m*JacobiCN(z, m)**2*JacobiDN(z, m)*JacobiSN(z, m) - m*JacobiDN(z, m)*JacobiSN(z, m)**3 + JacobiDN(z, m)**3*JacobiSN(z, m) + 2/z**3"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0053",
+    "expression": "tanh(sin(z)*cosh(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "(1 - tanh(sin(z)*cosh(z))**2)*(sin(z)*sinh(z) + cos(z)*cosh(z))",
+      "second": "2*((sin(z)*sinh(z) + cos(z)*cosh(z))**2*tanh(sin(z)*cosh(z)) - cos(z)*sinh(z))*(tanh(sin(z)*cosh(z))**2 - 1)",
+      "third": "2*(tanh(sin(z)*cosh(z))**2 - 1)*(-(sin(z)*sinh(z) + cos(z)*cosh(z))**3*(tanh(sin(z)*cosh(z))**2 - 1) - 2*(sin(z)*sinh(z) + cos(z)*cosh(z))**3*tanh(sin(z)*cosh(z))**2 + 6*(sin(z)*sinh(z) + cos(z)*cosh(z))*cos(z)*sinh(z)*tanh(sin(z)*cosh(z)) + sin(z)*sinh(z) - cos(z)*cosh(z))"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0054",
+    "expression": "JacobiCN(z, m)*csch(z)",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "-coth(z)*JacobiCN(z, m)*csch(z) - JacobiDN(z, m)*JacobiSN(z, m)*csch(z)",
+      "second": "((m*JacobiSN(z, m)**2 - JacobiDN(z, m)**2)*JacobiCN(z, m) + (coth(z)**2 + sinh(z)**(-2))*JacobiCN(z, m) + 2*coth(z)*JacobiDN(z, m)*JacobiSN(z, m))*csch(z)",
+      "third": "(-3*(m*JacobiSN(z, m)**2 - JacobiDN(z, m)**2)*coth(z)*JacobiCN(z, m) - 3*(coth(z)**2 + sinh(z)**(-2))*JacobiDN(z, m)*JacobiSN(z, m) + (4*m*JacobiCN(z, m)**2 - m*JacobiSN(z, m)**2 + JacobiDN(z, m)**2)*JacobiDN(z, m)*JacobiSN(z, m) - (coth(z)**3 + 3*coth(z)/sinh(z)**2 + 2*cosh(z)/sinh(z)**3)*JacobiCN(z, m))*csch(z)"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0055",
+    "expression": "JacobiSN(z, m)**2",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 1,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "2*JacobiCN(z, m)*JacobiDN(z, m)*JacobiSN(z, m)",
+      "second": "2*(-m*JacobiCN(z, m)**2*JacobiSN(z, m)**2 + JacobiCN(z, m)**2*JacobiDN(z, m)**2 - JacobiDN(z, m)**2*JacobiSN(z, m)**2)",
+      "third": "8*(-m*JacobiCN(z, m)**2 + m*JacobiSN(z, m)**2 - JacobiDN(z, m)**2)*JacobiCN(z, m)*JacobiDN(z, m)*JacobiSN(z, m)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0056",
+    "expression": "tanh(tanh(z)*sech(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "(1 - tanh(tanh(z)*sech(z))**2)*((1 - tanh(z)**2)*sech(z) - tanh(z)**2*sech(z))",
+      "second": "(2*(2*tanh(z)**2 - 1)**2*tanh(tanh(z)*sech(z))*sech(z) - (6*tanh(z)**2 - 5)*tanh(z))*(tanh(tanh(z)*sech(z))**2 - 1)*sech(z)",
+      "third": "(tanh(tanh(z)*sech(z))**2 - 1)*(5*(tanh(z)**2 - 1)**2 + 18*(tanh(z)**2 - 1)*tanh(z)**2 + 2*(2*tanh(z)**2 - 1)**3*(tanh(tanh(z)*sech(z))**2 - 1)*sech(z)**2 + 4*(2*tanh(z)**2 - 1)**3*tanh(tanh(z)*sech(z))**2*sech(z)**2 - 6*(2*tanh(z)**2 - 1)*(6*tanh(z)**2 - 5)*tanh(z)*tanh(tanh(z)*sech(z))*sech(z) + tanh(z)**4)*sech(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0057",
+    "expression": "sqrt(z) + z**2",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 0,
+    "node_count": 7,
+    "symbolic_derivatives": {
+      "first": "2*z + 1/(2*sqrt(z))",
+      "second": "2 - 1/(4*z**(3/2))",
+      "third": "3/(8*z**(5/2))"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0058",
+    "expression": "JacobiSN(z, m)**2",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 1,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "2*JacobiCN(z, m)*JacobiDN(z, m)*JacobiSN(z, m)",
+      "second": "2*(-m*JacobiCN(z, m)**2*JacobiSN(z, m)**2 + JacobiCN(z, m)**2*JacobiDN(z, m)**2 - JacobiDN(z, m)**2*JacobiSN(z, m)**2)",
+      "third": "8*(-m*JacobiCN(z, m)**2 + m*JacobiSN(z, m)**2 - JacobiDN(z, m)**2)*JacobiCN(z, m)*JacobiDN(z, m)*JacobiSN(z, m)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0059",
+    "expression": "exp(-2*z**2)",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "-4*z*exp(-2*z**2)",
+      "second": "4*(4*z**2 - 1)*exp(-2*z**2)",
+      "third": "16*z*(3 - 4*z**2)*exp(-2*z**2)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0060",
+    "expression": "log(z) + tanh(alpha*z)",
+    "category": "hyperbolic",
+    "parameters": [
+      "alpha"
+    ],
+    "tree_depth": 1,
+    "node_count": 7,
+    "symbolic_derivatives": {
+      "first": "alpha*(1 - tanh(alpha*z)**2) + 1/z",
+      "second": "2*alpha**2*(tanh(alpha*z)**2 - 1)*tanh(alpha*z) - 1/z**2",
+      "third": "2*(-alpha**3*(tanh(alpha*z)**2 - 1)**2 - 2*alpha**3*(tanh(alpha*z)**2 - 1)*tanh(alpha*z)**2 + z**(-3))"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0061",
+    "expression": "JacobiCN(z, m)**2",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 1,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "-2*JacobiCN(z, m)*JacobiDN(z, m)*JacobiSN(z, m)",
+      "second": "2*(m*JacobiCN(z, m)**2*JacobiSN(z, m)**2 - JacobiCN(z, m)**2*JacobiDN(z, m)**2 + JacobiDN(z, m)**2*JacobiSN(z, m)**2)",
+      "third": "8*(m*JacobiCN(z, m)**2 - m*JacobiSN(z, m)**2 + JacobiDN(z, m)**2)*JacobiCN(z, m)*JacobiDN(z, m)*JacobiSN(z, m)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0062",
+    "expression": "tanh(exp(-z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "-(1 - tanh(exp(-z))**2)*exp(-z)",
+      "second": "(-1 + 2*exp(-z)*tanh(exp(-z)))*(tanh(exp(-z))**2 - 1)*exp(-z)",
+      "third": "(tanh(exp(-z))**2 - 1)*(2*(tanh(exp(-z))**2 - 1)*exp(-2*z) + 1 - 6*exp(-z)*tanh(exp(-z)) + 4*exp(-2*z)*tanh(exp(-z))**2)*exp(-z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0063",
+    "expression": "z*sech(alpha*z)**2",
+    "category": "hyperbolic",
+    "parameters": [
+      "alpha"
+    ],
+    "tree_depth": 1,
+    "node_count": 8,
+    "symbolic_derivatives": {
+      "first": "-2*alpha*z*tanh(alpha*z)*sech(alpha*z)**2 + sech(alpha*z)**2",
+      "second": "2*alpha*(alpha*z*(3*tanh(alpha*z)**2 - 1) - 2*tanh(alpha*z))*sech(alpha*z)**2",
+      "third": "2*alpha**2*(-4*alpha*z*(3*tanh(alpha*z)**2 - 2)*tanh(alpha*z) + 9*tanh(alpha*z)**2 - 3)*sech(alpha*z)**2"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0064",
+    "expression": "sech(alpha*z)**4",
+    "category": "hyperbolic",
+    "parameters": [
+      "alpha"
+    ],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "-4*alpha*tanh(alpha*z)*sech(alpha*z)**4",
+      "second": "4*alpha**2*(5*tanh(alpha*z)**2 - 1)*sech(alpha*z)**4",
+      "third": "-8*alpha**3*(15*tanh(alpha*z)**2 - 7)*tanh(alpha*z)*sech(alpha*z)**4"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0065",
+    "expression": "cos(z) + exp(-z)",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 7,
+    "symbolic_derivatives": {
+      "first": "-sin(z) - exp(-z)",
+      "second": "-cos(z) + exp(-z)",
+      "third": "sin(z) - exp(-z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0066",
+    "expression": "tanh(sqrt(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "(1 - tanh(sqrt(z))**2)/(2*sqrt(z))",
+      "second": "(2*tanh(sqrt(z))/z + z**(-3/2))*(tanh(sqrt(z))**2 - 1)/4",
+      "third": "-(tanh(sqrt(z))**2 - 1)*(6*tanh(sqrt(z))/z**2 + 2*(tanh(sqrt(z))**2 - 1)/z**(3/2) + 4*tanh(sqrt(z))**2/z**(3/2) + 3/z**(5/2))/8"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0067",
+    "expression": "z**2",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 0,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "2*z",
+      "second": "2",
+      "third": "0"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 1,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0068",
+    "expression": "tanh(sin(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "(1 - tanh(sin(z))**2)*cos(z)",
+      "second": "(sin(z) + 2*cos(z)**2*tanh(sin(z)))*(tanh(sin(z))**2 - 1)",
+      "third": "(tanh(sin(z))**2 - 1)*(-2*(tanh(sin(z))**2 - 1)*cos(z)**2 - 6*sin(z)*tanh(sin(z)) - 4*cos(z)**2*tanh(sin(z))**2 + 1)*cos(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0069",
+    "expression": "sqrt(z)*cos(z)",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "-sqrt(z)*sin(z) + cos(z)/(2*sqrt(z))",
+      "second": "-(sqrt(z)*cos(z) + sin(z)/sqrt(z) + cos(z)/(4*z**(3/2)))",
+      "third": "sqrt(z)*sin(z) - 3*cos(z)/(2*sqrt(z)) + 3*sin(z)/(4*z**(3/2)) + 3*cos(z)/(8*z**(5/2))"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0070",
+    "expression": "tanh(sinh(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "(1 - tanh(sinh(z))**2)*cosh(z)",
+      "second": "(-sinh(z) + 2*cosh(z)**2*tanh(sinh(z)))*(tanh(sinh(z))**2 - 1)",
+      "third": "(tanh(sinh(z))**2 - 1)*(-2*(tanh(sinh(z))**2 - 1)*cosh(z)**2 + 6*sinh(z)*tanh(sinh(z)) - 4*cosh(z)**2*tanh(sinh(z))**2 - 1)*cosh(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0071",
+    "expression": "tan(z) + tanh(alpha*z)",
+    "category": "hyperbolic",
+    "parameters": [
+      "alpha"
+    ],
+    "tree_depth": 1,
+    "node_count": 7,
+    "symbolic_derivatives": {
+      "first": "alpha*(1 - tanh(alpha*z)**2) + tan(z)**2 + 1",
+      "second": "2*(alpha**2*(tanh(alpha*z)**2 - 1)*tanh(alpha*z) + (tan(z)**2 + 1)*tan(z))",
+      "third": "2*(-alpha**3*(tanh(alpha*z)**2 - 1)**2 - 2*alpha**3*(tanh(alpha*z)**2 - 1)*tanh(alpha*z)**2 + (tan(z)**2 + 1)**2 + 2*(tan(z)**2 + 1)*tan(z)**2)"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0072",
+    "expression": "tanh(sin(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "(1 - tanh(sin(z))**2)*cos(z)",
+      "second": "(sin(z) + 2*cos(z)**2*tanh(sin(z)))*(tanh(sin(z))**2 - 1)",
+      "third": "(tanh(sin(z))**2 - 1)*(-2*(tanh(sin(z))**2 - 1)*cos(z)**2 - 6*sin(z)*tanh(sin(z)) - 4*cos(z)**2*tanh(sin(z))**2 + 1)*cos(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0073",
+    "expression": "exp(z) + cos(z)",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "exp(z) - sin(z)",
+      "second": "exp(z) - cos(z)",
+      "third": "exp(z) + sin(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0074",
+    "expression": "log(z) + JacobiSN(z, m)",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "JacobiCN(z, m)*JacobiDN(z, m) + 1/z",
+      "second": "-(m*JacobiCN(z, m)**2*JacobiSN(z, m) + JacobiDN(z, m)**2*JacobiSN(z, m) + z**(-2))",
+      "third": "-m*JacobiCN(z, m)**3*JacobiDN(z, m) + 4*m*JacobiCN(z, m)*JacobiDN(z, m)*JacobiSN(z, m)**2 - JacobiCN(z, m)*JacobiDN(z, m)**3 + 2/z**3"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0075",
+    "expression": "cosh(z)**2",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "2*sinh(z)*cosh(z)",
+      "second": "2*(sinh(z)**2 + cosh(z)**2)",
+      "third": "8*sinh(z)*cosh(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0076",
+    "expression": "sin(z)*cosh(z) + tanh(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 8,
+    "symbolic_derivatives": {
+      "first": "sin(z)*sinh(z) + cos(z)*cosh(z) - tanh(z)**2 + 1",
+      "second": "2*((tanh(z)**2 - 1)*tanh(z) + cos(z)*sinh(z))",
+      "third": "2*(-(tanh(z)**2 - 1)**2 - 2*(tanh(z)**2 - 1)*tanh(z)**2 - sin(z)*sinh(z) + cos(z)*cosh(z))"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 5,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0077",
+    "expression": "exp(-z)*sin(z)",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 7,
+    "symbolic_derivatives": {
+      "first": "-exp(-z)*sin(z) + exp(-z)*cos(z)",
+      "second": "-2*exp(-z)*cos(z)",
+      "third": "2*(sin(z) + cos(z))*exp(-z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0078",
+    "expression": "tanh(sin(z)*cosh(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "(1 - tanh(sin(z)*cosh(z))**2)*(sin(z)*sinh(z) + cos(z)*cosh(z))",
+      "second": "2*((sin(z)*sinh(z) + cos(z)*cosh(z))**2*tanh(sin(z)*cosh(z)) - cos(z)*sinh(z))*(tanh(sin(z)*cosh(z))**2 - 1)",
+      "third": "2*(tanh(sin(z)*cosh(z))**2 - 1)*(-(sin(z)*sinh(z) + cos(z)*cosh(z))**3*(tanh(sin(z)*cosh(z))**2 - 1) - 2*(sin(z)*sinh(z) + cos(z)*cosh(z))**3*tanh(sin(z)*cosh(z))**2 + 6*(sin(z)*sinh(z) + cos(z)*cosh(z))*cos(z)*sinh(z)*tanh(sin(z)*cosh(z)) + sin(z)*sinh(z) - cos(z)*cosh(z))"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0079",
+    "expression": "csch(z)**2",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "-2*coth(z)*csch(z)**2",
+      "second": "2*(2*coth(z)**2 + sinh(z)**(-2))*csch(z)**2",
+      "third": "-4*(2*coth(z)**3 + 3*coth(z)/sinh(z)**2 + cosh(z)/sinh(z)**3)*csch(z)**2"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0080",
+    "expression": "z**3 + coth(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "3*z**2 - 1/sinh(z)**2",
+      "second": "2*(3*z + cosh(z)/sinh(z)**3)",
+      "third": "2*(3 + sinh(z)**(-2) - 3*cosh(z)**2/sinh(z)**4)"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0081",
+    "expression": "sin(z) + cos(z)",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "-sin(z) + cos(z)",
+      "second": "-(sin(z) + cos(z))",
+      "third": "sin(z) - cos(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0082",
+    "expression": "tan(z)**2",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "(2*tan(z)**2 + 2)*tan(z)",
+      "second": "2*(tan(z)**2 + 1)*(3*tan(z)**2 + 1)",
+      "third": "8*(tan(z)**2 + 1)*(3*tan(z)**2 + 2)*tan(z)"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0083",
+    "expression": "tanh(exp(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "(1 - tanh(exp(z))**2)*exp(z)",
+      "second": "(2*exp(z)*tanh(exp(z)) - 1)*(tanh(exp(z))**2 - 1)*exp(z)",
+      "third": "(tanh(exp(z))**2 - 1)*(-2*(tanh(exp(z))**2 - 1)*exp(2*z) - 4*exp(2*z)*tanh(exp(z))**2 + 6*exp(z)*tanh(exp(z)) - 1)*exp(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0084",
+    "expression": "tanh(sech(z)**2)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "-2*(1 - tanh(sech(z)**2)**2)*tanh(z)*sech(z)**2",
+      "second": "2*(tanh(sech(z)**2)**2 - 1)*(4*tanh(z)**2*tanh(sech(z)**2)*sech(z)**2 - 3*tanh(z)**2 + 1)*sech(z)**2",
+      "third": "8*(tanh(sech(z)**2)**2 - 1)*(-3*(tanh(z)**2 - 1)*tanh(sech(z)**2)*sech(z)**2 + 2*(tanh(sech(z)**2)**2 - 1)*tanh(z)**2*sech(z)**4 + 4*tanh(z)**2*tanh(sech(z)**2)**2*sech(z)**4 - 6*tanh(z)**2*tanh(sech(z)**2)*sech(z)**2 + 3*tanh(z)**2 - 2)*tanh(z)*sech(z)**2"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0085",
+    "expression": "tanh(tan(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "(1 - tanh(tan(z))**2)*(tan(z)**2 + 1)",
+      "second": "2*((tan(z)**2 + 1)*tanh(tan(z)) - tan(z))*(tan(z)**2 + 1)*(tanh(tan(z))**2 - 1)",
+      "third": "2*(tan(z)**2 + 1)*(tanh(tan(z))**2 - 1)*(-(tan(z)**2 + 1)**2*(tanh(tan(z))**2 - 1) - 2*(tan(z)**2 + 1)**2*tanh(tan(z))**2 + 6*(tan(z)**2 + 1)*tan(z)*tanh(tan(z)) - 3*tan(z)**2 - 1)"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0086",
+    "expression": "log(z) + sech(z)**2",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 7,
+    "symbolic_derivatives": {
+      "first": "-2*tanh(z)*sech(z)**2 + 1/z",
+      "second": "2*(tanh(z)**2 - 1)*sech(z)**2 + 4*tanh(z)**2*sech(z)**2 - 1/z**2",
+      "third": "2*(-8*(tanh(z)**2 - 1)*tanh(z)*sech(z)**2 - 4*tanh(z)**3*sech(z)**2 + z**(-3))"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0087",
+    "expression": "tanh(alpha*z) + JacobiDN(z, m)",
+    "category": "special",
+    "parameters": [
+      "alpha",
+      "m"
+    ],
+    "tree_depth": 1,
+    "node_count": 8,
+    "symbolic_derivatives": {
+      "first": "alpha*(1 - tanh(alpha*z)**2) - m*JacobiCN(z, m)*JacobiSN(z, m)",
+      "second": "2*alpha**2*(tanh(alpha*z)**2 - 1)*tanh(alpha*z) - m*JacobiCN(z, m)**2*JacobiDN(z, m) + m*JacobiDN(z, m)*JacobiSN(z, m)**2",
+      "third": "-2*alpha**3*(tanh(alpha*z)**2 - 1)**2 - 4*alpha**3*(tanh(alpha*z)**2 - 1)*tanh(alpha*z)**2 + m**2*JacobiCN(z, m)**3*JacobiSN(z, m) - m**2*JacobiCN(z, m)*JacobiSN(z, m)**3 + 4*m*JacobiCN(z, m)*JacobiDN(z, m)**2*JacobiSN(z, m)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 4,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0088",
+    "expression": "cosh(z)**2",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "2*sinh(z)*cosh(z)",
+      "second": "2*(sinh(z)**2 + cosh(z)**2)",
+      "third": "8*sinh(z)*cosh(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0089",
+    "expression": "z**3*JacobiCN(z, m)",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 1,
+    "node_count": 7,
+    "symbolic_derivatives": {
+      "first": "-z**3*JacobiDN(z, m)*JacobiSN(z, m) + 3*z**2*JacobiCN(z, m)",
+      "second": "z*(z**2*(m*JacobiSN(z, m)**2 - JacobiDN(z, m)**2)*JacobiCN(z, m) - 6*z*JacobiDN(z, m)*JacobiSN(z, m) + 6*JacobiCN(z, m))",
+      "third": "z**3*(4*m*JacobiCN(z, m)**2 - m*JacobiSN(z, m)**2 + JacobiDN(z, m)**2)*JacobiDN(z, m)*JacobiSN(z, m) + 9*z**2*(m*JacobiSN(z, m)**2 - JacobiDN(z, m)**2)*JacobiCN(z, m) - 18*z*JacobiDN(z, m)*JacobiSN(z, m) + 6*JacobiCN(z, m)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0090",
+    "expression": "z**3*sech(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 6,
+    "symbolic_derivatives": {
+      "first": "-z**3*tanh(z)*sech(z) + 3*z**2*sech(z)",
+      "second": "z*(z**2*(2*tanh(z)**2 - 1) - 6*z*tanh(z) + 6)*sech(z)",
+      "third": "(-z**3*(6*tanh(z)**2 - 5)*tanh(z) + 9*z**2*(2*tanh(z)**2 - 1) - 18*z*tanh(z) + 6)*sech(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0091",
+    "expression": "JacobiSN(z, m)**2",
+    "category": "special",
+    "parameters": [
+      "m"
+    ],
+    "tree_depth": 1,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "2*JacobiCN(z, m)*JacobiDN(z, m)*JacobiSN(z, m)",
+      "second": "2*(-m*JacobiCN(z, m)**2*JacobiSN(z, m)**2 + JacobiCN(z, m)**2*JacobiDN(z, m)**2 - JacobiDN(z, m)**2*JacobiSN(z, m)**2)",
+      "third": "8*(-m*JacobiCN(z, m)**2 + m*JacobiSN(z, m)**2 - JacobiDN(z, m)**2)*JacobiCN(z, m)*JacobiDN(z, m)*JacobiSN(z, m)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0092",
+    "expression": "sinh(z)**2",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "2*sinh(z)*cosh(z)",
+      "second": "2*(sinh(z)**2 + cosh(z)**2)",
+      "third": "8*sinh(z)*cosh(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0093",
+    "expression": "exp(-z)*log(z)",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 7,
+    "symbolic_derivatives": {
+      "first": "-exp(-z)*log(z) + exp(-z)/z",
+      "second": "(log(z) - 2/z - 1/z**2)*exp(-z)",
+      "third": "(-log(z) + 3/z + 3/z**2 + 2/z**3)*exp(-z)"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_mul"
+  },
+  {
+    "function_id": "func_0094",
+    "expression": "z**4",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 0,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "4*z**3",
+      "second": "12*z**2",
+      "third": "24*z"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 1,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_pow"
+  },
+  {
+    "function_id": "func_0095",
+    "expression": "cosh(z) + csch(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "sinh(z) - coth(z)*csch(z)",
+      "second": "cosh(z) + coth(z)**2*csch(z) + csch(z)/sinh(z)**2",
+      "third": "sinh(z) - coth(z)**3*csch(z) - 3*coth(z)*csch(z)/sinh(z)**2 - 2*cosh(z)*csch(z)/sinh(z)**3"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0096",
+    "expression": "cos(z) + coth(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "-sin(z) - 1/sinh(z)**2",
+      "second": "-cos(z) + 2*cosh(z)/sinh(z)**3",
+      "third": "sin(z) + 2/sinh(z)**2 - 6*cosh(z)**2/sinh(z)**4"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0097",
+    "expression": "tanh(exp(-z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "-(1 - tanh(exp(-z))**2)*exp(-z)",
+      "second": "(-1 + 2*exp(-z)*tanh(exp(-z)))*(tanh(exp(-z))**2 - 1)*exp(-z)",
+      "third": "(tanh(exp(-z))**2 - 1)*(2*(tanh(exp(-z))**2 - 1)*exp(-2*z) + 1 - 6*exp(-z)*tanh(exp(-z)) + 4*exp(-2*z)*tanh(exp(-z))**2)*exp(-z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 3,
+    "duplicate_status": "duplicate",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  },
+  {
+    "function_id": "func_0098",
+    "expression": "z + coth(z)",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 1,
+    "node_count": 4,
+    "symbolic_derivatives": {
+      "first": "1 - 1/sinh(z)**2",
+      "second": "2*cosh(z)/sinh(z)**3",
+      "third": "2*(1 - 3*cosh(z)**2/sinh(z)**2)/sinh(z)**2"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0099",
+    "expression": "z + 1/z",
+    "category": "elementary",
+    "parameters": [],
+    "tree_depth": 0,
+    "node_count": 5,
+    "symbolic_derivatives": {
+      "first": "1 - 1/z**2",
+      "second": "2/z**3",
+      "third": "-6/z**4"
+    },
+    "domain_status": "partial_domain",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_add"
+  },
+  {
+    "function_id": "func_0100",
+    "expression": "tanh(cosh(z))",
+    "category": "hyperbolic",
+    "parameters": [],
+    "tree_depth": 2,
+    "node_count": 3,
+    "symbolic_derivatives": {
+      "first": "(1 - tanh(cosh(z))**2)*sinh(z)",
+      "second": "(2*sinh(z)**2*tanh(cosh(z)) - cosh(z))*(tanh(cosh(z))**2 - 1)",
+      "third": "(tanh(cosh(z))**2 - 1)*(-2*(tanh(cosh(z))**2 - 1)*sinh(z)**2 - 4*sinh(z)**2*tanh(cosh(z))**2 + 6*cosh(z)*tanh(cosh(z)) - 1)*sinh(z)"
+    },
+    "domain_status": "candidate_real_axis",
+    "differentiability_status": "differentiable",
+    "symbolic_status": "success",
+    "complexity": 2,
+    "duplicate_status": "unique",
+    "source_type": "generated",
+    "generation_rule": "random_compose"
+  }
+]

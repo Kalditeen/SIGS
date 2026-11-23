@@ -1,0 +1,10 @@
+function_id=known_cn_21
+expression=JacobiCN(z, m)
+parameters=m
+network=[2, 1]
+trial_u=c0 + c1*JacobiCN(a*x + b*t + d, m)
+gardner_equation=ut + u*ux + u**2*ux + uxxx = 0
+residual=4*a**3*c1*m*JacobiCN(a*x + b*t + d, m)**2*JacobiDN(a*x + b*t + d, m)*JacobiSN(a*x + b*t + d, m) - a**3*c1*m*JacobiDN(a*x + b*t + d, m)*JacobiSN(a*x + b*t + d, m)**3 + a**3*c1*JacobiDN(a*x + b*t + d, m)**3*JacobiSN(a*x + b*t + d, m) - a*c0**2*c1*JacobiDN(a*x + b*t + d, m)*JacobiSN(a*x + b*t + d, m) - 2*a*c0*c1**2*JacobiCN(a*x + b*t + d, m)*JacobiDN(a*x + b*t + d, m)*JacobiSN(a*x + b*t + d, m) - a*c0*c1*JacobiDN(a*x + b*t + d, m)*JacobiSN(a*x + b*t + d, m) - a*c1**3*JacobiCN(a*x + b*t + d, m)**2*JacobiDN(a*x + b*t + d, m)*JacobiSN(a*x + b*t + d, m) - a*c1**2*JacobiCN(a*x + b*t + d, m)*JacobiDN(a*x + b*t + d, m)*JacobiSN(a*x + b*t + d, m) - b*c1*JacobiDN(a*x + b*t + d, m)*JacobiSN(a*x + b*t + d, m)
+completed_steps=parse; derivatives; NNSCA assembly; SymPy residual
+sympy_failure=timeout
+maple_goal=verify whether simplify(residual)=0 and report any exact parameter branches

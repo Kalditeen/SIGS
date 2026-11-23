@@ -1,0 +1,13 @@
+run started at 2026-11-23 12:55:11
+network=[2, 1]
+mode=random seed=303
+EXACT candidate=func_0014 u=c0 + c1*JacobiSN(d - x*sqrt(-3*c0*c1*m - c1**2*m - c1**2 - 3*c1*m)/(6*c0*m + 2*c1*m + 2*c1 + 6*m) + t*sqrt(-3*c0*c1*m - c1**2*m - c1**2 - 3*c1*m)/(6*m), m)**2 constraints={'a': '-sqrt(-c1*(3*c0*m + c1*m + c1 + 3*m))/(2*(3*c0*m + c1*m + c1 + 3*m))', 'b': 'sqrt(-c1*(3*c0*m + c1*m + c1 + 3*m))/(6*m)'}
+EXACT candidate=func_0014 u=c0 + c1*JacobiSN(d + x*sqrt(-3*c0*c1*m - c1**2*m - c1**2 - 3*c1*m)/(6*c0*m + 2*c1*m + 2*c1 + 6*m) - t*sqrt(-3*c0*c1*m - c1**2*m - c1**2 - 3*c1*m)/(6*m), m)**2 constraints={'a': 'sqrt(-c1*(3*c0*m + c1*m + c1 + 3*m))/(2*(3*c0*m + c1*m + c1 + 3*m))', 'b': '-sqrt(-c1*(3*c0*m + c1*m + c1 + 3*m))/(6*m)'}
+EXACT candidate=func_0040 u=c0 + c1*JacobiCN(d - x*sqrt(3*c0*c1*m + 2*c1**2*m - c1**2 + 3*c1*m)/(6*c0*m + 4*c1*m - 2*c1 + 6*m) + t*sqrt(3*c0*c1*m + 2*c1**2*m - c1**2 + 3*c1*m)/(6*m), m)**2 constraints={'a': '-sqrt(c1*(3*c0*m + 2*c1*m - c1 + 3*m))/(2*(3*c0*m + 2*c1*m - c1 + 3*m))', 'b': 'sqrt(c1*(3*c0*m + 2*c1*m - c1 + 3*m))/(6*m)'}
+EXACT candidate=func_0040 u=c0 + c1*JacobiCN(d + x*sqrt(3*c0*c1*m + 2*c1**2*m - c1**2 + 3*c1*m)/(6*c0*m + 4*c1*m - 2*c1 + 6*m) - t*sqrt(3*c0*c1*m + 2*c1**2*m - c1**2 + 3*c1*m)/(6*m), m)**2 constraints={'a': 'sqrt(c1*(3*c0*m + 2*c1*m - c1 + 3*m))/(2*(3*c0*m + 2*c1*m - c1 + 3*m))', 'b': '-sqrt(c1*(3*c0*m + 2*c1*m - c1 + 3*m))/(6*m)'}
+EXACT candidate=func_0041 u=c1*tan(a*x + d + c1*t/(12*a))**2 + 2*c1/3 - 1 - c1/(12*a**2) constraints={'b': 'c1/(12*a)', 'c0': '2*c1/3 - 1 - c1/(12*a**2)'}
+EXACT candidate=func_0050 u=c0 + c1*JacobiDN(d + t*sqrt(3*c0*c1 - c1**2*m + 2*c1**2 + 3*c1)/6 - x*sqrt(3*c0*c1 - c1**2*m + 2*c1**2 + 3*c1)/(6*c0 - 2*c1*m + 4*c1 + 6), m)**2 constraints={'a': '-sqrt(c1*(3*c0 - c1*m + 2*c1 + 3))/(2*(3*c0 - c1*m + 2*c1 + 3))', 'b': 'sqrt(c1*(3*c0 - c1*m + 2*c1 + 3))/6'}
+EXACT candidate=func_0050 u=c0 + c1*JacobiDN(d - t*sqrt(3*c0*c1 - c1**2*m + 2*c1**2 + 3*c1)/6 + x*sqrt(3*c0*c1 - c1**2*m + 2*c1**2 + 3*c1)/(6*c0 - 2*c1*m + 4*c1 + 6), m)**2 constraints={'a': 'sqrt(c1*(3*c0 - c1*m + 2*c1 + 3))/(2*(3*c0 - c1*m + 2*c1 + 3))', 'b': '-sqrt(c1*(3*c0 - c1*m + 2*c1 + 3))/6'}
+EXACT candidate=func_0062 u=c1*tanh(a*x + d + c1*t/(12*a))**2 - 2*c1/3 - 1 - c1/(12*a**2) constraints={'b': 'c1/(12*a)', 'c0': '-2*c1/3 - 1 - c1/(12*a**2)'}
+EXACT candidate=func_0068 u=c1/(a**2*x**2 + 2*a*d*x + c1*t*x/6 + d**2 + c1*d*t/(6*a) + c1**2*t**2/(144*a**2)) - 1 - c1/(12*a**2) constraints={'b': '-a*(-1 - c1/(12*a**2)) - a', 'c0': '-1 - c1/(12*a**2)'}
+elapsed=26.55s

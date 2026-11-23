@@ -1,0 +1,10 @@
+function_id=func_0046
+expression=z**(3/2)
+parameters=(none)
+network=[2,1]
+trial_u=a*c1*x*sqrt(a*x + b*t + d) + b*c1*t*sqrt(a*x + b*t + d) + c0 + c1*d*sqrt(a*x + b*t + d)
+bbm_equation=ut + ux + u*ux - uxxt = 0
+residual=-3*a**3*b*c1*x/(8*a**2*x**2*sqrt(a*x + b*t + d) + 16*a*b*t*x*sqrt(a*x + b*t + d) + 16*a*d*x*sqrt(a*x + b*t + d) + 8*b**2*t**2*sqrt(a*x + b*t + d) + 16*b*d*t*sqrt(a*x + b*t + d) + 8*d**2*sqrt(a*x + b*t + d)) + 3*a**3*c1**2*x**2/2 - 3*a**2*b**2*c1*t/(8*a**2*x**2*sqrt(a*x + b*t + d) + 16*a*b*t*x*sqrt(a*x + b*t + d) + 16*a*d*x*sqrt(a*x + b*t + d) + 8*b**2*t**2*sqrt(a*x + b*t + d) + 16*b*d*t*sqrt(a*x + b*t + d) + 8*d**2*sqrt(a*x + b*t + d)) + 3*a**2*b*c1**2*t*x - 3*a**2*b*c1*d/(8*a**2*x**2*sqrt(a*x + b*t + d) + 16*a*b*t*x*sqrt(a*x + b*t + d) + 16*a*d*x*sqrt(a*x + b*t + d) + 8*b**2*t**2*sqrt(a*x + b*t + d) + 16*b*d*t*sqrt(a*x + b*t + d) + 8*d**2*sqrt(a*x + b*t + d)) + 6*a**2*b*c1/(8*a*x*sqrt(a*x + b*t + d) + 8*b*t*sqrt(a*x + b*t + d) + 8*d*sqrt(a*x + b*t + d)) + a**2*c0*c1*x/(2*sqrt(a*x + b*t + d)) + 3*a**2*c1**2*d*x + a**2*c1*x/(2*sqrt(a*x + b*t + d)) + 3*a*b**2*c1**2*t**2/2 + a*b*c0*c1*t/(2*sqrt(a*x + b*t + d)) + 3*a*b*c1**2*d*t + a*b*c1*t/(2*sqrt(a*x + b*t + d)) + a*b*c1*x/(2*sqrt(a*x + b*t + d)) + a*c0*c1*d/(2*sqrt(a*x + b*t + d)) + a*c0*c1*sqrt(a*x + b*t + d) + 3*a*c1**2*d**2/2 + a*c1*d/(2*sqrt(a*x + b*t + d)) + a*c1*sqrt(a*x + b*t + d) + b**2*c1*t/(2*sqrt(a*x + b*t + d)) + b*c1*d/(2*sqrt(a*x + b*t + d)) + b*c1*sqrt(a*x + b*t + d)
+completed_steps=parse; derivatives; NNSCA assembly; SymPy residual
+sympy_failure=non-polynomial phase: sqrt(a*x + b*t + d) contains an element of the set of generators.
+maple_goal=verify whether simplify(residual)=0 and report any exact parameter branches

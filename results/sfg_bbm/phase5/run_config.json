@@ -1,0 +1,81 @@
+{
+  "phase": 5,
+  "python_version": "3.12.4",
+  "sympy_version": "1.14.0",
+  "network": [
+    2,
+    2,
+    1
+  ],
+  "manual_pairs": [
+    [
+      "sech(z)**2",
+      "sech(z)**2"
+    ],
+    [
+      "tan(z)**2",
+      "tan(z)**2"
+    ],
+    [
+      "JacobiCN(z,m)**2",
+      "JacobiCN(z,m)**2"
+    ],
+    [
+      "sech(z)**2",
+      "tan(z)**2"
+    ],
+    [
+      "JacobiCN(z,m)**2",
+      "sech(z)**2"
+    ],
+    [
+      "JacobiCN(z,m)**2",
+      "tan(z)**2"
+    ]
+  ],
+  "generated_pairs": [
+    {
+      "pair": "JacobiDN(z, m) + sech(z)**2|JacobiDN(z, m) + sech(z)**2",
+      "left": "JacobiDN(z, m) + sech(z)**2",
+      "right": "JacobiDN(z, m) + sech(z)**2",
+      "source_type": "generated",
+      "generation_rule": "phase5_auto_pair"
+    },
+    {
+      "pair": "tanh(csch(z))|tanh(csch(z))",
+      "left": "tanh(csch(z))",
+      "right": "tanh(csch(z))",
+      "source_type": "generated",
+      "generation_rule": "phase5_auto_pair"
+    },
+    {
+      "pair": "z**2 + tanh(alpha*z)|z**2 + tanh(alpha*z)",
+      "left": "z**2 + tanh(alpha*z)",
+      "right": "z**2 + tanh(alpha*z)",
+      "source_type": "generated",
+      "generation_rule": "phase5_auto_pair"
+    },
+    {
+      "pair": "cos(z)*tanh(z)|cos(z)*tanh(z)",
+      "left": "cos(z)*tanh(z)",
+      "right": "cos(z)*tanh(z)",
+      "source_type": "generated",
+      "generation_rule": "phase5_auto_pair"
+    },
+    {
+      "pair": "JacobiDN(z, m) + sech(z)**2|tanh(csch(z))",
+      "left": "JacobiDN(z, m) + sech(z)**2",
+      "right": "tanh(csch(z))",
+      "source_type": "generated",
+      "generation_rule": "phase5_auto_pair"
+    },
+    {
+      "pair": "JacobiDN(z, m) + sech(z)**2|z**2 + tanh(alpha*z)",
+      "left": "JacobiDN(z, m) + sech(z)**2",
+      "right": "z**2 + tanh(alpha*z)",
+      "source_type": "generated",
+      "generation_rule": "phase5_auto_pair"
+    }
+  ],
+  "elapsed_seconds": 4.674260854721069
+}

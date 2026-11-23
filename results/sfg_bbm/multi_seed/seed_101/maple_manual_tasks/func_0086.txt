@@ -1,0 +1,10 @@
+function_id=func_0086
+expression=sqrt(z) + cosh(z)
+parameters=(none)
+network=[2,1]
+trial_u=c0 + c1*sqrt(a*x + b*t + d) + c1*cosh(a*x + b*t + d)
+bbm_equation=ut + ux + u*ux - uxxt = 0
+residual=-a**2*b*c1*sinh(a*x + b*t + d) - 3*a**2*b*c1/(8*a**2*x**2*sqrt(a*x + b*t + d) + 16*a*b*t*x*sqrt(a*x + b*t + d) + 16*a*d*x*sqrt(a*x + b*t + d) + 8*b**2*t**2*sqrt(a*x + b*t + d) + 16*b*d*t*sqrt(a*x + b*t + d) + 8*d**2*sqrt(a*x + b*t + d)) + a*c0*c1*sinh(a*x + b*t + d) + a*c0*c1/(2*sqrt(a*x + b*t + d)) + a*c1**2*sqrt(a*x + b*t + d)*sinh(a*x + b*t + d) + a*c1**2*sinh(a*x + b*t + d)*cosh(a*x + b*t + d) + a*c1**2/2 + a*c1**2*cosh(a*x + b*t + d)/(2*sqrt(a*x + b*t + d)) + a*c1*sinh(a*x + b*t + d) + a*c1/(2*sqrt(a*x + b*t + d)) + b*c1*sinh(a*x + b*t + d) + b*c1/(2*sqrt(a*x + b*t + d))
+completed_steps=parse; derivatives; NNSCA assembly; SymPy residual
+sympy_failure=non-polynomial phase: sqrt(a*x + b*t + d) contains an element of the set of generators.
+maple_goal=verify whether simplify(residual)=0 and report any exact parameter branches

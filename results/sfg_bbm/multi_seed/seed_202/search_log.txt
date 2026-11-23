@@ -1,0 +1,11 @@
+run started at 2026-11-23 12:54:37
+network=[2, 1]
+mode=random seed=202
+EXACT candidate=func_0007 u=c0 + c1*JacobiDN(d + t*sqrt(3*c0*c1 - c1**2*m + 2*c1**2 + 3*c1)/6 - x*sqrt(3*c0*c1 - c1**2*m + 2*c1**2 + 3*c1)/(6*c0 - 2*c1*m + 4*c1 + 6), m)**2 constraints={'a': '-sqrt(c1*(3*c0 - c1*m + 2*c1 + 3))/(2*(3*c0 - c1*m + 2*c1 + 3))', 'b': 'sqrt(c1*(3*c0 - c1*m + 2*c1 + 3))/6'}
+EXACT candidate=func_0007 u=c0 + c1*JacobiDN(d - t*sqrt(3*c0*c1 - c1**2*m + 2*c1**2 + 3*c1)/6 + x*sqrt(3*c0*c1 - c1**2*m + 2*c1**2 + 3*c1)/(6*c0 - 2*c1*m + 4*c1 + 6), m)**2 constraints={'a': 'sqrt(c1*(3*c0 - c1*m + 2*c1 + 3))/(2*(3*c0 - c1*m + 2*c1 + 3))', 'b': '-sqrt(c1*(3*c0 - c1*m + 2*c1 + 3))/6'}
+EXACT candidate=func_0055 u=c0 + c1*JacobiSN(d - x*sqrt(-3*c0*c1*m - c1**2*m - c1**2 - 3*c1*m)/(6*c0*m + 2*c1*m + 2*c1 + 6*m) + t*sqrt(-3*c0*c1*m - c1**2*m - c1**2 - 3*c1*m)/(6*m), m)**2 constraints={'a': '-sqrt(-c1*(3*c0*m + c1*m + c1 + 3*m))/(2*(3*c0*m + c1*m + c1 + 3*m))', 'b': 'sqrt(-c1*(3*c0*m + c1*m + c1 + 3*m))/(6*m)'}
+EXACT candidate=func_0055 u=c0 + c1*JacobiSN(d + x*sqrt(-3*c0*c1*m - c1**2*m - c1**2 - 3*c1*m)/(6*c0*m + 2*c1*m + 2*c1 + 6*m) - t*sqrt(-3*c0*c1*m - c1**2*m - c1**2 - 3*c1*m)/(6*m), m)**2 constraints={'a': 'sqrt(-c1*(3*c0*m + c1*m + c1 + 3*m))/(2*(3*c0*m + c1*m + c1 + 3*m))', 'b': '-sqrt(-c1*(3*c0*m + c1*m + c1 + 3*m))/(6*m)'}
+EXACT candidate=func_0061 u=c0 + c1*JacobiCN(d - x*sqrt(3*c0*c1*m + 2*c1**2*m - c1**2 + 3*c1*m)/(6*c0*m + 4*c1*m - 2*c1 + 6*m) + t*sqrt(3*c0*c1*m + 2*c1**2*m - c1**2 + 3*c1*m)/(6*m), m)**2 constraints={'a': '-sqrt(c1*(3*c0*m + 2*c1*m - c1 + 3*m))/(2*(3*c0*m + 2*c1*m - c1 + 3*m))', 'b': 'sqrt(c1*(3*c0*m + 2*c1*m - c1 + 3*m))/(6*m)'}
+EXACT candidate=func_0061 u=c0 + c1*JacobiCN(d + x*sqrt(3*c0*c1*m + 2*c1**2*m - c1**2 + 3*c1*m)/(6*c0*m + 4*c1*m - 2*c1 + 6*m) - t*sqrt(3*c0*c1*m + 2*c1**2*m - c1**2 + 3*c1*m)/(6*m), m)**2 constraints={'a': 'sqrt(c1*(3*c0*m + 2*c1*m - c1 + 3*m))/(2*(3*c0*m + 2*c1*m - c1 + 3*m))', 'b': '-sqrt(c1*(3*c0*m + 2*c1*m - c1 + 3*m))/(6*m)'}
+EXACT candidate=func_0082 u=c1*tan(a*x + d + c1*t/(12*a))**2 + 2*c1/3 - 1 - c1/(12*a**2) constraints={'b': 'c1/(12*a)', 'c0': '2*c1/3 - 1 - c1/(12*a**2)'}
+elapsed=34.12s

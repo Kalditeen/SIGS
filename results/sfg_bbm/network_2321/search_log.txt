@@ -1,0 +1,4 @@
+run started at 2026-11-23 13:15:20
+network=[2, 3, 2, 1]
+mode=random seed=101
+elapsed=43.21s

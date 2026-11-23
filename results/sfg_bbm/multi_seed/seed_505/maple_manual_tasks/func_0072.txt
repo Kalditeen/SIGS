@@ -1,0 +1,10 @@
+function_id=func_0072
+expression=sqrt(z) + sech(z)**2
+parameters=(none)
+network=[2,1]
+trial_u=c0 + c1*sqrt(a*x + b*t + d) + c1*sech(a*x + b*t + d)**2
+bbm_equation=ut + ux + u*ux - uxxt = 0
+residual=24*a**2*b*c1*tanh(a*x + b*t + d)**3*sech(a*x + b*t + d)**2 - 16*a**2*b*c1*tanh(a*x + b*t + d)*sech(a*x + b*t + d)**2 - 3*a**2*b*c1/(8*a**2*x**2*sqrt(a*x + b*t + d) + 16*a*b*t*x*sqrt(a*x + b*t + d) + 16*a*d*x*sqrt(a*x + b*t + d) + 8*b**2*t**2*sqrt(a*x + b*t + d) + 16*b*d*t*sqrt(a*x + b*t + d) + 8*d**2*sqrt(a*x + b*t + d)) - 2*a*c0*c1*tanh(a*x + b*t + d)*sech(a*x + b*t + d)**2 + a*c0*c1/(2*sqrt(a*x + b*t + d)) - 2*a*c1**2*sqrt(a*x + b*t + d)*tanh(a*x + b*t + d)*sech(a*x + b*t + d)**2 - 2*a*c1**2*tanh(a*x + b*t + d)*sech(a*x + b*t + d)**4 + a*c1**2/2 + a*c1**2*sech(a*x + b*t + d)**2/(2*sqrt(a*x + b*t + d)) - 2*a*c1*tanh(a*x + b*t + d)*sech(a*x + b*t + d)**2 + a*c1/(2*sqrt(a*x + b*t + d)) - 2*b*c1*tanh(a*x + b*t + d)*sech(a*x + b*t + d)**2 + b*c1/(2*sqrt(a*x + b*t + d))
+completed_steps=parse; derivatives; NNSCA assembly; SymPy residual
+sympy_failure=non-polynomial phase: sqrt(a*x + b*t + d) contains an element of the set of generators.
+maple_goal=verify whether simplify(residual)=0 and report any exact parameter branches

@@ -1,0 +1,10 @@
+function_id=func_0035
+expression=sqrt(z) + JacobiCN(z, m)
+parameters=m
+network=[2,1]
+trial_u=c0 + c1*sqrt(a*x + b*t + d) + c1*JacobiCN(a*x + b*t + d, m)
+bbm_equation=ut + ux + u*ux - uxxt = 0
+residual=-4*a**2*b*c1*m*JacobiCN(a*x + b*t + d, m)**2*JacobiDN(a*x + b*t + d, m)*JacobiSN(a*x + b*t + d, m) + a**2*b*c1*m*JacobiDN(a*x + b*t + d, m)*JacobiSN(a*x + b*t + d, m)**3 - a**2*b*c1*JacobiDN(a*x + b*t + d, m)**3*JacobiSN(a*x + b*t + d, m) - 3*a**2*b*c1/(8*a**2*x**2*sqrt(a*x + b*t + d) + 16*a*b*t*x*sqrt(a*x + b*t + d) + 16*a*d*x*sqrt(a*x + b*t + d) + 8*b**2*t**2*sqrt(a*x + b*t + d) + 16*b*d*t*sqrt(a*x + b*t + d) + 8*d**2*sqrt(a*x + b*t + d)) - a*c0*c1*JacobiDN(a*x + b*t + d, m)*JacobiSN(a*x + b*t + d, m) + a*c0*c1/(2*sqrt(a*x + b*t + d)) - a*c1**2*sqrt(a*x + b*t + d)*JacobiDN(a*x + b*t + d, m)*JacobiSN(a*x + b*t + d, m) - a*c1**2*JacobiCN(a*x + b*t + d, m)*JacobiDN(a*x + b*t + d, m)*JacobiSN(a*x + b*t + d, m) + a*c1**2/2 + a*c1**2*JacobiCN(a*x + b*t + d, m)/(2*sqrt(a*x + b*t + d)) - a*c1*JacobiDN(a*x + b*t + d, m)*JacobiSN(a*x + b*t + d, m) + a*c1/(2*sqrt(a*x + b*t + d)) - b*c1*JacobiDN(a*x + b*t + d, m)*JacobiSN(a*x + b*t + d, m) + b*c1/(2*sqrt(a*x + b*t + d))
+completed_steps=parse; derivatives; NNSCA assembly; SymPy residual
+sympy_failure=non-polynomial phase: sqrt(a*x + b*t + d) contains an element of the set of generators.
+maple_goal=verify whether simplify(residual)=0 and report any exact parameter branches

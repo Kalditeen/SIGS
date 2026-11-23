@@ -1,0 +1,80 @@
+function_id,expression,category,parameters,tree_depth,node_count,complexity,domain_status,differentiability_status,symbolic_status,duplicate_status,extraction_status,source_type,generation_rule,constraint_status,solve_status,nontrivial_status,substitution_status,identity_verification_status,verification_status
+func_0001,"JacobiDN(z, m) + sech(z)**2",special,['m'],1,8,4,candidate_real_axis,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0002,tanh(csch(z)),hyperbolic,[],2,3,2,partial_domain,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0003,z**2 + tanh(alpha*z),hyperbolic,['alpha'],1,8,4,candidate_real_axis,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0004,cos(z)*tanh(z),hyperbolic,[],1,5,3,candidate_real_axis,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0005,log(z) + exp(-z),elementary,[],1,7,4,partial_domain,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0006,z**6,elementary,[],0,3,1,candidate_real_axis,differentiable,success,unique,success,generated,random_pow,success,success,NONE,success,skipped,FAILED
+func_0007,exp(-2*z),elementary,[],1,4,3,candidate_real_axis,differentiable,success,unique,success,generated,random_pow,success,success,NONE,success,skipped,FAILED
+func_0008,tanh(exp(-z**2)),hyperbolic,[],2,7,4,candidate_real_axis,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0009,exp(-z)*cosh(z),hyperbolic,[],1,7,3,candidate_real_axis,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0010,cosh(z)**2,hyperbolic,[],1,4,2,candidate_real_axis,differentiable,success,unique,success,generated,random_pow,success,success,NONE,success,skipped,FAILED
+func_0012,tanh(alpha*z)**2,hyperbolic,['alpha'],1,6,3,candidate_real_axis,differentiable,success,unique,success,generated,random_pow,success,success,NONTRIVIAL,success,verified,EXACT_VERIFIED
+func_0013,tanh(sinh(z)),hyperbolic,[],2,3,2,candidate_real_axis,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0015,tanh(z),hyperbolic,[],1,2,1,candidate_real_axis,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0016,exp(-z)*csch(z),hyperbolic,[],1,7,3,partial_domain,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0017,"tan(z)*JacobiSN(z, m)",special,['m'],1,6,3,partial_domain,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0018,tan(z)**2,elementary,[],1,4,2,partial_domain,differentiable,success,unique,success,generated,random_pow,success,success,NONTRIVIAL,success,verified,EXACT_VERIFIED
+func_0019,z + log(z),elementary,[],1,4,2,partial_domain,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0020,z**2 + cosh(z),hyperbolic,[],1,6,3,candidate_real_axis,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0021,z**3 + log(z),elementary,[],1,6,3,partial_domain,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0022,sinh(z)**2,hyperbolic,[],1,4,2,candidate_real_axis,differentiable,success,unique,success,generated,random_pow,success,success,NONE,success,skipped,FAILED
+func_0023,tanh(sin(z)*cosh(z)),hyperbolic,[],2,6,4,candidate_real_axis,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0024,exp(2*z),elementary,[],1,4,2,candidate_real_axis,differentiable,success,unique,success,generated,random_pow,success,success,NONE,success,skipped,FAILED
+func_0025,"2*JacobiDN(z, m)",special,['m'],1,5,2,candidate_real_axis,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0027,tanh(sech(z)**2),hyperbolic,[],2,5,3,candidate_real_axis,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0028,"JacobiCN(z, m)**2",special,['m'],1,5,2,candidate_real_axis,differentiable,success,unique,success,generated,random_mul,success,success,NONTRIVIAL,success,verified,EXACT_VERIFIED
+func_0029,tanh(tanh(alpha*z)),hyperbolic,['alpha'],2,5,3,candidate_real_axis,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0030,exp(z) + tanh(alpha*z),hyperbolic,['alpha'],1,7,4,candidate_real_axis,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0031,sqrt(z) + z**3,elementary,[],0,7,4,candidate_real_axis,differentiable,success,unique,unsupported,generated,random_add,unsupported,skipped,skipped,skipped,skipped,SYMBOLIC_UNRESOLVED
+func_0032,tanh(sin(z)),hyperbolic,[],2,3,2,candidate_real_axis,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0034,z**2 + tanh(z),hyperbolic,[],1,6,3,candidate_real_axis,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0035,log(z)**2,elementary,[],1,4,2,partial_domain,differentiable,success,unique,success,generated,random_pow,success,success,NONE,success,skipped,FAILED
+func_0037,log(z) + tanh(z),hyperbolic,[],1,5,3,partial_domain,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0039,exp(-2*z**2),elementary,[],1,6,4,candidate_real_axis,differentiable,success,unique,success,generated,random_pow,success,success,NONE,success,skipped,FAILED
+func_0040,exp(z)*sin(z)*cosh(z),hyperbolic,[],1,7,5,candidate_real_axis,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0042,"tanh(JacobiDN(z, m))",special,['m'],2,4,2,candidate_real_axis,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0043,"cos(z) + JacobiSN(z, m)",special,['m'],1,6,3,candidate_real_axis,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0044,"tanh(JacobiSN(z, m))",special,['m'],2,4,2,candidate_real_axis,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0046,z + cos(z),elementary,[],1,4,2,candidate_real_axis,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0047,sin(z)**2,elementary,[],1,4,2,candidate_real_axis,differentiable,success,unique,success,generated,random_pow,success,success,NONE,success,skipped,FAILED
+func_0049,sqrt(z)*exp(-z),elementary,[],1,8,4,candidate_real_axis,differentiable,success,unique,unsupported,generated,random_mul,unsupported,skipped,skipped,skipped,skipped,SYMBOLIC_UNRESOLVED
+func_0050,sqrt(z)*cos(z),elementary,[],1,6,4,candidate_real_axis,differentiable,success,unique,unsupported,generated,random_mul,unsupported,skipped,skipped,skipped,skipped,SYMBOLIC_UNRESOLVED
+func_0051,tanh(tan(z)),hyperbolic,[],2,3,2,partial_domain,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0052,"tanh(alpha*z) + JacobiDN(z, m)",special,"['alpha', 'm']",1,8,4,candidate_real_axis,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0054,tanh(alpha*z) + coth(z),hyperbolic,['alpha'],1,7,4,partial_domain,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0055,z,elementary,[],0,1,0,candidate_real_axis,differentiable,success,unique,success,generated,random_pow,success,success,NONE,success,skipped,FAILED
+func_0057,tanh(cosh(z)),hyperbolic,[],2,3,2,candidate_real_axis,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0058,sin(z)*sin(alpha*z),elementary,['alpha'],1,7,4,candidate_real_axis,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0061,tanh(z**2),hyperbolic,[],1,4,2,candidate_real_axis,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0062,"tanh(z)*JacobiCN(z, m)*sech(z)",special,['m'],1,8,5,candidate_real_axis,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0064,log(z) + tanh(alpha*z),hyperbolic,['alpha'],1,7,4,partial_domain,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0065,z**4,elementary,[],0,3,1,candidate_real_axis,differentiable,success,unique,success,generated,random_pow,success,success,NONE,success,skipped,FAILED
+func_0066,tanh(sech(alpha*z)**2),hyperbolic,['alpha'],2,7,4,candidate_real_axis,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0067,cos(z)*coth(z),hyperbolic,[],1,5,3,partial_domain,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0068,tanh(sqrt(z)),hyperbolic,[],1,4,3,candidate_real_axis,differentiable,success,unique,unsupported,generated,random_compose,unsupported,skipped,skipped,skipped,skipped,SYMBOLIC_UNRESOLVED
+func_0069,log(z)/z,elementary,[],1,6,2,partial_domain,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0070,"sin(z)*cosh(z)*JacobiSN(z, m)",special,['m'],1,8,5,candidate_real_axis,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0071,exp(z) + sin(z)*cosh(z),hyperbolic,[],1,8,5,candidate_real_axis,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0072,sqrt(z)*tanh(z),hyperbolic,[],1,6,4,candidate_real_axis,differentiable,success,unique,unsupported,generated,random_mul,unsupported,skipped,skipped,skipped,skipped,SYMBOLIC_UNRESOLVED
+func_0073,coth(z) + exp(-z),hyperbolic,[],1,7,4,partial_domain,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0074,sech(z)**2/z,hyperbolic,[],1,8,3,partial_domain,differentiable,success,unique,success,generated,random_mul,success,unsupported,skipped,skipped,skipped,SYMBOLIC_UNRESOLVED
+func_0075,cos(z) + coth(z),hyperbolic,[],1,5,3,partial_domain,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0077,1/sqrt(z),elementary,[],0,3,3,candidate_real_axis,differentiable,success,unique,unsupported,generated,random_mul,unsupported,skipped,skipped,skipped,skipped,SYMBOLIC_UNRESOLVED
+func_0078,z**2*tanh(z),hyperbolic,[],1,6,3,candidate_real_axis,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0079,log(z) + sinh(z),hyperbolic,[],1,5,3,partial_domain,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0080,sin(z)*tanh(alpha*z),hyperbolic,['alpha'],1,7,4,candidate_real_axis,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0081,z**(-2),elementary,[],0,3,2,candidate_real_axis,differentiable,success,unique,success,generated,random_pow,success,success,NONTRIVIAL,success,verified,EXACT_VERIFIED
+func_0085,sin(z) + sinh(z),hyperbolic,[],1,5,3,candidate_real_axis,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0086,sqrt(z) + cosh(z),hyperbolic,[],1,6,4,candidate_real_axis,differentiable,success,unique,unsupported,generated,random_add,unsupported,skipped,skipped,skipped,skipped,SYMBOLIC_UNRESOLVED
+func_0087,tanh(sech(z)),hyperbolic,[],2,3,2,candidate_real_axis,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0088,exp(-z)*log(z),elementary,[],1,7,3,partial_domain,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0089,sin(alpha*z)**2,elementary,['alpha'],1,6,3,candidate_real_axis,differentiable,success,unique,success,generated,random_pow,success,success,NONE,success,skipped,FAILED
+func_0090,z**2 + sin(alpha*z),elementary,['alpha'],1,8,4,candidate_real_axis,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED
+func_0094,tanh(sin(alpha*z)),hyperbolic,['alpha'],2,5,3,candidate_real_axis,differentiable,success,unique,success,generated,random_compose,success,success,NONE,success,skipped,FAILED
+func_0095,log(z)*tanh(z)*sech(z),hyperbolic,[],1,7,5,partial_domain,differentiable,success,unique,success,generated,random_mul,success,unsupported,skipped,skipped,skipped,SYMBOLIC_UNRESOLVED
+func_0096,tanh(z)**2,hyperbolic,[],1,4,2,candidate_real_axis,differentiable,success,unique,success,generated,random_pow,success,success,NONTRIVIAL,success,verified,EXACT_VERIFIED
+func_0097,z**3*exp(z),elementary,[],1,6,3,candidate_real_axis,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0098,tan(z)*sech(z),hyperbolic,[],1,5,3,partial_domain,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0099,"sinh(z)*JacobiDN(z, m)",special,['m'],1,6,3,candidate_real_axis,differentiable,success,unique,success,generated,random_mul,success,success,NONE,success,skipped,FAILED
+func_0100,z**2 + tan(z),elementary,[],1,6,3,partial_domain,differentiable,success,unique,success,generated,random_add,success,success,NONE,success,skipped,FAILED

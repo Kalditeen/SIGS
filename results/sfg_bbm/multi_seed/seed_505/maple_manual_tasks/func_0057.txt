@@ -1,0 +1,10 @@
+function_id=func_0057
+expression=log(z)*sech(z)**2
+parameters=(none)
+network=[2,1]
+trial_u=c0 + c1*log(a*x + b*t + d)*sech(a*x + b*t + d)**2
+bbm_equation=ut + ux + u*ux - uxxt = 0
+residual=24*a**2*b*c1*log(a*x + b*t + d)*tanh(a*x + b*t + d)**3*sech(a*x + b*t + d)**2 - 16*a**2*b*c1*log(a*x + b*t + d)*tanh(a*x + b*t + d)*sech(a*x + b*t + d)**2 - 2*a**2*b*c1*sech(a*x + b*t + d)**2/(a**3*x**3 + 3*a**2*b*t*x**2 + 3*a**2*d*x**2 + 3*a*b**2*t**2*x + 6*a*b*d*t*x + 3*a*d**2*x + b**3*t**3 + 3*b**2*d*t**2 + 3*b*d**2*t + d**3) - 6*a**2*b*c1*tanh(a*x + b*t + d)*sech(a*x + b*t + d)**2/(a**2*x**2 + 2*a*b*t*x + 2*a*d*x + b**2*t**2 + 2*b*d*t + d**2) - 18*a**2*b*c1*tanh(a*x + b*t + d)**2*sech(a*x + b*t + d)**2/(a*x + b*t + d) + 6*a**2*b*c1*sech(a*x + b*t + d)**2/(a*x + b*t + d) - 2*a*c0*c1*log(a*x + b*t + d)*tanh(a*x + b*t + d)*sech(a*x + b*t + d)**2 + a*c0*c1*sech(a*x + b*t + d)**2/(a*x + b*t + d) - 2*a*c1**2*log(a*x + b*t + d)**2*tanh(a*x + b*t + d)*sech(a*x + b*t + d)**4 + a*c1**2*log(a*x + b*t + d)*sech(a*x + b*t + d)**4/(a*x + b*t + d) - 2*a*c1*log(a*x + b*t + d)*tanh(a*x + b*t + d)*sech(a*x + b*t + d)**2 + a*c1*sech(a*x + b*t + d)**2/(a*x + b*t + d) - 2*b*c1*log(a*x + b*t + d)*tanh(a*x + b*t + d)*sech(a*x + b*t + d)**2 + b*c1*sech(a*x + b*t + d)**2/(a*x + b*t + d)
+completed_steps=parse; derivatives; NNSCA assembly; SymPy residual
+sympy_failure=system too large
+maple_goal=verify whether simplify(residual)=0 and report any exact parameter branches

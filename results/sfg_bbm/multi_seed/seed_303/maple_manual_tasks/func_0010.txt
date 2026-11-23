@@ -1,0 +1,10 @@
+function_id=func_0010
+expression=sqrt(z) + exp(z)
+parameters=(none)
+network=[2,1]
+trial_u=c0 + c1*sqrt(a*x + b*t + d) + c1*exp(d)*exp(a*x)*exp(b*t)
+bbm_equation=ut + ux + u*ux - uxxt = 0
+residual=-a**2*b*c1*exp(d)*exp(a*x)*exp(b*t) - 3*a**2*b*c1/(8*a**2*x**2*sqrt(a*x + b*t + d) + 16*a*b*t*x*sqrt(a*x + b*t + d) + 16*a*d*x*sqrt(a*x + b*t + d) + 8*b**2*t**2*sqrt(a*x + b*t + d) + 16*b*d*t*sqrt(a*x + b*t + d) + 8*d**2*sqrt(a*x + b*t + d)) + a*c0*c1*exp(d)*exp(a*x)*exp(b*t) + a*c0*c1/(2*sqrt(a*x + b*t + d)) + a*c1**2*sqrt(a*x + b*t + d)*exp(d)*exp(a*x)*exp(b*t) + a*c1**2*exp(2*d)*exp(2*a*x)*exp(2*b*t) + a*c1**2/2 + a*c1**2*exp(d)*exp(a*x)*exp(b*t)/(2*sqrt(a*x + b*t + d)) + a*c1*exp(d)*exp(a*x)*exp(b*t) + a*c1/(2*sqrt(a*x + b*t + d)) + b*c1*exp(d)*exp(a*x)*exp(b*t) + b*c1/(2*sqrt(a*x + b*t + d))
+completed_steps=parse; derivatives; NNSCA assembly; SymPy residual
+sympy_failure=non-polynomial phase: sqrt(a*x + b*t + d) contains an element of the set of generators.
+maple_goal=verify whether simplify(residual)=0 and report any exact parameter branches

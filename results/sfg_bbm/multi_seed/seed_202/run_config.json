@@ -1,0 +1,36 @@
+{
+  "argv": [
+    "--mode",
+    "generated-only",
+    "--num-candidates",
+    "100",
+    "--seed",
+    "202",
+    "--results-dir",
+    "/Users/kang/SIGS/results/sfg_bbm/multi_seed/seed_202"
+  ],
+  "python_version": "3.12.4",
+  "sympy_version": "1.14.0",
+  "config": {
+    "generator": {
+      "mode": "random",
+      "random_seed": 202,
+      "max_depth": 3,
+      "max_nodes": 8,
+      "max_candidates": 100,
+      "max_parameters_per_function": 3,
+      "include_seeds": false
+    },
+    "network": {
+      "widths": [
+        2,
+        1
+      ]
+    },
+    "solver": {
+      "extract_timeout": 12.0,
+      "solve_timeout": 15.0,
+      "verify_timeout": 8.0
+    }
+  }
+}
