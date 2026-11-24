@@ -1,0 +1,9 @@
+{
+  "api_base": "https://api.deepseek.com",
+  "api_key": "",
+  "model": "deepseek-chat",
+  "temperature": 0,
+  "max_retries": 3,
+  "timeout_seconds": 120,
+  "verify_tls": true
+}
